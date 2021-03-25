@@ -339,7 +339,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -337.11, y: -43.8}
+  m_AnchoredPosition: {x: -316.8, y: -45.4}
   m_SizeDelta: {x: -674.2267, y: -217.74483}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &758181959
@@ -412,8 +412,12 @@ MonoBehaviour:
   cols: 5
   layers: 3
   tileSize: 1
+  artefactArray:
+  - {fileID: 2795509238106291730, guid: 1d42a793215bc704292ee2086ad85fde, type: 3}
+  - {fileID: 6399002543511430289, guid: c8a2d9f505e34c24fb7cd77d974106f1, type: 3}
   artefactPrefab: {fileID: 2795509238106291730, guid: 1d42a793215bc704292ee2086ad85fde,
     type: 3}
+  cam: {fileID: 1688056730}
 --- !u!4 &778832294
 Transform:
   m_ObjectHideFlags: 0
@@ -1141,7 +1145,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0.5882353, g: 0.44705883, b: 0.34509805, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
