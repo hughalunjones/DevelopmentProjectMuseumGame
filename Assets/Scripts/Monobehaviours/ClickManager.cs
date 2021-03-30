@@ -16,9 +16,10 @@ public class ClickManager : MonoBehaviour
     public enum SelectedTool {
         HAMMER,
         PICKAXE,
-        TROWEL
+        TROWEL,
+        NONE
     }
-    SelectedTool currentTool = SelectedTool.TROWEL;
+    SelectedTool currentTool = SelectedTool.NONE;
     public SelectedTool CurrentTool {
         get { return currentTool; }
         private set { currentTool = value; }
@@ -91,6 +92,9 @@ public class ClickManager : MonoBehaviour
             case SelectedTool.TROWEL:
             toolStrength = 2;
             break;
+            case SelectedTool.NONE:
+            toolStrength = 0;
+            break;
             default:
             break;
         }
@@ -99,6 +103,7 @@ public class ClickManager : MonoBehaviour
         if(artefact.GetComponent<SpriteRenderer>() != null) {
             canvas.gameObject.SetActive(true);
             artefactDisplay.GetComponent<Image>().sprite = artefact.GetComponent<SpriteRenderer>().sprite;
+            UpdateToolSelection(currentTool = SelectedTool.NONE);
             Destroy(artefact);
         }
         else {
