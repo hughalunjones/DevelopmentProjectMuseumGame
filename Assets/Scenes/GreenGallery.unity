@@ -655,6 +655,50 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 599145618, guid: cd690d17328c70e4481407905c3c1227, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 599145618, guid: cd690d17328c70e4481407905c3c1227, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 599145618, guid: cd690d17328c70e4481407905c3c1227, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 599145618, guid: cd690d17328c70e4481407905c3c1227, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 5244580944775835310}
+    - target: {fileID: 599145618, guid: cd690d17328c70e4481407905c3c1227, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 5244580944775835310}
+    - target: {fileID: 599145618, guid: cd690d17328c70e4481407905c3c1227, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 599145618, guid: cd690d17328c70e4481407905c3c1227, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 599145618, guid: cd690d17328c70e4481407905c3c1227, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: StoreItem
+      objectReference: {fileID: 0}
+    - target: {fileID: 599145618, guid: cd690d17328c70e4481407905c3c1227, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: PickUp
+      objectReference: {fileID: 0}
+    - target: {fileID: 599145618, guid: cd690d17328c70e4481407905c3c1227, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: Exhibit, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 599145618, guid: cd690d17328c70e4481407905c3c1227, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 611884167926796717, guid: cd690d17328c70e4481407905c3c1227,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -665,6 +709,11 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 5244580944775835310}
+    - target: {fileID: 3202249172992909271, guid: cd690d17328c70e4481407905c3c1227,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5533233158062267256, guid: cd690d17328c70e4481407905c3c1227,
         type: 3}
       propertyPath: m_Pivot.x
@@ -774,6 +823,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: MuseumInventory
+      objectReference: {fileID: 0}
+    - target: {fileID: 6368883301617555534, guid: cd690d17328c70e4481407905c3c1227,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cd690d17328c70e4481407905c3c1227, type: 3}
@@ -1412,6 +1466,11 @@ PrefabInstance:
       propertyPath: musStats
       value: 
       objectReference: {fileID: 211679705}
+    - target: {fileID: 1182748285132747836, guid: 530d47189093bbf46a5df67f061efad0,
+        type: 3}
+      propertyPath: musInventory
+      value: 
+      objectReference: {fileID: 5244580944775835310}
     - target: {fileID: 1821414301638706863, guid: 530d47189093bbf46a5df67f061efad0,
         type: 3}
       propertyPath: m_RootOrder
@@ -1471,11 +1530,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: MonaLisaPrefab
-      objectReference: {fileID: 0}
-    - target: {fileID: 4650203228606289534, guid: 530d47189093bbf46a5df67f061efad0,
-        type: 3}
-      propertyPath: m_TagString
-      value: Exhibit
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 530d47189093bbf46a5df67f061efad0, type: 3}
@@ -2275,16 +2329,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 5244580945011014150, guid: 43e02f0bbcc285b4ead775f6bb7ea60a,
-        type: 3}
-      propertyPath: m_SortingOrder
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8053974360631004483, guid: 43e02f0bbcc285b4ead775f6bb7ea60a,
-        type: 3}
-      propertyPath: museumInv
-      value: 
-      objectReference: {fileID: 5244580944775835310}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 43e02f0bbcc285b4ead775f6bb7ea60a, type: 3}
 --- !u!114 &5244580944775835310 stripped

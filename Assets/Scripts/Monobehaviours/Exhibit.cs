@@ -7,8 +7,9 @@ public class Exhibit : MonoBehaviour {
 
     public Exhibit_SO itemDefinition;
     public MuseumStats musStats;
-    MuseumInventory musInventory;
-    GameObject foundStats;
+    public MuseumInventory musInventory;
+    GameObject foundStats, foundInventory;
+    bool inRangeOfExhibit;
 
     public Exhibit(){
         musInventory = MuseumInventory.instance;
@@ -16,22 +17,33 @@ public class Exhibit : MonoBehaviour {
 
     void Start(){
         foundStats = GameObject.FindGameObjectWithTag("Player");
+        foundInventory = GameObject.FindGameObjectWithTag("Player");
         musStats = foundStats.GetComponent<MuseumStats>();
+        musInventory = foundInventory.GetComponentInChildren<MuseumInventory>();
+    }
+    void Update() {
+        if (inRangeOfExhibit && Input.GetKeyDown(KeyCode.E)) {
+            StoreItem();
+        }
+        if(itemDefinition.isDisplayed == false) {
+            Destroy(this.gameObject);
+        }
     }
     void OnTriggerEnter2D(Collider2D triggerCollider) {
         if (triggerCollider.tag == "Player") {
-            Debug.Log("[Exhibit] Player Detected");
-            StoreItem();
+            inRangeOfExhibit = true;
+            Debug.Log("[Exhibit] Player Detected " + inRangeOfExhibit);            
         }
     }
     void OnTriggerExit2D(Collider2D triggerCollider) {
         if (triggerCollider.tag == "Player") {
-            Debug.Log("[Exhibit] Player Left");
+            inRangeOfExhibit = false;
+            Debug.Log("[Exhibit] Player Left " + inRangeOfExhibit);
         }
     }
-    void StoreItem() {        
-        // this reference not working
+    void StoreItem() {
         musInventory.StoreItem(this);
+        musInventory.PickUp();
         Destroy(this);
         Debug.Log("[Exhibit] Item Stored");
     }

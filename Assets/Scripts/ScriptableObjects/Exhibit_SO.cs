@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum ExhibitTypeDefinitions { PAINTING, FOSSIL };
+public enum ExhibitTypeDefinitions { PAINTING, FOSSIL, STATUE, ARTEFACT };
 public enum ExhibitSizeDefinitions { SMALL, MEDIUM, LARGE };
 public enum ExhibitQualityDefinitions { ABYSMAL, POOR, AVERAGE, GOOD, SUPERB};
 

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1627708136998085816}
   - component: {fileID: 118336293937411058}
   - component: {fileID: 6639988334099327085}
+  - component: {fileID: 277684170}
   m_Layer: 0
   m_Name: EgyptianWaterPot
   m_TagString: artefact
@@ -108,3 +109,17 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.3515625, y: 0.4765625}
   m_EdgeRadius: 0
+--- !u!114 &277684170
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6399002543511430289}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd3b643fa5122094d99e589c189dbf6b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemDefinition: {fileID: 11400000, guid: d0833fdd7ef542745b95cfd6fd34a8b5, type: 2}
+  musStats: {fileID: 0}

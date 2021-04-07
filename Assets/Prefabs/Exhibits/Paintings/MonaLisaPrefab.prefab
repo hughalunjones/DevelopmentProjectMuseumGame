@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 567553667418887484}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -1.0935804, z: 0}
+  m_LocalPosition: {x: 0, y: -1.0935804, z: -0.01}
   m_LocalScale: {x: 0.64745975, y: 0.64745975, z: 0.64745975}
   m_Children: []
   m_Father: {fileID: 1821414301638706863}
@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 1182748285132747836}
   m_Layer: 0
   m_Name: MonaLisaPrefab
-  m_TagString: Untagged
+  m_TagString: Exhibit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -156,6 +156,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemDefinition: {fileID: 11400000, guid: f8f2c638a2f1ed04b93ad720c4a1189c, type: 2}
   musStats: {fileID: 0}
+  musInventory: {fileID: 0}
 --- !u!1 &5909480492615756695
 GameObject:
   m_ObjectHideFlags: 0

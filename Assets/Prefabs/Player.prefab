@@ -75,7 +75,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 5
   m_Sprite: {fileID: 21300000, guid: 6164ece9918186d4cbe878f809658188, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -181,7 +181,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   museumDefinition: {fileID: 11400000, guid: b37eaac7f3c70eb459a6c28b03b710bd, type: 2}
-  museumInv: {fileID: 0}
+  museumInv: {fileID: 1612426102090779519}
 --- !u!1 &6709690369386274821
 GameObject:
   m_ObjectHideFlags: 0
@@ -226,8 +226,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   museStats: {fileID: 8053974360631004483}
-  gameManager: {fileID: 0}
   InventoryDisplayHolder: {fileID: 0}
+  ConfirmationPopup: {fileID: 0}
   inventoryDisplaySlots:
   - {fileID: 0}
   - {fileID: 0}
