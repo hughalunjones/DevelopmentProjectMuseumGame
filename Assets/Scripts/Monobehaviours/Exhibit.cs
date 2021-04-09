@@ -9,24 +9,23 @@ public class Exhibit : MonoBehaviour {
     public MuseumStats musStats;
     public MuseumInventory musInventory;
     GameObject foundStats, foundInventory;
-    bool inRangeOfExhibit;
+    public bool inRangeOfExhibit;
 
     public Exhibit(){
         musInventory = MuseumInventory.instance;
     }
 
-    void Start(){
-        foundStats = GameObject.FindGameObjectWithTag("Player");
-        foundInventory = GameObject.FindGameObjectWithTag("Player");
-        musStats = foundStats.GetComponent<MuseumStats>();
-        musInventory = foundInventory.GetComponentInChildren<MuseumInventory>();
+    void Start(){       
+        musStats = MuseumStats.instance;
+        musInventory = MuseumInventory.instance;
+        this.itemDefinition.isDisplayed = true;
     }
     void Update() {
         if (inRangeOfExhibit && Input.GetKeyDown(KeyCode.E)) {
             StoreItem();
         }
-        if(itemDefinition.isDisplayed == false) {
-            Destroy(this.gameObject);
+        if (itemDefinition.isDisplayed == false) {
+           //Destroy(this.gameObject);
         }
     }
     void OnTriggerEnter2D(Collider2D triggerCollider) {
@@ -43,9 +42,6 @@ public class Exhibit : MonoBehaviour {
     }
     void StoreItem() {
         musInventory.StoreItem(this);
-        musInventory.PickUp();
-        Destroy(this);
-        Debug.Log("[Exhibit] Item Stored");
     }
     public void DisplayItem(){
         // Add item to empty object on screen.

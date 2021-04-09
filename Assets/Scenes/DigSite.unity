@@ -548,8 +548,7 @@ MonoBehaviour:
   artefactArray:
   - {fileID: 2795509238106291730, guid: 1d42a793215bc704292ee2086ad85fde, type: 3}
   - {fileID: 6399002543511430289, guid: c8a2d9f505e34c24fb7cd77d974106f1, type: 3}
-  artefactPrefab: {fileID: 2795509238106291730, guid: 1d42a793215bc704292ee2086ad85fde,
-    type: 3}
+  artefactPrefab: {fileID: 0}
   cam: {fileID: 1688056730}
 --- !u!4 &778832294
 Transform:

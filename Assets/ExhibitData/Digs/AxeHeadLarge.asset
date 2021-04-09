@@ -21,5 +21,5 @@ MonoBehaviour:
   exhibitValueAmount: 5000
   exhibitIcon: {fileID: 21300000, guid: 912358fa2eecb944084ad320714270ee, type: 3}
   isDisplayed: 0
-  isInteractable: 1
+  isInteractable: 0
   isStorable: 1

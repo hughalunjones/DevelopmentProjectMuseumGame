@@ -1,5 +1,5 @@
 sceneSetups:
-- path: Assets/Scenes/DigSite.unity
+- path: Assets/Scenes/GreenGallery.unity
   isLoaded: 1
   isActive: 1
   isSubScene: 0

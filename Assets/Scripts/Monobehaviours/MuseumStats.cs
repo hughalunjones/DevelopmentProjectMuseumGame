@@ -5,13 +5,21 @@ using UnityEngine;
 
 public class MuseumStats : MonoBehaviour
 {
+    public static MuseumStats instance;
     public MuseumStats_SO museumDefinition;
     public MuseumInventory museumInv;
 
-    public MuseumStats(){
-        museumInv = MuseumInventory.instance;
-    }    
+    private void Awake() {
+        if (instance == null) {
+            instance = this;
+        }
+        else {
+            Destroy(this.gameObject);
+        }
+    }
     void Start(){
+        DontDestroyOnLoad(this);
+        museumInv = MuseumInventory.instance;
         if (!museumDefinition.setManually){
             museumDefinition.maxWealth = 10000000;
             museumDefinition.currentWealth = 0;

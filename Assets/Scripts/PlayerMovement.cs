@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -16,10 +17,15 @@ public class PlayerMovement : MonoBehaviour
 
     // Assign a Sprite component in the inspector to instantiate
     void Update() {
-        float inputX = Input.GetAxisRaw("Horizontal");        
+        float inputX = Input.GetAxisRaw("Horizontal");
         float velocity = inputX * speed;
-        animator.SetFloat("Speed", Mathf.Abs(velocity));        
+        animator.SetFloat("Speed", Mathf.Abs(velocity));
         transform.Translate(Vector2.right * velocity * Time.deltaTime);
+        if (SceneManager.GetActiveScene().name == "MainHall") {
+            float inputY = Input.GetAxisRaw("Vertical");
+            float vertVel = inputY * speed;
+            transform.Translate(Vector2.up * vertVel * Time.deltaTime);
+        }
         if(inputX > 0 && !facingRight) {
             Flip();
         }else if(inputX < 0 && facingRight) {

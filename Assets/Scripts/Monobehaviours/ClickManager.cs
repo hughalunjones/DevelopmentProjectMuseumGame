@@ -103,6 +103,7 @@ public class ClickManager : MonoBehaviour
         if(artefact.GetComponent<SpriteRenderer>() != null) {
             canvas.gameObject.SetActive(true);
             artefactDisplay.GetComponent<Image>().sprite = artefact.GetComponent<SpriteRenderer>().sprite;
+            artefactDisplay.GetComponent<Text>().text = artefact.GetComponent<GameObject>().name;
             UpdateToolSelection(currentTool = SelectedTool.NONE);
             Destroy(artefact);
         }

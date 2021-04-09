@@ -12,34 +12,45 @@ public class MuseumInventory : MonoBehaviour
     public GameObject InventoryDisplayHolder;
     public GameObject ConfirmationPopup;
     public Image[] inventoryDisplaySlots = new Image[60];
-    int inventoryItemCap = 60;
+    int inventoryItemCap = 36;
     int idCount = 1;
+    int slotNum = 1;
     bool addedItem = true;
     public Dictionary<int, InventoryEntry> exhibitsInInventory = new Dictionary<int, InventoryEntry>();
     public InventoryEntry exhibitEntry;
- 
+    
+    private void Awake() {
+        if(instance == null) {
+            instance = this;
+        }
+        else {
+            Destroy(this.gameObject);
+        }
+    }
     void Start()
     {
+        DontDestroyOnLoad(this);
+        museStats = MuseumStats.instance;
         instance = this;
         exhibitEntry = new InventoryEntry(null, null);
         exhibitsInInventory.Clear();
-
         inventoryDisplaySlots = InventoryDisplayHolder.GetComponentsInChildren<Image>();
-
-        foundStats = GameObject.FindGameObjectWithTag("Player");
-        museStats = foundStats.GetComponent<MuseumStats>();
     }
 
     void Update(){
         if (Input.GetKeyDown(KeyCode.I)){
             DisplayInventory();
         }
+        if (Input.GetKeyDown(KeyCode.G)) {
+            exhibitsInInventory.Clear();
+            ClearInventoryDisplay();
+            Debug.Log("ClearInventoryDisplay() called");
+        }
         //Check to see if the Exhibit has already been added - Prevent duplicate adds for 1 Exhibit
-        // currently not working - only works after an item has been added to the inventory.
         if (!addedItem){
             if (Input.GetKeyDown(KeyCode.E)) {
                 PickUp();
-                Debug.Log("[MuseumInventory] Item picked up.");              
+                Debug.Log("[MuseumInventory - Update] PickUp() called");              
             }
         }
     }
@@ -49,29 +60,35 @@ public class MuseumInventory : MonoBehaviour
         exhibitEntry.invEntry = exhibitToStore;
         exhibitEntry.entryName = exhibitToStore.itemDefinition.exhibitName;
         exhibitEntry.hbSprite = exhibitToStore.itemDefinition.exhibitIcon;
-        exhibitEntry.inventorySlot = 1;
-        Debug.Log("[StoreItem] " + exhibitToStore);
+        exhibitEntry.inventorySlot = slotNum;
+        slotNum++;
+        Debug.Log("[StoreItem] " + exhibitToStore + ", Inventory slot:" + exhibitEntry.inventorySlot);
+        PickUp();
     }
     public void PickUp() {
         // Check item was stored properly.
         if (exhibitEntry.invEntry) {
+            Debug.Log("[Museum Inventory - PickUp] Item stored correctly");
             // Check there is space
-            if (exhibitsInInventory.Count == 0) {
+            if (exhibitsInInventory.Count != inventoryItemCap) {
                 addedItem = AddItemToInv(addedItem);
-                Debug.Log("[MuseumInventory] Item added to inventory");
+                Debug.Log("[MuseumInventory - PickUp] Item added to inventory, Count: " + exhibitsInInventory.Count);
             }else if(exhibitsInInventory.Count == inventoryItemCap) {
                 // TODO: Show prompt/UI in game to show inventory is full.
-                Debug.Log("[MuseumInventory] Inventory is full");
+                Debug.Log("[MuseumInventory - PickUp] Inventory is full");
             }
         }
     }
 
     // Add a copy of the item to the inventory and display the corresponding sprite.
     bool AddItemToInv(bool finishedAdding){
-        exhibitsInInventory.Add(idCount, new InventoryEntry(Instantiate(exhibitEntry.invEntry), exhibitEntry.hbSprite));
+        InventoryEntry newEntry = new InventoryEntry(Instantiate(exhibitEntry.invEntry), exhibitEntry.hbSprite);
+        exhibitsInInventory.Add(idCount, newEntry);
         exhibitEntry.invEntry.itemDefinition.isDisplayed = false;
         Debug.Log("[AddItemToInv] Exhibit added: " + exhibitEntry.invEntry);
+        Destroy(newEntry.invEntry.gameObject);
         Destroy(exhibitEntry.invEntry.gameObject);
+        Debug.Log("[AddItemToInv] gameObject destroyed");
         FillInventoryDisplay();
         idCount = IncreaseID(idCount);
 
@@ -121,6 +138,15 @@ public class MuseumInventory : MonoBehaviour
             slotCounter++;
             inventoryDisplaySlots[slotCounter].sprite = ie.Value.hbSprite;
             Debug.Log("[FillInventoryDisplay] Inventory display filled");            
+        }
+    }
+    void ClearInventoryDisplay() {
+        int slotCounter = 1;
+        foreach (KeyValuePair<int, InventoryEntry> ie in exhibitsInInventory) {
+            Debug.Log("" + ie.Value.entryName);
+            slotCounter++;
+            inventoryDisplaySlots[slotCounter].sprite = null;
+            Debug.Log("[FillInventoryDisplay] Inventory display cleared");
         }
     }
 

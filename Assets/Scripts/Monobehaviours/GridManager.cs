@@ -76,8 +76,9 @@ public class GridManager : MonoBehaviour {
         }
         Vector3 artefactPos = new Vector3(Random.Range((float)(this.transform.position.x), (float)(this.transform.position.x + 4f)), Random.Range((float)(this.transform.position.y), (float)(this.transform.position.y - 4f)), 1.8f);
         // Random rotation
-        GameObject artefact = (GameObject)Instantiate(artefactPrefab, transform.position, Quaternion.Euler(0, 0, Random.Range(0, 360)));
+        GameObject artefact = (GameObject)Instantiate(artefactPrefab, transform.position, Quaternion.Euler(0, 0, Random.Range(0, 360)));        
         artefact.transform.position = artefactPos;
+        Debug.Log("[GirdManager] Artefact placed in grid");
         artefact.transform.SetParent(transform);
     }
     // Random grid generation extracted as its own method due to multiple usage.
