@@ -20,6 +20,7 @@ public class UIManager : Singleton<UIManager>
     }
     void HandleOnMainMenuFadeComplete(bool fadeOut) {
         OnMainMenuFadeComplete.Invoke(fadeOut);
+        mainMenu.gameObject.SetActive(false);
     }
     private void Update() {
         if(GameManager.Instance.CurrentGameState != GameManager.GameState.PREGAME) {

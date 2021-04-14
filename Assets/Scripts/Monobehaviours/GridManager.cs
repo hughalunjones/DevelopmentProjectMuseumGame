@@ -11,7 +11,7 @@ public class GridManager : MonoBehaviour {
     int randomBg;
 
     void Start() {
-        randomBg = Random.Range(1, 3);
+        randomBg = Random.Range(1, 4);
         GenerateBackground();
         GenerateGrid();
         PlaceArtefact();
@@ -25,7 +25,8 @@ public class GridManager : MonoBehaviour {
     void GenerateBackground() {
         GameObject referenceBgDesert = (GameObject)Instantiate(Resources.Load("DesertDigSite"));
         GameObject referenceBgPermafrost = (GameObject)Instantiate(Resources.Load("PermafrostDigSite"));
-        if (randomBg == 1 || randomBg == 3) {
+        GameObject referenceBgForest = (GameObject)Instantiate(Resources.Load("ForestDigSite"));
+        if (randomBg == 1) {
             GameObject background = (GameObject)Instantiate(referenceBgDesert, transform);
             background.transform.position = new Vector3(0, 3.4f, 0);
         }
@@ -33,11 +34,16 @@ public class GridManager : MonoBehaviour {
             GameObject background = (GameObject)Instantiate(referenceBgPermafrost, transform);
             background.transform.position = new Vector3(0, 3.4f, 0);
         }
+        else if (randomBg == 3) {
+            GameObject background = (GameObject)Instantiate(referenceBgForest, transform);
+            background.transform.position = new Vector3(0, 3.4f, 0);
+        }
         Destroy(referenceBgDesert);
         Destroy(referenceBgPermafrost);
+        Destroy(referenceBgForest);
     }
     void GenerateGrid() {
-        if (randomBg == 1 || randomBg == 3) {
+        if (randomBg == 1) {
             // Load the reference tiles for the dig spots
             GameObject referenceTileOneDirt = (GameObject)Instantiate(Resources.Load("DirtTileOne"));
             GameObject referenceTileTwoDirt = (GameObject)Instantiate(Resources.Load("DirtTileTwo"));
@@ -60,6 +66,18 @@ public class GridManager : MonoBehaviour {
             Destroy(referenceTileTwoFrost);
             Destroy(referenceTileThreeFrost);
             Destroy(referenceTileRockFrost);
+        }
+        if (randomBg == 3) {
+            // Load the reference tiles for the dig spots
+            GameObject referenceTileOneSoil = (GameObject)Instantiate(Resources.Load("SoilTileOne"));
+            GameObject referenceTileTwoSoil = (GameObject)Instantiate(Resources.Load("SoilTileTwo"));
+            GameObject referenceTileThreeSoil = (GameObject)Instantiate(Resources.Load("SoilTileThree"));
+            GameObject referenceTileRockSoil = (GameObject)Instantiate(Resources.Load("RockTileTwo"));
+            Grid(referenceTileOneSoil, referenceTileTwoSoil, referenceTileThreeSoil, referenceTileRockSoil);
+            Destroy(referenceTileOneSoil);
+            Destroy(referenceTileTwoSoil);
+            Destroy(referenceTileThreeSoil);
+            Destroy(referenceTileRockSoil);
         }
     }
     // Place the artefact within the confines of the grid.

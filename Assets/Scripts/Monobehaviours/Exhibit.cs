@@ -8,7 +8,6 @@ public class Exhibit : MonoBehaviour {
     public Exhibit_SO itemDefinition;
     public MuseumStats musStats;
     public MuseumInventory musInventory;
-    GameObject foundStats, foundInventory;
     public bool inRangeOfExhibit;
 
     public Exhibit(){
@@ -40,7 +39,7 @@ public class Exhibit : MonoBehaviour {
             Debug.Log("[Exhibit] Player Left " + inRangeOfExhibit);
         }
     }
-    void StoreItem() {
+    public void StoreItem() {
         musInventory.StoreItem(this);
     }
     public void DisplayItem(){

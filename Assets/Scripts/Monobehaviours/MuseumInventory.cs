@@ -113,7 +113,7 @@ public class MuseumInventory : MonoBehaviour
     }
 
     // Display the inventory menu. 
-    void DisplayInventory(){
+    public void DisplayInventory(){
        if (InventoryDisplayHolder.activeSelf == true){
            InventoryDisplayHolder.SetActive(false);
        }

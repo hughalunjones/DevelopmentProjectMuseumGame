@@ -10,6 +10,9 @@ TagManager:
   - soil
   - artefact
   - rock
+  - Small
+  - Medium
+  - Large
   layers:
   - Default
   - TransparentFX

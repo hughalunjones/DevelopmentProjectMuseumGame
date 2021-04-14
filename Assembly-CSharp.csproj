@@ -65,6 +65,7 @@
      <Compile Include="Assets\Scripts\Monobehaviours\ClickManager.cs" />
      <Compile Include="Assets\Scripts\Monobehaviours\DigSpotManager.cs" />
      <Compile Include="Assets\Scripts\Monobehaviours\Exhibit.cs" />
+     <Compile Include="Assets\Scripts\Monobehaviours\ExhibitSlot.cs" />
      <Compile Include="Assets\Scripts\Monobehaviours\GridManager.cs" />
      <Compile Include="Assets\Scripts\Monobehaviours\InventoryEntry.cs" />
      <Compile Include="Assets\Scripts\Monobehaviours\MuseumInventory.cs" />

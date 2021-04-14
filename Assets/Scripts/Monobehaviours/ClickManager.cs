@@ -2,17 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class ClickManager : MonoBehaviour
 {
     GameObject digSpot;
-    GameObject artefact;
+    Exhibit artefact;
     MuseumInventory museumInventory;
     RaycastHit2D hit;
     int toolStrength = 3;
     int digStamina = 100;
     public Canvas canvas;
-    public GameObject artefactDisplay;
+    public GameObject artefactDisplay, artefactName, artefactDescription, btnStoreArtefact;
     public enum SelectedTool {
         HAMMER,
         PICKAXE,
@@ -23,6 +24,9 @@ public class ClickManager : MonoBehaviour
     public SelectedTool CurrentTool {
         get { return currentTool; }
         private set { currentTool = value; }
+    }
+    void Start() {
+        museumInventory = MuseumInventory.instance;
     }
     void Update() {
         if (Input.GetMouseButtonDown(0)) {
@@ -59,7 +63,7 @@ public class ClickManager : MonoBehaviour
                     }
                 }
                 if(hit.collider.tag == "artefact") {
-                    artefact = hit.collider.gameObject;
+                    artefact = hit.collider.gameObject.GetComponent<Exhibit>();
                     // Show pick up screen, fade bg and scale artefact up.
                     ShowArtefact(artefact);
                     // Store the artefact in the inventory.
@@ -99,18 +103,23 @@ public class ClickManager : MonoBehaviour
             break;
         }
     }
-    void ShowArtefact(GameObject artefact) {
+    void ShowArtefact(Exhibit artefact) {
         if(artefact.GetComponent<SpriteRenderer>() != null) {
             canvas.gameObject.SetActive(true);
+            btnStoreArtefact.GetComponent<Button>().onClick.AddListener(delegate () { StoreArtefact(artefact); });
             artefactDisplay.GetComponent<Image>().sprite = artefact.GetComponent<SpriteRenderer>().sprite;
-            artefactDisplay.GetComponent<Text>().text = artefact.GetComponent<GameObject>().name;
+            artefactName.GetComponent<TextMeshProUGUI>().text = artefact.itemDefinition.exhibitName;
+            artefactDescription.GetComponent<TextMeshProUGUI>().text = artefact.itemDefinition.exhibitDescription;
             UpdateToolSelection(currentTool = SelectedTool.NONE);
-            Destroy(artefact);
+            // Destroy(artefact);
         }
         else {
             Debug.LogError("[ClickManager] SpriteRenderer is null");
         }
-
+    }
+    void StoreArtefact(Exhibit artefact) {
+        artefact.StoreItem();
+        canvas.gameObject.SetActive(false);
     }
 }
     

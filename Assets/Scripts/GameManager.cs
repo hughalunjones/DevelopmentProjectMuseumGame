@@ -102,16 +102,17 @@ public class GameManager : Singleton<GameManager>
         instancedSystemPrefabs.Clear();
     }
     public void StartGame() {
-        LoadLevel("GreenGallery");
+        LoadLevel("MainHall");
     }
     public void TogglePause() {
         UpdateGameState(currentGameState == GameState.RUNNING ? GameState.PAUSED : GameState.RUNNING);
     }
     public void SaveGame() {
-        Debug.Log("Game Saved");
+        Debug.Log("Game Would Be Saved");
     }
     public void QuitGame() {
         // Autosaving and other features here also
+        SaveGame();
         Application.Quit();
         // For the purposes of testing
         UnityEditor.EditorApplication.isPlaying = false;
