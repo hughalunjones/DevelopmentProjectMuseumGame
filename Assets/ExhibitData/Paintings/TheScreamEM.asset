@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: TheScreamEM
   m_EditorClassIdentifier: 
   exhibitName: The Scream
+  exhibitKey: 1
   exhibitDescription: New Description
   exhibitType: 0
   exhibitSize: 1
@@ -20,6 +21,8 @@ MonoBehaviour:
   exhibitRatingAmount: 4.5
   exhibitValueAmount: 1000000
   exhibitIcon: {fileID: 21300000, guid: 880ea1e90e5509c4da31a364de04748f, type: 3}
+  exhibitObject: {fileID: 2448197583783390379, guid: 0641fc7bf3edd1c46a2bb921e2d82004,
+    type: 3}
   isDisplayed: 1
   isInteractable: 1
   isStorable: 1

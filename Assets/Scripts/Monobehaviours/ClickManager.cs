@@ -25,6 +25,10 @@ public class ClickManager : MonoBehaviour
         get { return currentTool; }
         private set { currentTool = value; }
     }
+    public void ReturnToMuseum() {
+        GameManager.Instance.LoadLevel("MainHall");
+        GameManager.Instance.UnloadLevel("DigSite");
+    }
     void Start() {
         museumInventory = MuseumInventory.instance;
     }
@@ -107,6 +111,7 @@ public class ClickManager : MonoBehaviour
         if(artefact.GetComponent<SpriteRenderer>() != null) {
             canvas.gameObject.SetActive(true);
             btnStoreArtefact.GetComponent<Button>().onClick.AddListener(delegate () { StoreArtefact(artefact); });
+            artefactDisplay.GetComponent<Image>().preserveAspect = true;
             artefactDisplay.GetComponent<Image>().sprite = artefact.GetComponent<SpriteRenderer>().sprite;
             artefactName.GetComponent<TextMeshProUGUI>().text = artefact.itemDefinition.exhibitName;
             artefactDescription.GetComponent<TextMeshProUGUI>().text = artefact.itemDefinition.exhibitDescription;

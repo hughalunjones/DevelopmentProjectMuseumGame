@@ -6,12 +6,13 @@ using UnityEngine;
 public class Exhibit : MonoBehaviour {
 
     public Exhibit_SO itemDefinition;
+    public ExhibitSlot exhibitSlot;
     public MuseumStats musStats;
     public MuseumInventory musInventory;
     public bool inRangeOfExhibit;
 
     public Exhibit(){
-        musInventory = MuseumInventory.instance;
+        musInventory = MuseumInventory.instance;        
     }
 
     void Start(){       
@@ -20,11 +21,15 @@ public class Exhibit : MonoBehaviour {
         this.itemDefinition.isDisplayed = true;
     }
     void Update() {
-        if (inRangeOfExhibit && Input.GetKeyDown(KeyCode.E)) {
+        if (!itemDefinition.isDisplayed && inRangeOfExhibit && Input.GetKeyDown(KeyCode.E)) {
+            Debug.Log("[Exhibit] StoreItem() called from Exhibit.cs");
             StoreItem();
         }
-        if (itemDefinition.isDisplayed == false) {
-           //Destroy(this.gameObject);
+        else if (itemDefinition.isDisplayed && inRangeOfExhibit && Input.GetKeyDown(KeyCode.E)) {
+            Destroy(gameObject);
+            itemDefinition.isDisplayed = false;
+            exhibitSlot.GetSlotInRange().containsExhibit = false;
+            musStats.RemoveRating(this.itemDefinition.exhibitRatingAmount);            
         }
     }
     void OnTriggerEnter2D(Collider2D triggerCollider) {

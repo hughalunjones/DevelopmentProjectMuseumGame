@@ -76,9 +76,15 @@ public class GameManager : Singleton<GameManager>
             instancedSystemPrefabs.Add(prefabInstance);
         }
     }
+    public string GetCurrentLevelName() {
+        string currentLevel = SceneManager.GetActiveScene().name;
+        return currentLevel;
+    }
+
+    // TODO: SET LOADED SCENE AS ACTIVE
     public void LoadLevel(string levelName) {
         AsyncOperation ao = SceneManager.LoadSceneAsync(levelName, LoadSceneMode.Additive);
-        if(ao == null) {
+        if (ao == null) {
             Debug.LogError("[GameManager] Unable to load level" + levelName);
             return;
         }

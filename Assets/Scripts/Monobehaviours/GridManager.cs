@@ -84,19 +84,19 @@ public class GridManager : MonoBehaviour {
     void PlaceArtefact() {
         // Random numbers between the artefact array positions.
         if (randomBg == 1) {
-            artefactPrefab = artefactArray[1];
+            artefactPrefab = artefactArray[5];
         }
         else if (randomBg == 2) {
-            artefactPrefab = artefactArray[0];
+            artefactPrefab = artefactArray[Random.Range(0, 4)];
         }
         else if (randomBg == 3) {
-            artefactPrefab = artefactArray[1];
+            artefactPrefab = artefactArray[5];
         }
         Vector3 artefactPos = new Vector3(Random.Range((float)(this.transform.position.x), (float)(this.transform.position.x + 4f)), Random.Range((float)(this.transform.position.y), (float)(this.transform.position.y - 4f)), 1.8f);
         // Random rotation
         GameObject artefact = (GameObject)Instantiate(artefactPrefab, transform.position, Quaternion.Euler(0, 0, Random.Range(0, 360)));        
         artefact.transform.position = artefactPos;
-        Debug.Log("[GirdManager] Artefact placed in grid");
+        Debug.Log("[GridManager] Artefact placed in grid");
         artefact.transform.SetParent(transform);
     }
     // Random grid generation extracted as its own method due to multiple usage.

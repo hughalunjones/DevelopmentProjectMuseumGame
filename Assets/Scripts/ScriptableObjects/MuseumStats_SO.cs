@@ -6,31 +6,19 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "NewStats", menuName = "Museum/Stats", order = 1)]
 public class MuseumStats_SO : ScriptableObject
 {
-    [System.Serializable]
-    public class CharLevelUps
-    {
-        public int maxWealth;
-    }
     public bool setManually = false;
     public bool saveDataOnClose = false;
-
-    public Exhibit painting { get; private set; }
-    public Exhibit fossil { get; private set; }
-
     public int maxWealth = 0;
     public int currentWealth = 0;
     public float maxRating = 0f;
     public float currentRating = 0f;
 
     // Stat changers
-    public void ApplyWealth(int wealthAmount)
-    {
-        if ((currentWealth + wealthAmount) > maxWealth)
-        {
+    public void ApplyWealth(int wealthAmount) {
+        if ((currentWealth + wealthAmount) > maxWealth) {
             currentWealth = maxWealth;
         }
-        else
-        {
+        else {
             currentWealth += wealthAmount;
         }
     }
@@ -42,13 +30,22 @@ public class MuseumStats_SO : ScriptableObject
             currentRating += ratingAmount;
         }
     }
-
-    public void PlaceExhibit(MuseumInventory musInventory, GameObject exhibitSlot){
-
+    public void RemoveRating(float ratingAmount) {
+        if ((currentRating - ratingAmount) <= 0) {
+            currentRating = 0;
+        }
+        else {
+            currentRating -= ratingAmount;
+        }
     }
-    public bool RemoveExhibit(MuseumInventory musInventory, GameObject exhibitSlot) {
-        return true;
-    }  
+    public void RemoveWealth(int wealthAmount) {
+        if ((currentWealth - wealthAmount) <= 0) {
+            currentWealth = 0;
+        }
+        else {
+            currentWealth -= wealthAmount;
+        }
+    }
 
     // Save Museum Data
     public void saveMuseumData()

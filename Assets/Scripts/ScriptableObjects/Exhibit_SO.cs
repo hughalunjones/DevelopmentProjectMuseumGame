@@ -17,6 +17,7 @@ public class Exhibit_SO : ScriptableObject
     [Range(0f, 5f)] public float exhibitRatingAmount = 0f;
     [Range(0, 1000000)] public int exhibitValueAmount = 0;
     public Sprite exhibitIcon = null;
+    public GameObject exhibitObject = null;
     public bool isDisplayed = false;
     public bool isInteractable = false;
     public bool isStorable = false;

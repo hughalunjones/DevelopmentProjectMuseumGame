@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: BirthOfVenus
   m_EditorClassIdentifier: 
   exhibitName: The Birth Of Venus
+  exhibitKey: 1
   exhibitDescription: New Description
   exhibitType: 0
   exhibitSize: 2
@@ -20,6 +21,8 @@ MonoBehaviour:
   exhibitRatingAmount: 5
   exhibitValueAmount: 1000000
   exhibitIcon: {fileID: 21300000, guid: 880ea1e90e5509c4da31a364de04748f, type: 3}
-  isDisplayed: 0
+  exhibitObject: {fileID: 8716802644372370606, guid: df256431e6015cb49979d8d22ee8548f,
+    type: 3}
+  isDisplayed: 1
   isInteractable: 1
   isStorable: 1

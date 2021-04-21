@@ -128,6 +128,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 628118662937519934, guid: c207144c6aef3de449c9809dd1cbe2de,
+        type: 3}
+      propertyPath: m_TagString
+      value: inventory
+      objectReference: {fileID: 0}
+    - target: {fileID: 637229913029936580, guid: c207144c6aef3de449c9809dd1cbe2de,
+        type: 3}
+      propertyPath: m_TagString
+      value: inventory
+      objectReference: {fileID: 0}
+    - target: {fileID: 646268996965389656, guid: c207144c6aef3de449c9809dd1cbe2de,
+        type: 3}
+      propertyPath: m_Name
+      value: P1Inv01
+      objectReference: {fileID: 0}
+    - target: {fileID: 646268996965389656, guid: c207144c6aef3de449c9809dd1cbe2de,
+        type: 3}
+      propertyPath: m_TagString
+      value: inventory
+      objectReference: {fileID: 0}
     - target: {fileID: 735425527491814697, guid: c207144c6aef3de449c9809dd1cbe2de,
         type: 3}
       propertyPath: m_Name
@@ -188,10 +208,125 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 798840230389612590, guid: c207144c6aef3de449c9809dd1cbe2de,
+        type: 3}
+      propertyPath: m_Name
+      value: P1Inv09
+      objectReference: {fileID: 0}
+    - target: {fileID: 798840230389612590, guid: c207144c6aef3de449c9809dd1cbe2de,
+        type: 3}
+      propertyPath: m_TagString
+      value: inventory
+      objectReference: {fileID: 0}
+    - target: {fileID: 1671356871333904573, guid: c207144c6aef3de449c9809dd1cbe2de,
+        type: 3}
+      propertyPath: m_Name
+      value: P1Inv03
+      objectReference: {fileID: 0}
+    - target: {fileID: 1671356871333904573, guid: c207144c6aef3de449c9809dd1cbe2de,
+        type: 3}
+      propertyPath: m_TagString
+      value: inventory
+      objectReference: {fileID: 0}
+    - target: {fileID: 1783916782057372706, guid: c207144c6aef3de449c9809dd1cbe2de,
+        type: 3}
+      propertyPath: m_Name
+      value: P1Inv06
+      objectReference: {fileID: 0}
+    - target: {fileID: 1783916782057372706, guid: c207144c6aef3de449c9809dd1cbe2de,
+        type: 3}
+      propertyPath: m_TagString
+      value: inventory
+      objectReference: {fileID: 0}
+    - target: {fileID: 1917231327338128799, guid: c207144c6aef3de449c9809dd1cbe2de,
+        type: 3}
+      propertyPath: m_TagString
+      value: inventory
+      objectReference: {fileID: 0}
+    - target: {fileID: 2187134963515872411, guid: c207144c6aef3de449c9809dd1cbe2de,
+        type: 3}
+      propertyPath: m_TagString
+      value: inventory
+      objectReference: {fileID: 0}
+    - target: {fileID: 2419037760802059977, guid: c207144c6aef3de449c9809dd1cbe2de,
+        type: 3}
+      propertyPath: m_TagString
+      value: inventory
+      objectReference: {fileID: 0}
+    - target: {fileID: 2531867744129896625, guid: c207144c6aef3de449c9809dd1cbe2de,
+        type: 3}
+      propertyPath: m_TagString
+      value: inventory
+      objectReference: {fileID: 0}
+    - target: {fileID: 2666671787832014041, guid: c207144c6aef3de449c9809dd1cbe2de,
+        type: 3}
+      propertyPath: m_TagString
+      value: inventory
+      objectReference: {fileID: 0}
+    - target: {fileID: 2742965044250170407, guid: c207144c6aef3de449c9809dd1cbe2de,
+        type: 3}
+      propertyPath: m_TagString
+      value: inventory
+      objectReference: {fileID: 0}
     - target: {fileID: 2757448953526508076, guid: c207144c6aef3de449c9809dd1cbe2de,
         type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2934967488118923225, guid: c207144c6aef3de449c9809dd1cbe2de,
+        type: 3}
+      propertyPath: m_TagString
+      value: inventory
+      objectReference: {fileID: 0}
+    - target: {fileID: 2982482126383313221, guid: c207144c6aef3de449c9809dd1cbe2de,
+        type: 3}
+      propertyPath: m_Name
+      value: P1Inv08
+      objectReference: {fileID: 0}
+    - target: {fileID: 2982482126383313221, guid: c207144c6aef3de449c9809dd1cbe2de,
+        type: 3}
+      propertyPath: m_TagString
+      value: inventory
+      objectReference: {fileID: 0}
+    - target: {fileID: 3106946220790567436, guid: c207144c6aef3de449c9809dd1cbe2de,
+        type: 3}
+      propertyPath: m_TagString
+      value: inventory
+      objectReference: {fileID: 0}
+    - target: {fileID: 3140680154517543821, guid: c207144c6aef3de449c9809dd1cbe2de,
+        type: 3}
+      propertyPath: m_TagString
+      value: inventory
+      objectReference: {fileID: 0}
+    - target: {fileID: 3263203179560056766, guid: c207144c6aef3de449c9809dd1cbe2de,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3263203179560056766, guid: c207144c6aef3de449c9809dd1cbe2de,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1240645623}
+    - target: {fileID: 3263203179560056766, guid: c207144c6aef3de449c9809dd1cbe2de,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3517244860728528505, guid: c207144c6aef3de449c9809dd1cbe2de,
+        type: 3}
+      propertyPath: m_TagString
+      value: inventory
+      objectReference: {fileID: 0}
+    - target: {fileID: 3537558314838730116, guid: c207144c6aef3de449c9809dd1cbe2de,
+        type: 3}
+      propertyPath: m_TagString
+      value: inventory
+      objectReference: {fileID: 0}
+    - target: {fileID: 4670537491571491327, guid: c207144c6aef3de449c9809dd1cbe2de,
+        type: 3}
+      propertyPath: m_TagString
+      value: inventory
       objectReference: {fileID: 0}
     - target: {fileID: 5115314721243356803, guid: c207144c6aef3de449c9809dd1cbe2de,
         type: 3}
@@ -223,10 +358,115 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5323925699341868233, guid: c207144c6aef3de449c9809dd1cbe2de,
+        type: 3}
+      propertyPath: m_TagString
+      value: inventory
+      objectReference: {fileID: 0}
+    - target: {fileID: 5367586777229539528, guid: c207144c6aef3de449c9809dd1cbe2de,
+        type: 3}
+      propertyPath: m_TagString
+      value: inventory
+      objectReference: {fileID: 0}
+    - target: {fileID: 5388397832368173603, guid: c207144c6aef3de449c9809dd1cbe2de,
+        type: 3}
+      propertyPath: m_TagString
+      value: inventory
+      objectReference: {fileID: 0}
     - target: {fileID: 5932947155041607093, guid: c207144c6aef3de449c9809dd1cbe2de,
         type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6168348290794416616, guid: c207144c6aef3de449c9809dd1cbe2de,
+        type: 3}
+      propertyPath: m_TagString
+      value: inventory
+      objectReference: {fileID: 0}
+    - target: {fileID: 6294523089078434405, guid: c207144c6aef3de449c9809dd1cbe2de,
+        type: 3}
+      propertyPath: m_Name
+      value: P1Inv05
+      objectReference: {fileID: 0}
+    - target: {fileID: 6294523089078434405, guid: c207144c6aef3de449c9809dd1cbe2de,
+        type: 3}
+      propertyPath: m_TagString
+      value: inventory
+      objectReference: {fileID: 0}
+    - target: {fileID: 6726978491781599847, guid: c207144c6aef3de449c9809dd1cbe2de,
+        type: 3}
+      propertyPath: m_TagString
+      value: inventory
+      objectReference: {fileID: 0}
+    - target: {fileID: 6874244820342943402, guid: c207144c6aef3de449c9809dd1cbe2de,
+        type: 3}
+      propertyPath: m_TagString
+      value: inventory
+      objectReference: {fileID: 0}
+    - target: {fileID: 6895487047522918008, guid: c207144c6aef3de449c9809dd1cbe2de,
+        type: 3}
+      propertyPath: m_Name
+      value: P1Inv07
+      objectReference: {fileID: 0}
+    - target: {fileID: 6895487047522918008, guid: c207144c6aef3de449c9809dd1cbe2de,
+        type: 3}
+      propertyPath: m_TagString
+      value: inventory
+      objectReference: {fileID: 0}
+    - target: {fileID: 6909982946341064303, guid: c207144c6aef3de449c9809dd1cbe2de,
+        type: 3}
+      propertyPath: m_TagString
+      value: inventory
+      objectReference: {fileID: 0}
+    - target: {fileID: 7066417587419273677, guid: c207144c6aef3de449c9809dd1cbe2de,
+        type: 3}
+      propertyPath: m_TagString
+      value: inventory
+      objectReference: {fileID: 0}
+    - target: {fileID: 7719242009801556915, guid: c207144c6aef3de449c9809dd1cbe2de,
+        type: 3}
+      propertyPath: m_TagString
+      value: inventory
+      objectReference: {fileID: 0}
+    - target: {fileID: 7787706047523348523, guid: c207144c6aef3de449c9809dd1cbe2de,
+        type: 3}
+      propertyPath: m_TagString
+      value: inventory
+      objectReference: {fileID: 0}
+    - target: {fileID: 7913116336991888038, guid: c207144c6aef3de449c9809dd1cbe2de,
+        type: 3}
+      propertyPath: m_Name
+      value: P1Inv04
+      objectReference: {fileID: 0}
+    - target: {fileID: 7913116336991888038, guid: c207144c6aef3de449c9809dd1cbe2de,
+        type: 3}
+      propertyPath: m_TagString
+      value: inventory
+      objectReference: {fileID: 0}
+    - target: {fileID: 8575989126632122842, guid: c207144c6aef3de449c9809dd1cbe2de,
+        type: 3}
+      propertyPath: m_Name
+      value: P1Inv02
+      objectReference: {fileID: 0}
+    - target: {fileID: 8575989126632122842, guid: c207144c6aef3de449c9809dd1cbe2de,
+        type: 3}
+      propertyPath: m_TagString
+      value: inventory
+      objectReference: {fileID: 0}
+    - target: {fileID: 8736761604435650575, guid: c207144c6aef3de449c9809dd1cbe2de,
+        type: 3}
+      propertyPath: m_TagString
+      value: inventory
+      objectReference: {fileID: 0}
+    - target: {fileID: 8933783900104035565, guid: c207144c6aef3de449c9809dd1cbe2de,
+        type: 3}
+      propertyPath: m_TagString
+      value: inventory
+      objectReference: {fileID: 0}
+    - target: {fileID: 9134715130265444609, guid: c207144c6aef3de449c9809dd1cbe2de,
+        type: 3}
+      propertyPath: m_TagString
+      value: inventory
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c207144c6aef3de449c9809dd1cbe2de, type: 3}

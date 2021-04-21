@@ -13,6 +13,7 @@ TagManager:
   - Small
   - Medium
   - Large
+  - inventory
   layers:
   - Default
   - TransparentFX
