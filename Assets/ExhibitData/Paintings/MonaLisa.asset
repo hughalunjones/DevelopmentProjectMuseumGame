@@ -20,6 +20,7 @@ MonoBehaviour:
   exhibitRatingAmount: 5
   exhibitValueAmount: 1000000
   exhibitIcon: {fileID: 21300000, guid: 880ea1e90e5509c4da31a364de04748f, type: 3}
-  isDisplayed: 0
+  exhibitObject: {fileID: 0}
+  isDisplayed: 1
   isInteractable: 1
   isStorable: 1

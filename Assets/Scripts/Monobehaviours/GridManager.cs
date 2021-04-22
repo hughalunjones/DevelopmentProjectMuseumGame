@@ -87,7 +87,7 @@ public class GridManager : MonoBehaviour {
             artefactPrefab = artefactArray[5];
         }
         else if (randomBg == 2) {
-            artefactPrefab = artefactArray[Random.Range(0, 4)];
+            artefactPrefab = artefactArray[Random.Range(0, 5)];
         }
         else if (randomBg == 3) {
             artefactPrefab = artefactArray[5];

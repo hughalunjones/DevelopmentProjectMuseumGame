@@ -516,7 +516,7 @@ MonoBehaviour:
   SystemPrefabs:
   - {fileID: 1368435504543104, guid: 54c97bc568a963f4d945c01fa1a75f19, type: 3}
   - {fileID: 1240645623}
-  - {fileID: 5728583739192753892}
+  - {fileID: 1462999339}
   OnGameStateChanged:
     m_PersistentCalls:
       m_Calls:
@@ -537,7 +537,7 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1037255418}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &5728583739192753891
+--- !u!1001 &1462999338
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -612,9 +612,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ec77d9ceed9843f4c8b1119f7ca0b6e8, type: 3}
---- !u!1 &5728583739192753892 stripped
+--- !u!1 &1462999339 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7779771071527218975, guid: ec77d9ceed9843f4c8b1119f7ca0b6e8,
     type: 3}
-  m_PrefabInstance: {fileID: 5728583739192753891}
+  m_PrefabInstance: {fileID: 1462999338}
   m_PrefabAsset: {fileID: 0}

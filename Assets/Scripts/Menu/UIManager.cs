@@ -6,7 +6,7 @@ public class UIManager : Singleton<UIManager>
 {
     [SerializeField] private MainMenu mainMenu;
     [SerializeField] private PauseMenu pauseMenu;
-    [SerializeField] private MuseumInventory museumInventory;
+    [SerializeField] private MuseumStatsUI museumStatsUI;
     [SerializeField] private Camera dummyCamera;
 
     public Events.EventFadeComplete OnMainMenuFadeComplete;
@@ -28,6 +28,7 @@ public class UIManager : Singleton<UIManager>
         }
         if (Input.GetKeyDown(KeyCode.Space)) {
             GameManager.Instance.StartGame();
+            museumStatsUI.gameObject.SetActive(true);
         }
     }    
     public void SetCameraActive(bool active) {

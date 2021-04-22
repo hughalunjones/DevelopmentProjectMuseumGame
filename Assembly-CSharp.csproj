@@ -59,6 +59,7 @@
      <Compile Include="Assets\Scripts\DoorColliderController.cs" />
      <Compile Include="Assets\Scripts\GameManager.cs" />
      <Compile Include="Assets\Scripts\Menu\MainMenu.cs" />
+     <Compile Include="Assets\Scripts\Menu\MuseumStatsUI.cs" />
      <Compile Include="Assets\Scripts\Menu\PauseMenu.cs" />
      <Compile Include="Assets\Scripts\Menu\UIManager.cs" />
      <Compile Include="Assets\Scripts\Monobehaviours\BackgroundGenerator.cs" />

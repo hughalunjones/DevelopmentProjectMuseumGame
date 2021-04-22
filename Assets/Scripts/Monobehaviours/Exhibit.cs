@@ -21,15 +21,20 @@ public class Exhibit : MonoBehaviour {
         this.itemDefinition.isDisplayed = true;
     }
     void Update() {
+        if (itemDefinition.isDisplayed) {
+            exhibitSlot = gameObject.transform.parent.GetComponent<ExhibitSlot>();
+        }
         if (!itemDefinition.isDisplayed && inRangeOfExhibit && Input.GetKeyDown(KeyCode.E)) {
             Debug.Log("[Exhibit] StoreItem() called from Exhibit.cs");
             StoreItem();
         }
         else if (itemDefinition.isDisplayed && inRangeOfExhibit && Input.GetKeyDown(KeyCode.E)) {
-            Destroy(gameObject);
             itemDefinition.isDisplayed = false;
-            exhibitSlot.GetSlotInRange().containsExhibit = false;
-            musStats.RemoveRating(this.itemDefinition.exhibitRatingAmount);            
+            exhibitSlot.containsExhibit = false; // null reference
+            exhibitSlot = null;
+            Destroy(gameObject);
+            musStats.RemoveRating(this.itemDefinition.exhibitRatingAmount);
+            Debug.Log("[Exhibit] Item returned to inventory");
         }
     }
     void OnTriggerEnter2D(Collider2D triggerCollider) {

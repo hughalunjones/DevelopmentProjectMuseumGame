@@ -13,7 +13,6 @@ MonoBehaviour:
   m_Name: OrnateHilt
   m_EditorClassIdentifier: 
   exhibitName: Norweigian Ornate Hilt
-  exhibitKey: 1
   exhibitDescription: New Description
   exhibitType: 3
   exhibitSize: 0
@@ -23,6 +22,6 @@ MonoBehaviour:
   exhibitIcon: {fileID: 21300000, guid: 912358fa2eecb944084ad320714270ee, type: 3}
   exhibitObject: {fileID: 7901543436658654022, guid: 8cd40aa9041e1514d8574c7bddcb56e4,
     type: 3}
-  isDisplayed: 1
+  isDisplayed: 0
   isInteractable: 0
   isStorable: 0

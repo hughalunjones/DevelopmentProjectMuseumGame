@@ -8,6 +8,7 @@ public class MuseumStats : MonoBehaviour
     public static MuseumStats instance;
     public MuseumStats_SO museumDefinition;
     public MuseumInventory museumInv;
+    float roundedRating;
 
     private void Awake() {
         if (instance == null) {
@@ -22,13 +23,23 @@ public class MuseumStats : MonoBehaviour
         museumInv = MuseumInventory.instance;
         if (!museumDefinition.setManually){
             museumDefinition.maxWealth = 10000000;
-            museumDefinition.currentWealth = 0;
+            museumDefinition.currentWealth = 1000;
 
             museumDefinition.maxRating = 5.0f;
             museumDefinition.currentRating = 0.0f;
         }
     }
     private void Update(){
+        if(museumDefinition.currentRating <= 0) {
+            museumDefinition.currentRating = 0;
+        }else if(museumDefinition.currentRating >= (museumInv.inventoryItemCap * 5)) {
+            museumDefinition.currentRating = museumInv.inventoryItemCap * 5;
+        }
+        if(museumDefinition.currentWealth <= 0) {
+            museumDefinition.currentWealth = 0;
+        }else if(museumDefinition.currentWealth >= museumDefinition.maxWealth) {
+            museumDefinition.currentWealth = museumDefinition.maxWealth;
+        }
         // This should be triggered by the game manager during a save point
         // museumDefinition.saveMuseumData();
     }
@@ -51,6 +62,8 @@ public class MuseumStats : MonoBehaviour
         return museumDefinition.currentWealth;
     }
     public float GetRating(){
-        return museumDefinition.currentRating;
+        float averageRating = museumDefinition.currentRating / museumInv.inventoryItemCap;
+        roundedRating = (float)Math.Round(averageRating * 2, MidpointRounding.AwayFromZero) / 2;
+        return roundedRating;
     }
 }
