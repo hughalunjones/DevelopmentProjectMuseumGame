@@ -6,6 +6,7 @@ public class MuseumInventory : MonoBehaviour {
     public static MuseumInventory instance;
     public MuseumStats museStats;
     public GameObject InventoryDisplayHolder;
+    public GameObject ExhibitInformationPanel;
     public GameObject ConfirmationPopup;
     public Image[] inventoryDisplaySlots = new Image[60];
     public int inventoryItemCap = 36;
@@ -76,6 +77,7 @@ public class MuseumInventory : MonoBehaviour {
         InventoryEntry newEntry = new InventoryEntry(Instantiate(exhibitEntry.invEntry), exhibitEntry.hbSprite);
         exhibitsInInventory.Add(idCount, newEntry);
         Debug.Log("[AddItemToInv] Exhibit added: " + exhibitEntry.invEntry);
+        newEntry.invEntry.itemDefinition.exhibitPosKey = idCount;
         newEntry.invEntry.itemDefinition.isDisplayed = false;
         Destroy(newEntry.invEntry.gameObject);
         Destroy(exhibitEntry.invEntry.gameObject);
@@ -107,7 +109,7 @@ public class MuseumInventory : MonoBehaviour {
         return newID;
     }
 
-    // Display the inventory menu. 
+    // Display the inventory menu, exhibit information panel and the storage confirmation pop-up. 
     public void DisplayInventory() {
         if (InventoryDisplayHolder.activeSelf == true) {
             InventoryDisplayHolder.SetActive(false);
@@ -116,6 +118,14 @@ public class MuseumInventory : MonoBehaviour {
         else {
             InventoryDisplayHolder.SetActive(true);
             inventoryDisplayIsActive = true;
+        }
+    }
+    public void DisplayExhibitInfoPanel() {
+        if (ExhibitInformationPanel.activeSelf == true) {
+            ExhibitInformationPanel.SetActive(false);
+        }
+        else {
+            ExhibitInformationPanel.SetActive(true);
         }
     }
     public void DisplayPopup() {
@@ -163,6 +173,9 @@ public class MuseumInventory : MonoBehaviour {
 
     // Remove the item from your inventory when sold
     public void RemoveItemFromInv(int itemNum) {
+        exhibitsInInventory.Remove(itemNum);
+        inventoryDisplaySlots[itemNum + 1].GetComponent<Button>().onClick.RemoveAllListeners();
+        inventoryDisplaySlots[itemNum + 1].sprite = null;
         Debug.Log("[MuseumInventory] Current Wealth: " + museStats.GetWealth());
     }
 }

@@ -1293,7 +1293,7 @@ GameObject:
   - component: {fileID: 1423906149091148636}
   - component: {fileID: 8111565854393203402}
   - component: {fileID: 7914811129991882828}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: txtRating
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1428,7 +1428,7 @@ GameObject:
   - component: {fileID: 865402907349792242}
   - component: {fileID: 2967910900320343126}
   - component: {fileID: 2466552031996561041}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1451,8 +1451,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -115.75, y: 280.72}
-  m_SizeDelta: {x: 179.65805, y: 61.793}
+  m_AnchoredPosition: {x: -115.75, y: 284.19}
+  m_SizeDelta: {x: 179.65805, y: 54.84642}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2967910900320343126
 CanvasRenderer:
@@ -1501,7 +1501,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1275016895408710882}
   - component: {fileID: 6077601910862517699}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: MuseumStatsUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1626,7 +1626,7 @@ GameObject:
   - component: {fileID: 5382200694528831960}
   - component: {fileID: 83534832012247825}
   - component: {fileID: 8493454572904820285}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: txtCurrency
   m_TagString: Untagged
   m_Icon: {fileID: 0}

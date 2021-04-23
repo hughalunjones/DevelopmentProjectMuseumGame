@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ff583f062ffbf244985485bd800c07b, type: 3}
   m_Name: OrnateHilt
   m_EditorClassIdentifier: 
-  exhibitName: Norweigian Ornate Hilt
+  exhibitPosKey: 0
+  exhibitName: Norwegian Ornate Hilt
   exhibitDescription: New Description
   exhibitType: 3
   exhibitSize: 0

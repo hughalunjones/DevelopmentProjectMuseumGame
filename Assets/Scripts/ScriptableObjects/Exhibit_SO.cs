@@ -9,6 +9,7 @@ public enum ExhibitQualityDefinitions { ABYSMAL, POOR, AVERAGE, GOOD, SUPERB};
 [CreateAssetMenu(fileName = "NewExhibit", menuName = "Exhibit Object", order = 1)]
 public class Exhibit_SO : ScriptableObject
 {
+    public int exhibitPosKey = 0;
     public string exhibitName = "New Exhibit";
     public string exhibitDescription = "New Description";
     public ExhibitTypeDefinitions exhibitType = ExhibitTypeDefinitions.PAINTING;

@@ -578,6 +578,7 @@ MonoBehaviour:
   inRangeOfSlot: 0
   containsExhibit: 0
   interactUI: {fileID: 213877623}
+  slotInRange: {fileID: 0}
 --- !u!222 &490138953
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1009,6 +1010,7 @@ MonoBehaviour:
   inRangeOfSlot: 0
   containsExhibit: 0
   interactUI: {fileID: 213877623}
+  slotInRange: {fileID: 0}
 --- !u!61 &1056770958
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1544,6 +1546,7 @@ MonoBehaviour:
   inRangeOfSlot: 0
   containsExhibit: 0
   interactUI: {fileID: 213877623}
+  slotInRange: {fileID: 0}
 --- !u!222 &1432710348
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2229,7 +2232,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.023825645, y: 0}
+  m_Offset: {x: -0.0021123886, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -2240,7 +2243,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 49.48147, y: 10.8}
+  m_Size: {x: 57.607376, y: 10.8}
   m_EdgeRadius: 0
 --- !u!1001 &5244580944775835309
 PrefabInstance:
@@ -2249,6 +2252,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5244580945011014144, guid: 43e02f0bbcc285b4ead775f6bb7ea60a,
+        type: 3}
+      propertyPath: mapBounds
+      value: 
+      objectReference: {fileID: 2093510309}
     - target: {fileID: 5244580945011014145, guid: 43e02f0bbcc285b4ead775f6bb7ea60a,
         type: 3}
       propertyPath: m_RootOrder

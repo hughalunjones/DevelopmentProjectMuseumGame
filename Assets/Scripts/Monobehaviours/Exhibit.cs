@@ -2,6 +2,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class Exhibit : MonoBehaviour {
 
@@ -10,6 +12,7 @@ public class Exhibit : MonoBehaviour {
     public MuseumStats musStats;
     public MuseumInventory musInventory;
     public bool inRangeOfExhibit;
+    Transform ExhibitInfoPanel;
 
     public Exhibit(){
         musInventory = MuseumInventory.instance;        
@@ -29,13 +32,15 @@ public class Exhibit : MonoBehaviour {
             StoreItem();
         }
         else if (itemDefinition.isDisplayed && inRangeOfExhibit && Input.GetKeyDown(KeyCode.E)) {
-            itemDefinition.isDisplayed = false;
-            exhibitSlot.containsExhibit = false; // null reference
-            exhibitSlot = null;
-            Destroy(gameObject);
-            musStats.RemoveRating(this.itemDefinition.exhibitRatingAmount);
-            Debug.Log("[Exhibit] Item returned to inventory");
-        }
+            ExhibitInfoPanel = musInventory.ExhibitInformationPanel.transform.Find("Panel");         
+            ExhibitInfoPanel.transform.Find("imgExhibitImage").GetComponent<Image>().sprite = this.GetComponent<SpriteRenderer>().sprite;
+            ExhibitInfoPanel.transform.Find("imgExhibitImage").GetComponent<Image>().preserveAspect = true;
+            ExhibitInfoPanel.transform.Find("txtExhibitName").GetComponent<TextMeshProUGUI>().SetText(this.itemDefinition.exhibitName);
+            ExhibitInfoPanel.transform.Find("txtExhibitDescription").GetComponent<TextMeshProUGUI>().SetText(this.itemDefinition.exhibitDescription);
+            ExhibitInfoPanel.transform.Find("btnStore").GetComponent<Button>().onClick.AddListener(() => ReturnItemToInv());
+            ExhibitInfoPanel.transform.Find("btnSell").GetComponent<Button>().onClick.AddListener(() => SellItem(itemDefinition.exhibitPosKey));
+            musInventory.DisplayExhibitInfoPanel();
+        }            
     }
     void OnTriggerEnter2D(Collider2D triggerCollider) {
         if (triggerCollider.tag == "Player") {
@@ -44,10 +49,21 @@ public class Exhibit : MonoBehaviour {
         }
     }
     void OnTriggerExit2D(Collider2D triggerCollider) {
-        if (triggerCollider.tag == "Player") {
+        if (triggerCollider.tag == "Player") {            
             inRangeOfExhibit = false;
             Debug.Log("[Exhibit] Player Left " + inRangeOfExhibit);
         }
+        if(musInventory.ExhibitInformationPanel.activeSelf == true) {
+            musInventory.DisplayExhibitInfoPanel();
+        }
+    }
+    public void ReturnItemToInv() {
+        itemDefinition.isDisplayed = false;
+        exhibitSlot.containsExhibit = false;
+        exhibitSlot = null;
+        Destroy(gameObject);
+        musStats.RemoveRating(this.itemDefinition.exhibitRatingAmount);
+        Debug.Log("[Exhibit] Item returned to inventory");
     }
     public void StoreItem() {
         musInventory.StoreItem(this);
@@ -56,7 +72,10 @@ public class Exhibit : MonoBehaviour {
         // Add item to empty object on screen.
         musStats.ApplyRating(itemDefinition.exhibitRatingAmount);
     }
-    public void SellItem() {
+    public void SellItem(int invNum) {
         musStats.ApplyWealth(itemDefinition.exhibitValueAmount);
+        musInventory.RemoveItemFromInv(invNum);
+        exhibitSlot.containsExhibit = false;
+        Destroy(gameObject);
     }
 }

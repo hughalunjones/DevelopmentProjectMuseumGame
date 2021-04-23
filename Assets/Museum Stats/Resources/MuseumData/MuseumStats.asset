@@ -15,6 +15,6 @@ MonoBehaviour:
   setManually: 1
   saveDataOnClose: 1
   maxWealth: 1000000
-  currentWealth: 0
+  currentWealth: 1000
   maxRating: 5
   currentRating: 0
