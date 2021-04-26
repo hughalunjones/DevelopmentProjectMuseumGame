@@ -9,7 +9,6 @@ using TMPro;
 public class Exhibit : MonoBehaviour {
 
     public Exhibit_SO itemDefinition;
-    public ExhibitSlot exhibitSlot;
     public MuseumStats musStats;
     public MuseumInventory musInventory;
     public bool inRangeOfExhibit;
@@ -28,9 +27,6 @@ public class Exhibit : MonoBehaviour {
         itemDefinition.isDisplayed = true;
     }
     void Update() {
-        if (itemDefinition.isDisplayed) {
-            exhibitSlot = gameObject.transform.parent.GetComponent<ExhibitSlot>();
-        }
         if (!itemDefinition.isDisplayed && inRangeOfExhibit && Input.GetKeyDown(KeyCode.E)) {
             Debug.Log("[Exhibit] StoreItem() called from Exhibit.cs");
             StoreItem();
@@ -63,8 +59,8 @@ public class Exhibit : MonoBehaviour {
     }
     public void ReturnItemToInv() {
         itemDefinition.isDisplayed = false;
-        exhibitSlot.containsExhibit = false;
-        exhibitSlot = null;
+        itemDefinition.exhibitSlot.GetComponent<ExhibitSlot>().containsExhibit = false;
+        itemDefinition.exhibitSlot = null;
         Destroy(gameObject);
         musStats.RemoveRating(this.itemDefinition.exhibitRatingAmount);
         Debug.Log("[Exhibit] Item returned to inventory");
@@ -79,7 +75,7 @@ public class Exhibit : MonoBehaviour {
     public void SellItem(int invNum) {
         musStats.ApplyWealth(itemDefinition.exhibitValueAmount);
         musInventory.RemoveItemFromInv(invNum);
-        exhibitSlot.containsExhibit = false;
+        itemDefinition.exhibitSlot.GetComponent<ExhibitSlot>().containsExhibit = false;
         itemDefinition.isDisplayed = false;
         Destroy(gameObject);
     }

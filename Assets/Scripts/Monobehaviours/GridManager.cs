@@ -84,7 +84,7 @@ public class GridManager : MonoBehaviour {
     void PlaceArtefact() {
         // Random numbers between the artefact array positions.
         if (randomBg == 1) {
-            artefactPrefab = artefactArray[5];
+            artefactPrefab = artefactArray[Random.Range(5, 12)];
         }
         else if (randomBg == 2) {
             artefactPrefab = artefactArray[Random.Range(0, 5)];

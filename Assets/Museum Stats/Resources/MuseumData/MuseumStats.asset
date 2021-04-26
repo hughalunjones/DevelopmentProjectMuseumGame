@@ -13,8 +13,7 @@ MonoBehaviour:
   m_Name: MuseumStats
   m_EditorClassIdentifier: 
   setManually: 1
-  saveDataOnClose: 1
   maxWealth: 1000000
-  currentWealth: 1000
+  currentWealth: 14000
   maxRating: 5
-  currentRating: 0
+  currentRating: 4

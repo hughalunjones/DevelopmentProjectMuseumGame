@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 020bf02fd092a144490452a40fedce68, type: 3}
   m_Name: SmallSlotPainting
   m_EditorClassIdentifier: 
-  exhibitSlotType: 0
+  exhibitSlotType: 3
   exhibitSlotSize: 0
