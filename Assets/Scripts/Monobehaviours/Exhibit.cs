@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
+[System.Serializable]
 public class Exhibit : MonoBehaviour {
 
     public Exhibit_SO itemDefinition;
@@ -12,16 +13,19 @@ public class Exhibit : MonoBehaviour {
     public MuseumStats musStats;
     public MuseumInventory musInventory;
     public bool inRangeOfExhibit;
+    public int ID { get; set; }
     Transform ExhibitInfoPanel;
 
-    public Exhibit(){
-        musInventory = MuseumInventory.instance;        
+    public Exhibit(int id, Exhibit_SO exhibitData){
+        musInventory = MuseumInventory.instance;
+        ID = id;
+        itemDefinition = exhibitData;
     }
 
     void Start(){       
         musStats = MuseumStats.instance;
         musInventory = MuseumInventory.instance;
-        this.itemDefinition.isDisplayed = true;
+        itemDefinition.isDisplayed = true;
     }
     void Update() {
         if (itemDefinition.isDisplayed) {
@@ -76,6 +80,7 @@ public class Exhibit : MonoBehaviour {
         musStats.ApplyWealth(itemDefinition.exhibitValueAmount);
         musInventory.RemoveItemFromInv(invNum);
         exhibitSlot.containsExhibit = false;
+        itemDefinition.isDisplayed = false;
         Destroy(gameObject);
     }
 }

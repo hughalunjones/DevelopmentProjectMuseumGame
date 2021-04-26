@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
 
 public class MuseumStats : MonoBehaviour
@@ -66,4 +68,18 @@ public class MuseumStats : MonoBehaviour
         roundedRating = (float)Math.Round(averageRating * 2, MidpointRounding.AwayFromZero) / 2;
         return roundedRating;
     }
+    public void SetWealth(int newWealth) {
+        museumDefinition.currentWealth = newWealth; 
+    }
+    public void SetRating(float newRating) {
+        museumDefinition.currentRating = newRating;
+    }
+    public void SaveMuseumStats() {        
+        MuseumData data = new MuseumData();
+        data.currency = instance.GetWealth();
+        data.rating = instance.GetRating();
+        GameManager.Save(data, "stats");
+        Debug.Log("[MuseumStats] Saved Rating: " + data.rating + " | Saved Currency: " + data.currency);
+    }
 }
+

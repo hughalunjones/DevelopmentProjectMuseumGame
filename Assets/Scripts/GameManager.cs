@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.IO;
 
 public class GameManager : Singleton<GameManager>
 {
@@ -91,6 +94,7 @@ public class GameManager : Singleton<GameManager>
         ao.completed += OnLoadLevelComplete;
         loadOperations.Add(ao);
         _currentLevelName = levelName;
+        //SaveGame();
     }
     public void UnloadLevel(string levelName) {
         AsyncOperation ao = SceneManager.UnloadSceneAsync(levelName);
@@ -113,15 +117,43 @@ public class GameManager : Singleton<GameManager>
     public void TogglePause() {
         UpdateGameState(currentGameState == GameState.RUNNING ? GameState.PAUSED : GameState.RUNNING);
     }
-    public void SaveGame() {
-        Debug.Log("Game Would Be Saved");
+    public static void Save<T>(T objectToSave, string key) {
+        BinaryFormatter formatter = new BinaryFormatter();
+        string path = Application.persistentDataPath + "/saves/";
+        Directory.CreateDirectory(path);
+        using (FileStream stream = new FileStream(path + key + ".dat", FileMode.Create)) {
+            formatter.Serialize(stream, objectToSave);
+        }
+        Debug.Log("[GameManager] Game saved: " + objectToSave);
     }
+    public static T Load<T>(string key) {
+        BinaryFormatter formatter = new BinaryFormatter();
+        string path = Application.persistentDataPath + "/saves/";
+        T returnValue = default(T);
+        using (FileStream stream = new FileStream(path + key + ".dat", FileMode.Open)) {
+            returnValue = (T)formatter.Deserialize(stream);
+        }
+        Debug.Log("[GameManager] " + returnValue + " loaded");
+        return returnValue;
+    }
+    public static bool SaveExists(string key) {
+        string path = Application.persistentDataPath + "/saves/" + key + ".dat";
+        return File.Exists(path);
+    }
+    public static void FullSaveReset() {
+        string path = Application.persistentDataPath + "/saves/";
+        DirectoryInfo directory = new DirectoryInfo(path);
+        directory.Delete();
+        Directory.CreateDirectory(path);
+    }
+
     public void QuitGame() {
         // Autosaving and other features here also
-        SaveGame();
+        // Save();
         Application.Quit();
         // For the purposes of testing
         UnityEditor.EditorApplication.isPlaying = false;
         Debug.Log("Game Quit");
     }
 }
+

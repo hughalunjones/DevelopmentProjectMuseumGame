@@ -9,7 +9,8 @@ public class ExhibitSlot : MonoBehaviour
     public MuseumInventory museInventory;
     public bool inRangeOfSlot, containsExhibit;
     public GameObject interactUI;
-    public ExhibitSlot slotInRange;    
+    public ExhibitSlot slotInRange;  
+    public ExhibitSlot_SO slotDefinition;
 
     void Start() {
         museInventory = MuseumInventory.instance;
@@ -29,11 +30,13 @@ public class ExhibitSlot : MonoBehaviour
         try {
             // Somewhere here the button listeners are overwritten
             foreach (KeyValuePair<int, InventoryEntry> ie in museInventory.exhibitsInInventory) {
+                /* using slotCounter here is causing a bug with the sell method, slotCounter and the exhibit
+                   key don't line up after the second item is added.*/
                 slotCounter++;
                 museInventory.inventoryDisplaySlots[slotCounter].GetComponent<Button>().onClick.RemoveAllListeners();
                 Debug.Log("[ExhibitSlot] Listeners removed");
                 museInventory.inventoryDisplaySlots[slotCounter].GetComponent<Button>().onClick.AddListener(() => 
-                    museInventory.PlaceExhibit(museInventory.exhibitsInInventory[slotCounter - 1].invEntry.itemDefinition.exhibitObject, slotInRange.transform)
+                    museInventory.PlaceExhibit((slotCounter - 1), slotInRange.transform)
                 );
                 Debug.Log("[ExhibitSlot] slotCounter: " + slotCounter + " || slotInRange transform: " + slotInRange.transform + " || Exhibit at slotCounter: " + museInventory.exhibitsInInventory[slotCounter - 1].invEntry.itemDefinition.exhibitName);
             }

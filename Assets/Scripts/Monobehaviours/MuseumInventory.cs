@@ -28,6 +28,7 @@ public class MuseumInventory : MonoBehaviour {
     }
     void Start() {
         DontDestroyOnLoad(this);
+        Events.SaveInitiated += Save;
         museStats = MuseumStats.instance;
         instance = this;
         exhibitEntry = new InventoryEntry(null, null);
@@ -152,23 +153,33 @@ public class MuseumInventory : MonoBehaviour {
     /*  TODO:
      *  Stop button method duplication
      */
-    public void PlaceExhibit(GameObject exhibitObject, Transform slotToHold) {
-        Exhibit exhibitToPlace = exhibitObject.GetComponent<Exhibit>();
-        if (!exhibitToPlace.itemDefinition.isDisplayed) {
-            // Create a new version of the stored exhibit
-            Instantiate(exhibitObject, slotToHold.transform.position, Quaternion.Euler(0, 0, 0), slotToHold);
-            exhibitToPlace.exhibitSlot = slotToHold.GetComponent<ExhibitSlot>().slotInRange;
-            // Apply the rating value of the exhibit
-            museStats.ApplyRating(exhibitToPlace.itemDefinition.exhibitRatingAmount);
-            Debug.Log("[PlaceExhibit] Exhibit placed at slot: " + slotToHold.name + ", museStats: " + museStats.GetRating());
-            // Set the boolean values to true for future checks.
-            slotToHold.GetComponent<ExhibitSlot>().containsExhibit = true;
-            exhibitToPlace.itemDefinition.isDisplayed = true;
-            DisplayInventory();
+    public void PlaceExhibit(int invKey, Transform slotToHold) {
+        try {
+            Exhibit exhibitToPlace = exhibitsInInventory[invKey].invEntry;
+            if (!exhibitToPlace.itemDefinition.isDisplayed) {
+                if (exhibitToPlace.itemDefinition.exhibitSize.ToString().Equals(slotToHold.GetComponent<ExhibitSlot>().slotInRange.slotDefinition.exhibitSlotSize.ToString()) 
+                    && exhibitToPlace.itemDefinition.exhibitType.ToString().Equals(slotToHold.GetComponent<ExhibitSlot>().slotInRange.slotDefinition.exhibitSlotType.ToString())) {
+                    // Create a new version of the stored exhibit
+                    Instantiate(exhibitToPlace.itemDefinition.exhibitObject, slotToHold.transform.position, Quaternion.Euler(0, 0, 0), slotToHold);
+                    exhibitToPlace.exhibitSlot = slotToHold.GetComponent<ExhibitSlot>().slotInRange;
+                    // Apply the rating value of the exhibit
+                    museStats.ApplyRating(exhibitToPlace.itemDefinition.exhibitRatingAmount);
+                    Debug.Log("[PlaceExhibit] Exhibit placed at slot: " + slotToHold.name + ", museStats: " + museStats.GetRating());
+                    // Set the boolean values to true for future checks.
+                    slotToHold.GetComponent<ExhibitSlot>().containsExhibit = true;
+                    exhibitToPlace.itemDefinition.isDisplayed = true;
+                    DisplayInventory();
+                }else {
+                    Debug.Log("[MuseumInventory - PlaceExhibit] The slot size/type and exhibit size/type do not match " + exhibitToPlace.itemDefinition.exhibitSize + " -> " + slotToHold.GetComponent<ExhibitSlot>().slotInRange.slotDefinition.exhibitSlotSize + " || " + exhibitToPlace.itemDefinition.exhibitType + " -> " + slotToHold.GetComponent<ExhibitSlot>().slotInRange.slotDefinition.exhibitSlotType);
+                }                 
+            }
+            else {
+                Debug.Log("[MuseumInventory - PlaceExhibit] Exhibit already placed - " + exhibitToPlace.itemDefinition.exhibitName);
+            }
+        }catch(KeyNotFoundException knfe) {
+            Debug.Log("[MuseumInventory] KeyNotFoundException || " + knfe.Data);
         }
-        else {
-            Debug.Log("[MuseumInventory - PlaceExhibit] Exhibit already placed - " + exhibitToPlace.itemDefinition.exhibitName);
-        }
+        
     }
 
     // Remove the item from your inventory when sold
@@ -177,6 +188,11 @@ public class MuseumInventory : MonoBehaviour {
         inventoryDisplaySlots[itemNum + 1].GetComponent<Button>().onClick.RemoveAllListeners();
         inventoryDisplaySlots[itemNum + 1].sprite = null;
         Debug.Log("[MuseumInventory] Current Wealth: " + museStats.GetWealth());
+    }
+
+    // Save the inventory
+    void Save() {
+        GameManager.Save<Dictionary<int, InventoryEntry>>(exhibitsInInventory, "Inventory");
     }
 }
 

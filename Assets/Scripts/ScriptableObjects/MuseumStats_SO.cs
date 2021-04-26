@@ -7,7 +7,6 @@ using UnityEngine;
 public class MuseumStats_SO : ScriptableObject
 {
     public bool setManually = false;
-    public bool saveDataOnClose = false;
     public int maxWealth = 0;
     public int currentWealth = 0;
     public float maxRating = 0f;
@@ -46,12 +45,9 @@ public class MuseumStats_SO : ScriptableObject
             currentWealth -= wealthAmount;
         }
     }
-
-    // Save Museum Data
-    public void saveMuseumData()
-    {
-        saveDataOnClose = true;
-        EditorUtility.SetDirty(this);
-    }
-
+}
+[System.Serializable]
+class MuseumData {
+    public float rating;
+    public int currency;
 }
