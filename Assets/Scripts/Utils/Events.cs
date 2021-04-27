@@ -6,6 +6,7 @@ public class Events
 
     public static System.Action SaveInitiated;
 
+
     public static void OnSaveInitiated() {
         SaveInitiated?.Invoke();
     }

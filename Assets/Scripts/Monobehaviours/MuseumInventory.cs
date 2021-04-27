@@ -11,9 +11,8 @@ public class MuseumInventory : MonoBehaviour {
     public ExhibitSlot exhibitSlot;
     public Image[] inventoryDisplaySlots = new Image[60];
     public int inventoryItemCap = 36;
-    int slotNum = 1;
-    bool addedItem = true;
-    public List<InventoryEntry> exhibitsInInventory = new List<InventoryEntry>();
+    int slotNum = 0;
+    public List<InventoryEntry> exhibitsInInventory { get; set; } = new List<InventoryEntry>();
     public bool inventoryDisplayIsActive = false;    
 
     private void Awake() {
@@ -46,8 +45,8 @@ public class MuseumInventory : MonoBehaviour {
     public void StoreItem(Exhibit exhibitToStore) {
         if (exhibitsInInventory.Count != inventoryItemCap) {
             InventoryEntry exhibitEntry = new InventoryEntry(exhibitToStore, slotNum);
-            addedItem = false;
             exhibitEntry.invEntry = exhibitToStore;
+            exhibitEntry.invEntry.itemDefinition.exhibitPosKey = slotNum;
             exhibitEntry.entryName = exhibitToStore.itemDefinition.exhibitName;
             exhibitToStore.itemDefinition.isDisplayed = false;
             exhibitEntry.inventorySlot = slotNum;
@@ -61,6 +60,11 @@ public class MuseumInventory : MonoBehaviour {
             Debug.Log("[MuseumInventory - PickUp] Inventory is full");
         }
         // PickUp();
+    }
+    public void StoreItemsFromLoad(List<InventoryEntry> items) {
+        foreach(InventoryEntry ie in items) {
+            StoreItem(ie.invEntry);
+        }
     }
    /* public void PickUp() {
         // Check item was stored properly.
@@ -163,7 +167,7 @@ public class MuseumInventory : MonoBehaviour {
     public void PlaceExhibit(GameObject exhibitObject, Transform slotToHold) {
         try {
             Exhibit exhibitToPlace = exhibitObject.GetComponent<Exhibit>();
-            exhibitToPlace.itemDefinition.exhibitSlot = slotToHold;
+            exhibitToPlace.itemDefinition.exhibitSlot = slotToHold; // error thrown from this line
             // check the target slot is not null
             if(exhibitToPlace.itemDefinition.exhibitSlot != null) {
                 // check whether the exhibit has already been displayed
@@ -198,25 +202,23 @@ public class MuseumInventory : MonoBehaviour {
     }
 
     // Remove the item from your inventory when sold
-    public void RemoveItemFromInv(int itemNum) {
-        if(exhibitsInInventory.Count != 1) {
-            exhibitsInInventory.RemoveAt(itemNum + 1);
-            inventoryDisplaySlots[itemNum + 3].GetComponent<Button>().onClick.RemoveAllListeners();
-            inventoryDisplaySlots[itemNum + 3].sprite = null;
-            Debug.Log("[MuseumInventory] Current Wealth: " + museStats.GetWealth());
-        }
-        else {
-            exhibitsInInventory.RemoveAt(itemNum);
-            inventoryDisplaySlots[itemNum + 3].GetComponent<Button>().onClick.RemoveAllListeners();
-            inventoryDisplaySlots[itemNum + 3].sprite = null;
-            Debug.Log("[MuseumInventory] Current Wealth: " + museStats.GetWealth());
-        }
-        
+    public void RemoveItemFromInv(Exhibit exhibitToRemove) {
+        int listNum = exhibitToRemove.itemDefinition.exhibitPosKey;
+        Debug.Log("[MuseumInventory] RemoveItemFromInv - listNum to remove = " + listNum);
+        exhibitsInInventory.RemoveAt(listNum);
+        inventoryDisplaySlots[listNum + 2].GetComponent<Button>().onClick.RemoveAllListeners();
+        inventoryDisplaySlots[listNum + 2].sprite = null;
+        Debug.Log("[MuseumInventory] Current Wealth: " + museStats.GetWealth());
     }
 
     // Save the inventory
     void Save() {
-        GameManager.Save<List<InventoryEntry>>(exhibitsInInventory, "Inventory");
+        SaveLoad.Save<List<InventoryEntry>>(exhibitsInInventory, "inventory");
+    }
+    void Load() {
+        if (SaveLoad.SaveExists("inventory")) {
+            StoreItemsFromLoad(SaveLoad.Load<List<InventoryEntry>>("inventory"));
+        }
     }
 }
 

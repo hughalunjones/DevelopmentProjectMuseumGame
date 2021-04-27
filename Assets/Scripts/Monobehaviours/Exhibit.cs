@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-[System.Serializable]
+[Serializable]
 public class Exhibit : MonoBehaviour {
 
     public Exhibit_SO itemDefinition;
@@ -35,10 +35,10 @@ public class Exhibit : MonoBehaviour {
             ExhibitInfoPanel = musInventory.ExhibitInformationPanel.transform.Find("Panel");         
             ExhibitInfoPanel.transform.Find("imgExhibitImage").GetComponent<Image>().sprite = this.GetComponent<SpriteRenderer>().sprite;
             ExhibitInfoPanel.transform.Find("imgExhibitImage").GetComponent<Image>().preserveAspect = true;
-            ExhibitInfoPanel.transform.Find("txtExhibitName").GetComponent<TextMeshProUGUI>().SetText(this.itemDefinition.exhibitName);
-            ExhibitInfoPanel.transform.Find("txtExhibitDescription").GetComponent<TextMeshProUGUI>().SetText(this.itemDefinition.exhibitDescription);
+            ExhibitInfoPanel.transform.Find("txtExhibitName").GetComponent<TextMeshProUGUI>().SetText(itemDefinition.exhibitName);
+            ExhibitInfoPanel.transform.Find("txtExhibitDescription").GetComponent<TextMeshProUGUI>().SetText(itemDefinition.exhibitDescription);
             ExhibitInfoPanel.transform.Find("btnStore").GetComponent<Button>().onClick.AddListener(() => ReturnItemToInv());
-            ExhibitInfoPanel.transform.Find("btnSell").GetComponent<Button>().onClick.AddListener(() => SellItem(itemDefinition.exhibitPosKey));
+           // ExhibitInfoPanel.transform.Find("btnSell").GetComponent<Button>().onClick.AddListener(() => SellItem(this));
             musInventory.DisplayExhibitInfoPanel();
         }            
     }
@@ -72,9 +72,10 @@ public class Exhibit : MonoBehaviour {
         // Add item to empty object on screen.
         musStats.ApplyRating(itemDefinition.exhibitRatingAmount);
     }
-    public void SellItem(int invNum) {
+    public void SellItem(Exhibit exhibitToSell) {
+        Debug.Log("[Exhibit] SellItem - exhibitToSell posKey = " + itemDefinition.exhibitPosKey);
         musStats.ApplyWealth(itemDefinition.exhibitValueAmount);
-        musInventory.RemoveItemFromInv(invNum);
+        musInventory.RemoveItemFromInv(exhibitToSell);
         itemDefinition.exhibitSlot.GetComponent<ExhibitSlot>().containsExhibit = false;
         itemDefinition.isDisplayed = false;
         Destroy(gameObject);

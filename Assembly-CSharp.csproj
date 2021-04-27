@@ -72,6 +72,7 @@
      <Compile Include="Assets\Scripts\Monobehaviours\MuseumInventory.cs" />
      <Compile Include="Assets\Scripts\Monobehaviours\MuseumStats.cs" />
      <Compile Include="Assets\Scripts\PlayerMovement.cs" />
+     <Compile Include="Assets\Scripts\SaveLoad.cs" />
      <Compile Include="Assets\Scripts\ScriptableObjects\ExhibitSlot_SO.cs" />
      <Compile Include="Assets\Scripts\ScriptableObjects\Exhibit_SO.cs" />
      <Compile Include="Assets\Scripts\ScriptableObjects\MuseumStats_SO.cs" />
