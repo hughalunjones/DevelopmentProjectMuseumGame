@@ -78,7 +78,7 @@ public class MuseumStats : MonoBehaviour
         MuseumData data = new MuseumData();
         data.currency = instance.GetWealth();
         data.rating = instance.GetRating();
-        GameManager.Save(data, "stats");
+        SaveLoad.Save(data, "stats");
         Debug.Log("[MuseumStats] Saved Rating: " + data.rating + " | Saved Currency: " + data.currency);
     }
 }

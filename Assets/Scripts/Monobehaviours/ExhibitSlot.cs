@@ -17,34 +17,36 @@ public class ExhibitSlot : MonoBehaviour
     }
     void Update() {
         if(containsExhibit == false && inRangeOfSlot == true && Input.GetKeyDown(KeyCode.F)) {
-            AssignButtonUse();
+            Debug.Log("[ExhibitSlot] Player interacted with: " + slotInRange);
+            museInventory.exhibitSlot = slotInRange;
+            museInventory.DisplayInventory();
             interactUI.SetActive(false);
         }else if(containsExhibit == true && inRangeOfSlot == true && Input.GetKeyDown(KeyCode.F)) {
             Debug.Log("[ExhibitSlot] This slot contains an exhibit");
         }
     }
-    public void AssignButtonUse() {
+/*    public void AssignButtonUse() {
         int slotCounter = 1;
         Debug.Log("[ExhibitSlot] Player interacted with: " + slotInRange);
         museInventory.DisplayInventory();
         try {
             // Somewhere here the button listeners are overwritten
-            foreach (KeyValuePair<int, InventoryEntry> ie in museInventory.exhibitsInInventory) {
-                /* using slotCounter here is causing a bug with the sell method, slotCounter and the exhibit
-                   key don't line up after the second item is added.*/
+            foreach (InventoryEntry invEntry in museInventory.exhibitsInInventory) {
+                *//* using slotCounter here is causing a bug with the sell method, slotCounter and the exhibit
+                   key don't line up after the second item is added.*//*
                 slotCounter++;
                 museInventory.inventoryDisplaySlots[slotCounter].GetComponent<Button>().onClick.RemoveAllListeners();
                 Debug.Log("[ExhibitSlot] Listeners removed");
                 museInventory.inventoryDisplaySlots[slotCounter].GetComponent<Button>().onClick.AddListener(() => 
-                    museInventory.PlaceExhibit((slotCounter - 1), slotInRange.transform)
+                    museInventory.PlaceExhibit(museInventory.exhibitsInInventory[slotCounter].inventorySlot, slotInRange.transform)
                 );
-                Debug.Log("[ExhibitSlot] slotCounter: " + slotCounter + " || slotInRange transform: " + slotInRange.transform + " || Exhibit at slotCounter: " + museInventory.exhibitsInInventory[slotCounter - 1].invEntry.itemDefinition.exhibitName);
+                Debug.Log("[ExhibitSlot] inventory slotCounter: " + slotCounter + " || slotInRange transform: " + slotInRange.transform + " || Exhibit at inventory slotCounter: " + museInventory.exhibitsInInventory[slotCounter - 2].invEntry.itemDefinition.exhibitName);
             }
         }
-        catch (NullReferenceException ex) {
-            Debug.Log("[ExhibitSlot] Something was null: " + ex);
+        catch (ArgumentOutOfRangeException aoore) {
+            Debug.Log("[ExhibitSlot] Out of range: " + aoore);
         }
-    }
+    }*/
     void OnTriggerEnter2D(Collider2D triggerCollider) {
         if (triggerCollider.tag == "Player") {
             if(containsExhibit == false) {
