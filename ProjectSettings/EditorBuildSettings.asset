@@ -17,4 +17,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MainHall.unity
     guid: 66bb05ce4b849244ba165c0e8ba0ddf3
+  - enabled: 1
+    path: Assets/Scenes/PurpleGallery.unity
+    guid: d11ec733b078e7348bf12ce776918e60
+  - enabled: 1
+    path: Assets/Scenes/AuctionHouse.unity
+    guid: 0fb91e7e70db82d4fa885a06c68e1992
   m_configObjects: {}

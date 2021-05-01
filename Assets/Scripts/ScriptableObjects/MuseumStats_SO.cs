@@ -46,8 +46,3 @@ public class MuseumStats_SO : ScriptableObject
         }
     }
 }
-[System.Serializable]
-class MuseumData {
-    public float rating;
-    public int currency;
-}

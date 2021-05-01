@@ -12,7 +12,7 @@ public class InventoryEntry
 
     public InventoryEntry(Exhibit invEntry, int key) {
         this.invEntry = invEntry;
-        this.inventorySlot = key;
-        this.entryName = "";
+        inventorySlot = key;
+        entryName = "";
     }
 }

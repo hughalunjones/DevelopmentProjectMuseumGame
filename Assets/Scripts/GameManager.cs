@@ -91,7 +91,7 @@ public class GameManager : Singleton<GameManager>
         ao.completed += OnLoadLevelComplete;
         loadOperations.Add(ao);
         _currentLevelName = levelName;
-        //SaveGame();
+        Save();
     }
     public void UnloadLevel(string levelName) {
         AsyncOperation ao = SceneManager.UnloadSceneAsync(levelName);
@@ -109,12 +109,18 @@ public class GameManager : Singleton<GameManager>
         instancedSystemPrefabs.Clear();
     }
     public void StartGame() {
+        LoadSave();
         LoadLevel("MainHall");
     }
     public void TogglePause() {
         UpdateGameState(currentGameState == GameState.RUNNING ? GameState.PAUSED : GameState.RUNNING);
     }   
-
+    public void LoadSave() {
+        Events.OnLoadInitiated();
+    }
+    public void Save() {
+        Events.OnSaveInitiated();
+    }
     public void QuitGame() {
         // Autosaving and other features here also
         // Save();

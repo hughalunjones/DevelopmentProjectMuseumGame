@@ -11,6 +11,7 @@ public class MuseumStats : MonoBehaviour
     public MuseumStats_SO museumDefinition;
     public MuseumInventory museumInv;
     float roundedRating;
+    MuseumStatsSaveData data = new MuseumStatsSaveData();
 
     private void Awake() {
         if (instance == null) {
@@ -23,11 +24,14 @@ public class MuseumStats : MonoBehaviour
     void Start(){
         DontDestroyOnLoad(this);
         museumInv = MuseumInventory.instance;
+        // subscribe this class to saving and loading events.
+        Events.SaveInitiated += SaveMuseumStats;
+        Events.LoadInitiated += LoadMuseumStats;
         if (!museumDefinition.setManually){
             museumDefinition.maxWealth = 10000000;
             museumDefinition.currentWealth = 1000;
 
-            museumDefinition.maxRating = 5.0f;
+            museumDefinition.maxRating = 5.0f * museumInv.inventoryItemCap;
             museumDefinition.currentRating = 0.0f;
         }
     }
@@ -42,8 +46,6 @@ public class MuseumStats : MonoBehaviour
         }else if(museumDefinition.currentWealth >= museumDefinition.maxWealth) {
             museumDefinition.currentWealth = museumDefinition.maxWealth;
         }
-        // This should be triggered by the game manager during a save point
-        // museumDefinition.saveMuseumData();
     }
     // Stat Changers
     public void ApplyWealth(int wealthAmount){
@@ -63,10 +65,13 @@ public class MuseumStats : MonoBehaviour
     public int GetWealth(){
         return museumDefinition.currentWealth;
     }
-    public float GetRating(){
+    public float GetRoundedRating(){
         float averageRating = museumDefinition.currentRating / museumInv.inventoryItemCap;
         roundedRating = (float)Math.Round(averageRating * 2, MidpointRounding.AwayFromZero) / 2;
         return roundedRating;
+    }
+    public float GetRatingRaw() {
+        return museumDefinition.currentRating;
     }
     public void SetWealth(int newWealth) {
         museumDefinition.currentWealth = newWealth; 
@@ -74,12 +79,18 @@ public class MuseumStats : MonoBehaviour
     public void SetRating(float newRating) {
         museumDefinition.currentRating = newRating;
     }
-    public void SaveMuseumStats() {        
-        MuseumData data = new MuseumData();
-        data.currency = instance.GetWealth();
-        data.rating = instance.GetRating();
-        SaveLoad.Save(data, "stats");
-        Debug.Log("[MuseumStats] Saved Rating: " + data.rating + " | Saved Currency: " + data.currency);
+    public void SaveMuseumStats() {
+        data.currencyData = instance.GetWealth();
+        data.ratingData = instance.GetRatingRaw();
+        SaveLoad.Save(data, "museumStats");
+        Debug.Log("[MuseumStats] Saved Rating: " + data.ratingData + " | Saved Currency: " + data.currencyData);
+    }
+    public void LoadMuseumStats() {
+        if (SaveLoad.SaveExists("museumStats")) {;
+            MuseumStatsSaveData loadData = SaveLoad.Load<MuseumStatsSaveData>("museumStats");
+            SetWealth(loadData.currencyData);
+            SetRating(loadData.ratingData);
+        }
     }
 }
 

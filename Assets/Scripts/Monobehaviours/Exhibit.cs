@@ -15,9 +15,9 @@ public class Exhibit : MonoBehaviour {
     public int ID { get; set; }
     Transform ExhibitInfoPanel;
 
-    public Exhibit(int id, Exhibit_SO exhibitData){
+    public Exhibit(Exhibit_SO exhibitData){
         musInventory = MuseumInventory.instance;
-        ID = id;
+        ID = exhibitData.exhibitKeyID;
         itemDefinition = exhibitData;
     }
 
@@ -62,7 +62,7 @@ public class Exhibit : MonoBehaviour {
         itemDefinition.exhibitSlot.GetComponent<ExhibitSlot>().containsExhibit = false;
         itemDefinition.exhibitSlot = null;
         Destroy(gameObject);
-        musStats.RemoveRating(this.itemDefinition.exhibitRatingAmount);
+        musStats.RemoveRating(itemDefinition.exhibitRatingAmount);
         Debug.Log("[Exhibit] Item returned to inventory");
     }
     public void StoreItem() {

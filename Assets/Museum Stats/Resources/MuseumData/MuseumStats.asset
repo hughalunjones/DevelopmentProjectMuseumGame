@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4364c8c27c003fe46ad6e1bb210f6ca3, type: 3}
   m_Name: MuseumStats
   m_EditorClassIdentifier: 
-  setManually: 1
-  maxWealth: 1000000
-  currentWealth: 14000
-  maxRating: 5
-  currentRating: 4
+  setManually: 0
+  maxWealth: 10000000
+  currentWealth: 1000
+  maxRating: 180
+  currentRating: 0

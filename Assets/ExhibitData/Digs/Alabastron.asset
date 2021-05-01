@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ff583f062ffbf244985485bd800c07b, type: 3}
   m_Name: Alabastron
   m_EditorClassIdentifier: 
-  exhibitPosKey: 0
+  exhibitKeyID: 101001
+  exhibitPosKey: 7
   exhibitName: Alabastron
   exhibitDescription: New Description
   exhibitType: 3
@@ -23,6 +24,7 @@ MonoBehaviour:
   exhibitIcon: {fileID: 21300000, guid: 912358fa2eecb944084ad320714270ee, type: 3}
   exhibitObject: {fileID: 8553500537473445862, guid: 2e00e2efb5a0f03409380ed8bf9fe7af,
     type: 3}
+  exhibitSlot: {fileID: 0}
   isDisplayed: 0
   isInteractable: 0
   isStorable: 0

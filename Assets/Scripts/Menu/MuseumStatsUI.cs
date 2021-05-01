@@ -17,6 +17,6 @@ public class MuseumStatsUI : MonoBehaviour
     }
     void Update() {
         wealthText.GetComponent<TextMeshProUGUI>().SetText("Currency: " + museStats.GetWealth());
-        ratingText.GetComponent<TextMeshProUGUI>().SetText("Rating: " + museStats.GetRating());
+        ratingText.GetComponent<TextMeshProUGUI>().SetText("Rating: " + museStats.GetRoundedRating());
     }
 }
