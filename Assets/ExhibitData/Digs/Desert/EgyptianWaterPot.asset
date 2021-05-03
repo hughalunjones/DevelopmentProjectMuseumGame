@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: EgyptianWaterPot
   m_EditorClassIdentifier: 
   exhibitKeyID: 101009
-  exhibitPosKey: 0
+  exhibitPosKey: 2
   exhibitName: Egyptian Water Pot
   exhibitDescription: New Description
   exhibitType: 3
@@ -24,7 +24,7 @@ MonoBehaviour:
   exhibitIcon: {fileID: 21300000, guid: 912358fa2eecb944084ad320714270ee, type: 3}
   exhibitObject: {fileID: 6399002543511430289, guid: c8a2d9f505e34c24fb7cd77d974106f1,
     type: 3}
-  exhibitSlot: 
-  isDisplayed: 0
+  exhibitSlot: slotSmallArtefactOne
+  isDisplayed: 1
   isInteractable: 0
   isStorable: 0

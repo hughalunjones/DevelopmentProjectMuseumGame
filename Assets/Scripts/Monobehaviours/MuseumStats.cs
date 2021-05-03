@@ -11,6 +11,7 @@ public class MuseumStats : MonoBehaviour
     public MuseumStats_SO museumDefinition;
     public MuseumInventory museumInv;
     float roundedRating;
+    int numOfDisplayedExhibits;
     MuseumStatsSaveData data = new MuseumStatsSaveData();
 
     private void Awake() {
@@ -90,6 +91,14 @@ public class MuseumStats : MonoBehaviour
             MuseumStatsSaveData loadData = SaveLoad.Load<MuseumStatsSaveData>("museumStats");
             SetWealth(loadData.currencyData);
             SetRating(loadData.ratingData);
+        }
+    }
+    public void UpdateNumOfDisplayedExhibits() {
+        numOfDisplayedExhibits = 0;
+        foreach(InventoryEntry exhibit in museumInv.exhibitsInInventory) {
+            if(exhibit.invEntry.itemDefinition.isDisplayed == true) {
+                numOfDisplayedExhibits += 1;
+            }
         }
     }
 }

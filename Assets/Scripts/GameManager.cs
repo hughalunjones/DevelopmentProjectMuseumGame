@@ -7,6 +7,7 @@ public class GameManager : Singleton<GameManager>
 {
     public GameObject[] SystemPrefabs;
     public Events.EventGameState OnGameStateChanged;
+    int excavationSceneIndex;
     public enum GameState {
         PREGAME,
         RUNNING, 
@@ -132,6 +133,12 @@ public class GameManager : Singleton<GameManager>
         // For the purposes of testing
         UnityEditor.EditorApplication.isPlaying = false;
         Debug.Log("Game Quit");
+    }
+    public void SetExcavationIndex(int index) {
+        excavationSceneIndex = index;
+    }
+    public int GetExcavationSceneIndex() {
+        return excavationSceneIndex;
     }
 }
 

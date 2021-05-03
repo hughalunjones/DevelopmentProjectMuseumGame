@@ -9,8 +9,6 @@ public class MuseumStatsUI : MonoBehaviour
     public MuseumStats museStats;
     public MuseumStatsUI museStatsUI;
     public GameObject ratingText, wealthText;
-    int wealthValue;
-    float ratingValue, roundedRating;
     void Start() {
         museStats = MuseumStats.instance;
         museStatsUI = this;

@@ -64,6 +64,7 @@
      <Compile Include="Assets\Scripts\Monobehaviours\BidManager.cs" />
      <Compile Include="Assets\Scripts\Monobehaviours\CameraController.cs" />
      <Compile Include="Assets\Scripts\Monobehaviours\ClickManager.cs" />
+     <Compile Include="Assets\Scripts\Monobehaviours\DeskSceneController.cs" />
      <Compile Include="Assets\Scripts\Monobehaviours\DigSpotManager.cs" />
      <Compile Include="Assets\Scripts\Monobehaviours\DoorColliderController.cs" />
      <Compile Include="Assets\Scripts\Monobehaviours\Exhibit.cs" />

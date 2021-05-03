@@ -26,4 +26,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/FossilHall.unity
     guid: d5c143b97c586be42a2067e33ead5bd6
+  - enabled: 1
+    path: Assets/Scenes/Office.unity
+    guid: 272485c12c5f7414e90d74ebcc9b246e
   m_configObjects: {}

@@ -26,7 +26,7 @@ public class ClickManager : MonoBehaviour
         private set { currentTool = value; }
     }
     public void ReturnToMuseum() {
-        GameManager.Instance.LoadLevel("MainHall");
+        GameManager.Instance.LoadLevel("Office");
         GameManager.Instance.UnloadLevel("DigSite");
     }
     void Start() {

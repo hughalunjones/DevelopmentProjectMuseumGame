@@ -774,7 +774,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7cb658dd0401b043b87bcddd739d99d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextGameScene: DigSite
+  nextGameScene: MainHall
   currentGameScene: GreenGallery
 --- !u!1 &1025858658
 GameObject:

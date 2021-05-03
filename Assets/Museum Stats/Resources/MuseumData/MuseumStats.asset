@@ -16,4 +16,4 @@ MonoBehaviour:
   maxWealth: 10000000
   currentWealth: 1000
   maxRating: 180
-  currentRating: 0
+  currentRating: 1

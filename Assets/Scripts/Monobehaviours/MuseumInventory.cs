@@ -53,7 +53,6 @@ public class MuseumInventory : MonoBehaviour {
             exhibitEntry.invEntry = exhibitToStore;
             exhibitEntry.invEntry.itemDefinition.exhibitPosKey = slotNum;
             exhibitEntry.entryName = exhibitToStore.itemDefinition.exhibitName;
-            exhibitToStore.itemDefinition.isDisplayed = false;
             exhibitEntry.inventorySlot = slotNum;
             slotNum++;
             Debug.Log("[StoreItem] " + exhibitToStore.itemDefinition.exhibitName + " stored at Inventory slot:" + exhibitEntry.inventorySlot + " and isDisplayed value: " + exhibitEntry.invEntry.itemDefinition.isDisplayed);
@@ -183,7 +182,7 @@ public class MuseumInventory : MonoBehaviour {
             Exhibit exhibitToPlace = exhibitObject.GetComponent<Exhibit>();
             exhibitToPlace.itemDefinition.exhibitSlot = slotToHold.GetComponent<Transform>().name;
             // check the target slot is not null
-            if(exhibitToPlace.itemDefinition.exhibitSlot != null) {
+            if(exhibitToPlace.itemDefinition.exhibitSlot != "") {
                 // check whether the exhibit has already been displayed
                 if (!exhibitToPlace.itemDefinition.isDisplayed) {
                     // check whether the exhibit can be placed in the desired slot
@@ -260,7 +259,7 @@ public class MuseumInventory : MonoBehaviour {
             exhibitSaveData.idKeyData = ie.invEntry.itemDefinition.exhibitKeyID;
             exhibitSaveData.posKeyData = ie.invEntry.itemDefinition.exhibitPosKey;
             exhibitSaveData.isDisplayedData = ie.invEntry.itemDefinition.isDisplayed;
-            if (ie.invEntry.itemDefinition.exhibitSlot != null && ie.invEntry.itemDefinition.isDisplayed) {
+            if (ie.invEntry.itemDefinition.exhibitSlot != "" && ie.invEntry.itemDefinition.isDisplayed) {
                 exhibitSaveData.transformNameData = ie.invEntry.itemDefinition.exhibitSlot;                
             }
             Debug.Log("[MuseumInventory - SaveInventory()] exhibitSaveData - " + exhibitSaveData.posKeyData + " isDisplayed: " + exhibitSaveData.isDisplayedData);
