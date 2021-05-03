@@ -17,7 +17,7 @@ MonoBehaviour:
   exhibitName: Imsety Canopic Jar
   exhibitDescription: New Description
   exhibitType: 3
-  exhibitSize: 0
+  exhibitSize: 1
   exhibitQuality: 3
   exhibitRatingAmount: 2.3
   exhibitValueAmount: 1000

@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: SmallSlotArtefact
   m_EditorClassIdentifier: 
   exhibitSlotType: 3
-  exhibitSlotSize: 0
+  exhibitSlotSize: 1

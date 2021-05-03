@@ -24,21 +24,16 @@ public class Exhibit : MonoBehaviour {
     void Start(){       
         musStats = MuseumStats.instance;
         musInventory = MuseumInventory.instance;
-        itemDefinition.isDisplayed = true;
     }
     void Update() {
-        if (!itemDefinition.isDisplayed && inRangeOfExhibit && Input.GetKeyDown(KeyCode.E)) {
-            Debug.Log("[Exhibit] StoreItem() called from Exhibit.cs");
-            StoreItem();
-        }
-        else if (itemDefinition.isDisplayed && inRangeOfExhibit && Input.GetKeyDown(KeyCode.E)) {
+        if (itemDefinition.isDisplayed && inRangeOfExhibit && Input.GetKeyDown(KeyCode.E)) {
             ExhibitInfoPanel = musInventory.ExhibitInformationPanel.transform.Find("Panel");         
             ExhibitInfoPanel.transform.Find("imgExhibitImage").GetComponent<Image>().sprite = this.GetComponent<SpriteRenderer>().sprite;
             ExhibitInfoPanel.transform.Find("imgExhibitImage").GetComponent<Image>().preserveAspect = true;
             ExhibitInfoPanel.transform.Find("txtExhibitName").GetComponent<TextMeshProUGUI>().SetText(itemDefinition.exhibitName);
             ExhibitInfoPanel.transform.Find("txtExhibitDescription").GetComponent<TextMeshProUGUI>().SetText(itemDefinition.exhibitDescription);
             ExhibitInfoPanel.transform.Find("btnStore").GetComponent<Button>().onClick.AddListener(() => ReturnItemToInv());
-           // ExhibitInfoPanel.transform.Find("btnSell").GetComponent<Button>().onClick.AddListener(() => SellItem(this));
+            //ExhibitInfoPanel.transform.Find("btnSell").GetComponent<Button>().onClick.AddListener(() => SellItem(this));
             musInventory.DisplayExhibitInfoPanel();
         }            
     }
@@ -59,8 +54,8 @@ public class Exhibit : MonoBehaviour {
     }
     public void ReturnItemToInv() {
         itemDefinition.isDisplayed = false;
-        itemDefinition.exhibitSlot.GetComponent<ExhibitSlot>().containsExhibit = false;
-        itemDefinition.exhibitSlot = null;
+        GameObject.Find(itemDefinition.exhibitSlot).GetComponent<ExhibitSlot>().containsExhibit = false;
+        itemDefinition.exhibitSlot = "";
         Destroy(gameObject);
         musStats.RemoveRating(itemDefinition.exhibitRatingAmount);
         Debug.Log("[Exhibit] Item returned to inventory");
@@ -76,7 +71,7 @@ public class Exhibit : MonoBehaviour {
         Debug.Log("[Exhibit] SellItem - exhibitToSell posKey = " + itemDefinition.exhibitPosKey);
         musStats.ApplyWealth(itemDefinition.exhibitValueAmount);
         musInventory.RemoveItemFromInv(exhibitToSell);
-        itemDefinition.exhibitSlot.GetComponent<ExhibitSlot>().containsExhibit = false;
+        GameObject.Find(itemDefinition.exhibitSlot).GetComponent<ExhibitSlot>().containsExhibit = false;
         itemDefinition.isDisplayed = false;
         Destroy(gameObject);
     }

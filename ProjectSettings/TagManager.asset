@@ -15,6 +15,7 @@ TagManager:
   - Large
   - inventory
   - slot
+  - obstacle
   layers:
   - Default
   - TransparentFX

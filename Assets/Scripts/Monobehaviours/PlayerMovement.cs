@@ -26,14 +26,12 @@ public class PlayerMovement : MonoBehaviour
     // Assign a Sprite component in the inspector to instantiate
     void Update() {
         float inputX = Input.GetAxisRaw("Horizontal");
-        float velocity = inputX * speed;
+        float inputY = Input.GetAxisRaw("Vertical");
+        float velocity = inputX * speed;        
+        float vertVel = inputY * speed;
         animator.SetFloat("Speed", Mathf.Abs(velocity));
-        transform.Translate(Vector2.right * velocity * Time.deltaTime);
-        if (GameManager.Instance.GetCurrentLevelName() == "MainHall") {
-            float inputY = Input.GetAxisRaw("Vertical");
-            float vertVel = inputY * speed;
-            transform.Translate(Vector2.up * vertVel * Time.deltaTime);
-        }
+        transform.Translate(Vector2.right * velocity * Time.deltaTime);            
+        transform.Translate(Vector2.up * vertVel * Time.deltaTime);
         if(inputX > 0 && !facingRight) {
             Flip();
         }else if(inputX < 0 && facingRight) {
@@ -58,7 +56,6 @@ public class PlayerMovement : MonoBehaviour
         }
 
     }
-
     void Flip() {
         facingRight = !facingRight;
         Vector3 theScale = transform.localScale;

@@ -23,4 +23,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/AuctionHouse.unity
     guid: 0fb91e7e70db82d4fa885a06c68e1992
+  - enabled: 1
+    path: Assets/Scenes/FossilHall.unity
+    guid: d5c143b97c586be42a2067e33ead5bd6
   m_configObjects: {}

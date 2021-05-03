@@ -50,7 +50,7 @@ public class ExhibitSlot : MonoBehaviour
     void OnTriggerEnter2D(Collider2D triggerCollider) {
         if (triggerCollider.tag == "Player") {
             if(containsExhibit == false) {
-                interactUI.SetActive(true);
+                interactUI.SetActive(true);              
             }            
             slotInRange = this;
             inRangeOfSlot = true;

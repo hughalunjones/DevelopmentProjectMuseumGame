@@ -56,7 +56,7 @@ public class MuseumInventory : MonoBehaviour {
             exhibitToStore.itemDefinition.isDisplayed = false;
             exhibitEntry.inventorySlot = slotNum;
             slotNum++;
-            Debug.Log("[StoreItem] " + exhibitToStore.itemDefinition.exhibitName + " stored at Inventory slot:" + exhibitEntry.inventorySlot);
+            Debug.Log("[StoreItem] " + exhibitToStore.itemDefinition.exhibitName + " stored at Inventory slot:" + exhibitEntry.inventorySlot + " and isDisplayed value: " + exhibitEntry.invEntry.itemDefinition.isDisplayed);
             exhibitsInInventory.Add(exhibitEntry);
             Destroy(exhibitEntry.invEntry.gameObject);
             FillInventoryDisplay();
@@ -72,19 +72,16 @@ public class MuseumInventory : MonoBehaviour {
             foreach(Exhibit exhibit in allExhibits) {
                 if(exhibit.itemDefinition.exhibitKeyID == eSD.idKeyData) {
                     exhibit.itemDefinition.exhibitPosKey = eSD.posKeyData;
-                    if(exhibit.itemDefinition.isDisplayed == true) {
-                       exhibit.itemDefinition.exhibitSlot = GameObject.Find(eSD.transformNameData).transform;
-                    }                    
                     exhibit.itemDefinition.isDisplayed = eSD.isDisplayedData;
+                    if (exhibit.itemDefinition.isDisplayed == true) {
+                       exhibit.itemDefinition.exhibitSlot = eSD.transformNameData;
+                    }
                     exhibitsToLoad.Add(exhibit);
                 }
             }
         }
         foreach(Exhibit loadExhibit in exhibitsToLoad) {
-            StoreItem(loadExhibit);
-            /*if(loadExhibit.itemDefinition.isDisplayed == true) {
-                PlaceExhibit(loadExhibit.itemDefinition.exhibitObject, loadExhibit.itemDefinition.exhibitSlot);
-            }*/            
+            StoreItem(loadExhibit);                     
         }
     }
    /* public void PickUp() {
@@ -181,15 +178,10 @@ public class MuseumInventory : MonoBehaviour {
             Debug.Log("[FillInventoryDisplay] Listeners added, Inventory display filled, slotCounter = " + slotCounter + ", invEntry " + invEntry.invEntry.itemDefinition.exhibitName);
         }
     }
-
-    // Place the exhibit in the museum when at the correct slot. - !!MOST IMPORTANT METHOD RIGHT NOW!!
-    /*  TODO:
-     *  Stop button method duplication
-     */
     public void PlaceExhibit(GameObject exhibitObject, Transform slotToHold) {
         try {
             Exhibit exhibitToPlace = exhibitObject.GetComponent<Exhibit>();
-            exhibitToPlace.itemDefinition.exhibitSlot = slotToHold;
+            exhibitToPlace.itemDefinition.exhibitSlot = slotToHold.GetComponent<Transform>().name;
             // check the target slot is not null
             if(exhibitToPlace.itemDefinition.exhibitSlot != null) {
                 // check whether the exhibit has already been displayed
@@ -198,7 +190,7 @@ public class MuseumInventory : MonoBehaviour {
                     if (exhibitToPlace.itemDefinition.exhibitSize.ToString().Equals(slotToHold.GetComponent<ExhibitSlot>().slotInRange.slotDefinition.exhibitSlotSize.ToString())
                         && exhibitToPlace.itemDefinition.exhibitType.ToString().Equals(slotToHold.GetComponent<ExhibitSlot>().slotInRange.slotDefinition.exhibitSlotType.ToString())) {
                         // Create a new version of the stored exhibit
-                        Instantiate(exhibitToPlace.itemDefinition.exhibitObject, slotToHold.transform.position, Quaternion.Euler(0, 0, 0), slotToHold);
+                        Instantiate(exhibitToPlace.itemDefinition.exhibitObject, new Vector3(slotToHold.position.x, slotToHold.position.y, -0.3f), Quaternion.Euler(0, 0, 0), slotToHold);
                         // Apply the rating value of the exhibit
                         museStats.ApplyRating(exhibitToPlace.itemDefinition.exhibitRatingAmount);
                         Debug.Log("[PlaceExhibit] Exhibit placed at slot: " + slotToHold.name + ", museStats: " + museStats.GetRatingRaw());
@@ -206,6 +198,7 @@ public class MuseumInventory : MonoBehaviour {
                         slotToHold.GetComponent<ExhibitSlot>().containsExhibit = true;
                         exhibitToPlace.itemDefinition.isDisplayed = true;
                         DisplayInventory();
+                        SaveInventory();
                     }
                     else {
                         Debug.Log("[MuseumInventory - PlaceExhibit] The slot size/type and exhibit size/type do not match " + exhibitToPlace.itemDefinition.exhibitSize + " -> " + slotToHold.GetComponent<ExhibitSlot>().slotInRange.slotDefinition.exhibitSlotSize + " || " + exhibitToPlace.itemDefinition.exhibitType + " -> " + slotToHold.GetComponent<ExhibitSlot>().slotInRange.slotDefinition.exhibitSlotType);
@@ -232,27 +225,58 @@ public class MuseumInventory : MonoBehaviour {
         inventoryDisplaySlots[listNum + 2].sprite = null;
         Debug.Log("[MuseumInventory] Current Wealth: " + museStats.GetWealth());
     }
+    public void FillExhibitSlotList() {
+        if(GameObject.FindGameObjectsWithTag("slot") != null) {
+             foreach(GameObject transformObject in GameObject.FindGameObjectsWithTag("slot")) {
+                slotsInRoom.Add(transformObject.GetComponent<Transform>());
+                Debug.Log("[MuseumInventory] slotsInRoom: " + transformObject.name);
+            }
+        }                   
+    }
+    public void ClearExhibitSlotList() {
+        slotsInRoom.Clear();
+        Debug.Log("[MuseumInventory] Slot list cleared");
+    }
+
+    // If an item was placed when the player last saved and quit or unloaded the scene, re-place them.
+    public void PlaceSavedPlacedItems() {
+        foreach(InventoryEntry ie in exhibitsInInventory) {
+            foreach(Transform slotTransform in slotsInRoom) {
+                if (ie.invEntry.itemDefinition.isDisplayed == true && ie.invEntry.itemDefinition.exhibitSlot == slotTransform.name) {
+                    Instantiate(ie.invEntry.itemDefinition.exhibitObject, new Vector3(slotTransform.position.x, slotTransform.position.y, -0.3f), Quaternion.Euler(0, 0, 0), slotTransform);
+                    ie.invEntry.itemDefinition.isDisplayed = true;
+                    slotTransform.GetComponent<ExhibitSlot>().containsExhibit = true;
+                }
+            }
+        }
+    }
 
     // Save the inventory
     void SaveInventory() {
         List<ExhibitSaveData> exhibitSaves = new List<ExhibitSaveData>();
         foreach(InventoryEntry ie in exhibitsInInventory) {
             ExhibitSaveData exhibitSaveData = new ExhibitSaveData();
+            // Set each of the values which change 
             exhibitSaveData.idKeyData = ie.invEntry.itemDefinition.exhibitKeyID;
             exhibitSaveData.posKeyData = ie.invEntry.itemDefinition.exhibitPosKey;
-            if(ie.invEntry.itemDefinition.exhibitSlot != null && ie.invEntry.itemDefinition.isDisplayed) {
-                exhibitSaveData.transformNameData = ie.invEntry.itemDefinition.exhibitSlot.name;
-            }            
             exhibitSaveData.isDisplayedData = ie.invEntry.itemDefinition.isDisplayed;
+            if (ie.invEntry.itemDefinition.exhibitSlot != null && ie.invEntry.itemDefinition.isDisplayed) {
+                exhibitSaveData.transformNameData = ie.invEntry.itemDefinition.exhibitSlot;                
+            }
+            Debug.Log("[MuseumInventory - SaveInventory()] exhibitSaveData - " + exhibitSaveData.posKeyData + " isDisplayed: " + exhibitSaveData.isDisplayedData);
             exhibitSaves.Add(exhibitSaveData);
         }
         SaveLoad.Save<List<ExhibitSaveData>>(exhibitSaves, "inventoryExhibitData");
     }
     void LoadInventory() {
+        // Clear the inventory to stop duplication of the inventory
         exhibitsInInventory.Clear();
         Debug.Log("[MuseumInventory] Inventory Cleared");
         if (SaveLoad.SaveExists("inventoryExhibitData")) {
            StoreItemsFromLoad(SaveLoad.Load<List<ExhibitSaveData>>("inventoryExhibitData"));
+            if(slotsInRoom != null) {
+                PlaceSavedPlacedItems();
+            }
         }
     }
 }

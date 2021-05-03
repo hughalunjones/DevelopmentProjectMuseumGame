@@ -55,9 +55,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Scripts\CameraController.cs" />
-     <Compile Include="Assets\Scripts\DoorColliderController.cs" />
-     <Compile Include="Assets\Scripts\ExhibitSaveData.cs" />
      <Compile Include="Assets\Scripts\GameManager.cs" />
      <Compile Include="Assets\Scripts\Menu\MainMenu.cs" />
      <Compile Include="Assets\Scripts\Menu\MuseumStatsUI.cs" />
@@ -65,17 +62,20 @@
      <Compile Include="Assets\Scripts\Menu\UIManager.cs" />
      <Compile Include="Assets\Scripts\Monobehaviours\BackgroundGenerator.cs" />
      <Compile Include="Assets\Scripts\Monobehaviours\BidManager.cs" />
+     <Compile Include="Assets\Scripts\Monobehaviours\CameraController.cs" />
      <Compile Include="Assets\Scripts\Monobehaviours\ClickManager.cs" />
      <Compile Include="Assets\Scripts\Monobehaviours\DigSpotManager.cs" />
+     <Compile Include="Assets\Scripts\Monobehaviours\DoorColliderController.cs" />
      <Compile Include="Assets\Scripts\Monobehaviours\Exhibit.cs" />
      <Compile Include="Assets\Scripts\Monobehaviours\ExhibitSlot.cs" />
      <Compile Include="Assets\Scripts\Monobehaviours\GridManager.cs" />
      <Compile Include="Assets\Scripts\Monobehaviours\InventoryEntry.cs" />
      <Compile Include="Assets\Scripts\Monobehaviours\MuseumInventory.cs" />
      <Compile Include="Assets\Scripts\Monobehaviours\MuseumStats.cs" />
-     <Compile Include="Assets\Scripts\MuseumStatsSaveData.cs" />
-     <Compile Include="Assets\Scripts\PlayerMovement.cs" />
-     <Compile Include="Assets\Scripts\SaveLoad.cs" />
+     <Compile Include="Assets\Scripts\Monobehaviours\PlayerMovement.cs" />
+     <Compile Include="Assets\Scripts\SaveLoad\ExhibitSaveData.cs" />
+     <Compile Include="Assets\Scripts\SaveLoad\MuseumStatsSaveData.cs" />
+     <Compile Include="Assets\Scripts\SaveLoad\SaveLoad.cs" />
      <Compile Include="Assets\Scripts\ScriptableObjects\ExhibitSlot_SO.cs" />
      <Compile Include="Assets\Scripts\ScriptableObjects\Exhibit_SO.cs" />
      <Compile Include="Assets\Scripts\ScriptableObjects\MuseumStats_SO.cs" />

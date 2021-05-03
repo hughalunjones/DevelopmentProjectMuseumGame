@@ -43,7 +43,11 @@ public class GameManager : Singleton<GameManager>
 
             if(loadOperations.Count == 0) {
                 UpdateGameState(GameState.RUNNING);
-            }            
+            }
+
+            MuseumInventory.instance.ClearExhibitSlotList();
+            MuseumInventory.instance.FillExhibitSlotList();
+            MuseumInventory.instance.PlaceSavedPlacedItems();
         }
         Debug.Log("Loading Completed");
     }
@@ -82,7 +86,7 @@ public class GameManager : Singleton<GameManager>
     }
 
     // TODO: SET LOADED SCENE AS ACTIVE
-    public void LoadLevel(string levelName) {
+    public void LoadLevel(string levelName) {        
         AsyncOperation ao = SceneManager.LoadSceneAsync(levelName, LoadSceneMode.Additive);
         if (ao == null) {
             Debug.LogError("[GameManager] Unable to load level" + levelName);

@@ -10,21 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5ff583f062ffbf244985485bd800c07b, type: 3}
-  m_Name: EgyptianWaterPot
+  m_Name: CanopicJarHapi
   m_EditorClassIdentifier: 
-  exhibitKeyID: 101009
+  exhibitKeyID: 101005
   exhibitPosKey: 0
-  exhibitName: Egyptian Water Pot
+  exhibitName: Hapi Canopic Jar
   exhibitDescription: New Description
   exhibitType: 3
   exhibitSize: 1
-  exhibitQuality: 2
-  exhibitRatingAmount: 1
-  exhibitValueAmount: 500
+  exhibitQuality: 3
+  exhibitRatingAmount: 2.3
+  exhibitValueAmount: 1000
   exhibitIcon: {fileID: 21300000, guid: 912358fa2eecb944084ad320714270ee, type: 3}
-  exhibitObject: {fileID: 6399002543511430289, guid: c8a2d9f505e34c24fb7cd77d974106f1,
+  exhibitObject: {fileID: 343577356553883673, guid: d8502ee55b275a74e8105a21b8a409f0,
     type: 3}
   exhibitSlot: {fileID: 0}
-  isDisplayed: 1
-  isInteractable: 1
-  isStorable: 1
+  isDisplayed: 0
+  isInteractable: 0
+  isStorable: 0
