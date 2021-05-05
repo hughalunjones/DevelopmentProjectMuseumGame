@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: CanopicJarDuamutef
   m_EditorClassIdentifier: 
   exhibitKeyID: 101004
-  exhibitPosKey: 0
+  exhibitPosKey: 25
   exhibitName: Duamutef Canopic Jar
   exhibitDescription: New Description
   exhibitType: 3
@@ -26,5 +26,3 @@ MonoBehaviour:
     type: 3}
   exhibitSlot: 
   isDisplayed: 0
-  isInteractable: 0
-  isStorable: 0

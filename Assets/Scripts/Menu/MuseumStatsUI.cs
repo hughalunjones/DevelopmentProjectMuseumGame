@@ -8,7 +8,7 @@ public class MuseumStatsUI : MonoBehaviour
 {
     public MuseumStats museStats;
     public MuseumStatsUI museStatsUI;
-    public GameObject ratingText, wealthText;
+    public GameObject ratingText, wealthText, dayText;
     void Start() {
         museStats = MuseumStats.instance;
         museStatsUI = this;
@@ -16,5 +16,6 @@ public class MuseumStatsUI : MonoBehaviour
     void Update() {
         wealthText.GetComponent<TextMeshProUGUI>().SetText("Currency: " + museStats.GetWealth());
         ratingText.GetComponent<TextMeshProUGUI>().SetText("Rating: " + museStats.GetRoundedRating());
+        dayText.GetComponent<TextMeshProUGUI>().SetText("Day: " + museStats.GetDay());
     }
 }

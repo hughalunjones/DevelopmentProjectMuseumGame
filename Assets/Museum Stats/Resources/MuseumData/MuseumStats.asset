@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: MuseumStats
   m_EditorClassIdentifier: 
   setManually: 0
+  playerMaxStamina: 3
+  playerStamina: 3
   maxWealth: 10000000
-  currentWealth: 1000
+  currentWealth: 250
   maxRating: 180
-  currentRating: 1
+  currentRating: 2.3

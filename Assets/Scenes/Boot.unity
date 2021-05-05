@@ -133,16 +133,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: MuseumInventoryHolder
       objectReference: {fileID: 0}
-    - target: {fileID: 735425527491814697, guid: c207144c6aef3de449c9809dd1cbe2de,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 735425527491814698, guid: c207144c6aef3de449c9809dd1cbe2de,
-        type: 3}
-      propertyPath: allExhibits.Array.size
-      value: 12
-      objectReference: {fileID: 0}
     - target: {fileID: 735425527491814699, guid: c207144c6aef3de449c9809dd1cbe2de,
         type: 3}
       propertyPath: m_RootOrder
@@ -196,11 +186,6 @@ PrefabInstance:
     - target: {fileID: 735425527491814699, guid: c207144c6aef3de449c9809dd1cbe2de,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5115314721243356803, guid: c207144c6aef3de449c9809dd1cbe2de,
-        type: 3}
-      propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

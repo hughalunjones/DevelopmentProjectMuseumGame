@@ -24,7 +24,7 @@ MonoBehaviour:
   exhibitIcon: {fileID: 21300000, guid: 912358fa2eecb944084ad320714270ee, type: 3}
   exhibitObject: {fileID: 343577356553883673, guid: d8502ee55b275a74e8105a21b8a409f0,
     type: 3}
-  exhibitSlot: {fileID: 0}
+  exhibitSlot: slotSmallArtefactTwo
   isDisplayed: 0
   isInteractable: 0
   isStorable: 0

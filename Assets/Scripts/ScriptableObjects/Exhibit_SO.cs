@@ -21,6 +21,4 @@ public class Exhibit_SO : ScriptableObject {
     public GameObject exhibitObject = null;
     public string exhibitSlot = null;
     public bool isDisplayed;
-    public bool isInteractable = false;
-    public bool isStorable = false;
 }

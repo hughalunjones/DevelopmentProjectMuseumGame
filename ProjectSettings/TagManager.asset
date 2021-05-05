@@ -16,6 +16,9 @@ TagManager:
   - inventory
   - slot
   - obstacle
+  - start
+  - quit
+  - new
   layers:
   - Default
   - TransparentFX

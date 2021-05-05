@@ -39,14 +39,12 @@ public class Exhibit : MonoBehaviour {
     }
     void OnTriggerEnter2D(Collider2D triggerCollider) {
         if (triggerCollider.tag == "Player") {
-            inRangeOfExhibit = true;
-            Debug.Log("[Exhibit] Player Detected " + inRangeOfExhibit);            
+            inRangeOfExhibit = true;        
         }
     }
     void OnTriggerExit2D(Collider2D triggerCollider) {
         if (triggerCollider.tag == "Player") {            
             inRangeOfExhibit = false;
-            Debug.Log("[Exhibit] Player Left " + inRangeOfExhibit);
         }
         if(musInventory.ExhibitInformationPanel.activeSelf == true) {
             musInventory.DisplayExhibitInfoPanel();
@@ -70,9 +68,9 @@ public class Exhibit : MonoBehaviour {
     public void SellItem(Exhibit exhibitToSell) {
         Debug.Log("[Exhibit] SellItem - exhibitToSell posKey = " + itemDefinition.exhibitPosKey);
         musStats.ApplyWealth(itemDefinition.exhibitValueAmount);
-        musInventory.RemoveItemFromInv(exhibitToSell);
         GameObject.Find(itemDefinition.exhibitSlot).GetComponent<ExhibitSlot>().containsExhibit = false;
         itemDefinition.isDisplayed = false;
+        musInventory.RemoveItemFromInv(exhibitToSell);
         Destroy(gameObject);
     }
 }

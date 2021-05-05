@@ -6,8 +6,6 @@ public class BidManager : MonoBehaviour {
     int currentBid, currentWealth, bidRatio, exhibitBid, exhibitValue;
     bool playerIsBidHolder = false;
     Exhibit exhibitOnSale;
-    public Exhibit[] itemToSell;
-    public Transform itemPlinth;
 
     void Start() {
         currentWealth = MuseumStats.instance.GetWealth();
@@ -44,8 +42,5 @@ public class BidManager : MonoBehaviour {
     public void CalculateBidRatio() {
         
     }
-    public void SelectExhibit() {
-        int randomIndex = Mathf.RoundToInt(Random.Range(0, itemToSell.Length));
-        Instantiate(itemToSell[randomIndex], itemPlinth);
-    }
+
 }

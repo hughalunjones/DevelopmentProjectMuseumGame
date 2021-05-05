@@ -117,6 +117,10 @@ public class GameManager : Singleton<GameManager>
         LoadSave();
         LoadLevel("MainHall");
     }
+    public void NewGame() {
+        SaveLoad.FullSaveReset();
+        LoadLevel("MainHall");
+    }
     public void TogglePause() {
         UpdateGameState(currentGameState == GameState.RUNNING ? GameState.PAUSED : GameState.RUNNING);
     }   
@@ -127,10 +131,8 @@ public class GameManager : Singleton<GameManager>
         Events.OnSaveInitiated();
     }
     public void QuitGame() {
-        // Autosaving and other features here also
-        // Save();
+        Save();
         Application.Quit();
-        // For the purposes of testing
         UnityEditor.EditorApplication.isPlaying = false;
         Debug.Log("Game Quit");
     }

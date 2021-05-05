@@ -17,7 +17,6 @@ public class ExhibitSlot : MonoBehaviour
     }
     void Update() {
         if(containsExhibit == false && inRangeOfSlot == true && Input.GetKeyDown(KeyCode.F)) {
-            Debug.Log("[ExhibitSlot] Player interacted with: " + slotInRange);
             museInventory.exhibitSlot = slotInRange;
             museInventory.DisplayInventory();
             interactUI.SetActive(false);
@@ -54,7 +53,6 @@ public class ExhibitSlot : MonoBehaviour
             }            
             slotInRange = this;
             inRangeOfSlot = true;
-            Debug.Log("[ExhibitSlot] Player Detected at: " + slotInRange);
         }
     }
     void OnTriggerExit2D(Collider2D triggerCollider) {
@@ -62,7 +60,6 @@ public class ExhibitSlot : MonoBehaviour
             interactUI.SetActive(false);
             slotInRange = null;
             inRangeOfSlot = false;
-            Debug.Log("[ExhibitSlot] Player Left");
         }
         if (museInventory.inventoryDisplayIsActive) {
             museInventory.DisplayInventory();

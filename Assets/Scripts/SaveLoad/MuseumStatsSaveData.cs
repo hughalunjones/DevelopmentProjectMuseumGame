@@ -6,4 +6,6 @@ using UnityEngine;
 public class MuseumStatsSaveData {
     public int currencyData;
     public float ratingData;
+    public int staminaData;
+    public int dayData;
 }

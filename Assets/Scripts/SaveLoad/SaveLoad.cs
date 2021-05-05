@@ -30,9 +30,15 @@ public class SaveLoad : MonoBehaviour {
         return File.Exists(path);
     }
     public static void FullSaveReset() {
+        foreach(Exhibit exhibit in MuseumInventory.instance.allExhibits) {
+            exhibit.itemDefinition.isDisplayed = false;
+            exhibit.itemDefinition.exhibitSlot = "";
+        }
         string path = Application.persistentDataPath + "/saves/";
-        DirectoryInfo directory = new DirectoryInfo(path);
-        directory.Delete();
+        PlayerPrefs.DeleteAll();
+        if (Directory.Exists(path)) {
+            Directory.Delete(path, true);
+        }
         Directory.CreateDirectory(path);
     }
 }

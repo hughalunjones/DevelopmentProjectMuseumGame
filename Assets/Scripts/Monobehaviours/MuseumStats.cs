@@ -11,7 +11,7 @@ public class MuseumStats : MonoBehaviour
     public MuseumStats_SO museumDefinition;
     public MuseumInventory museumInv;
     float roundedRating;
-    int numOfDisplayedExhibits;
+    int numOfDisplayedExhibits, playerStamina;
     MuseumStatsSaveData data = new MuseumStatsSaveData();
 
     private void Awake() {
@@ -34,6 +34,9 @@ public class MuseumStats : MonoBehaviour
 
             museumDefinition.maxRating = 5.0f * museumInv.inventoryItemCap;
             museumDefinition.currentRating = 0.0f;
+
+            museumDefinition.playerStamina = 3;
+            museumDefinition.currentDay = 1;
         }
     }
     private void Update(){
@@ -61,6 +64,12 @@ public class MuseumStats : MonoBehaviour
     public void RemoveRating(float ratingAmount) {
         museumDefinition.RemoveRating(ratingAmount);
     }
+    public void ApplyStamina(int staminaAmount) {
+        museumDefinition.ApplyStamina(staminaAmount);
+    }
+    public void IncrementDay() {
+        museumDefinition.IncrementDay();
+    }
 
     // Return Stat Values
     public int GetWealth(){
@@ -74,23 +83,38 @@ public class MuseumStats : MonoBehaviour
     public float GetRatingRaw() {
         return museumDefinition.currentRating;
     }
+    public int GetStamina() {
+        return museumDefinition.playerStamina;
+    }
+    public int GetDay() {
+        return museumDefinition.currentDay;
+    }
     public void SetWealth(int newWealth) {
         museumDefinition.currentWealth = newWealth; 
     }
     public void SetRating(float newRating) {
         museumDefinition.currentRating = newRating;
     }
+    public void SetStamina(int newStamina) {
+        museumDefinition.playerStamina = newStamina;
+    }
+    public void SetDay(int newDay) {
+        museumDefinition.currentDay = newDay;
+    }
     public void SaveMuseumStats() {
         data.currencyData = instance.GetWealth();
         data.ratingData = instance.GetRatingRaw();
+        data.staminaData = instance.GetStamina();
+        data.dayData = instance.GetDay();
         SaveLoad.Save(data, "museumStats");
-        Debug.Log("[MuseumStats] Saved Rating: " + data.ratingData + " | Saved Currency: " + data.currencyData);
     }
     public void LoadMuseumStats() {
         if (SaveLoad.SaveExists("museumStats")) {;
             MuseumStatsSaveData loadData = SaveLoad.Load<MuseumStatsSaveData>("museumStats");
             SetWealth(loadData.currencyData);
             SetRating(loadData.ratingData);
+            SetStamina(loadData.staminaData);
+            SetDay(loadData.dayData);
         }
     }
     public void UpdateNumOfDisplayedExhibits() {

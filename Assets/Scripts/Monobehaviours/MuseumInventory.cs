@@ -82,58 +82,8 @@ public class MuseumInventory : MonoBehaviour {
         foreach(Exhibit loadExhibit in exhibitsToLoad) {
             StoreItem(loadExhibit);                     
         }
+        SaveInventory();
     }
-   /* public void PickUp() {
-        // Check item was stored properly.
-        if (exhibitEntry.invEntry) {
-            Debug.Log("[Museum Inventory - PickUp] Item stored correctly");
-            // Check there is space
-            if (exhibitsInInventory.Count != inventoryItemCap) {
-                addedItem = AddItemToInv(addedItem);
-                Debug.Log("[MuseumInventory - PickUp] Item added to inventory, Count: " + exhibitsInInventory.Count);
-            }
-            else if (exhibitsInInventory.Count == inventoryItemCap) {
-                // TODO: Show prompt/UI in game to show inventory is full.
-                Debug.Log("[MuseumInventory - PickUp] Inventory is full");
-            }
-        }
-    }
-    /*
-    // Add a copy of the item to the inventory and display the corresponding sprite.
-    bool AddItemToInv(bool finishedAdding) {
-        InventoryEntry newEntry = new InventoryEntry(Instantiate(exhibitEntry.invEntry), slotNum);
-        exhibitsInInventory.Add(newEntry);
-        Debug.Log("[AddItemToInv] Exhibit added: " + newEntry.invEntry);
-        newEntry.invEntry.itemDefinition.exhibitPosKey = idCount;
-        newEntry.invEntry.itemDefinition.isDisplayed = false;
-        Destroy(newEntry.invEntry.gameObject);
-        Destroy(exhibitEntry.invEntry.gameObject);
-        Debug.Log("[AddItemToInv] " + newEntry.invEntry.gameObject + "  destroyed");
-        Debug.Log("[AddItemToInv] " + exhibitEntry.invEntry.gameObject + "  destroyed");
-        FillInventoryDisplay();
-        idCount = IncreaseID(idCount);
-
-        // Reset exhibitEntry
-        //exhibitEntry.invEntry = null;
-
-        finishedAdding = true;
-        Debug.Log("[AddItemToInv] finishedAdding:" + finishedAdding);
-        foreach (InventoryEntry invEntry in exhibitsInInventory) {
-            Debug.Log("Name = " + invEntry.invEntry.itemDefinition.exhibitName);
-        }
-        return finishedAdding;
-    }*/
-   /* int IncreaseID(int currentID) {
-        int newID = 1;
-
-        for (int itemCount = 1; itemCount <= exhibitsInInventory.Count; itemCount++) {
-            if (exhibitsInInventory.Contains(exhibitEntry)) {
-                newID += 1;
-            }
-            else return newID;
-        }
-        return newID;
-    }*/
 
     // Display the inventory menu, exhibit information panel and the storage confirmation pop-up. 
     public void DisplayInventory() {
@@ -166,8 +116,6 @@ public class MuseumInventory : MonoBehaviour {
     public void FillInventoryDisplay() {
         int slotCounter = 1;
         foreach (InventoryEntry invEntry in exhibitsInInventory) {
-            // add the name of the inventory to the inventory display.
-            // if(exhibit.type == FOSSIL){ slotCounter = 30 }
             slotCounter++;
             inventoryNameSlots[slotCounter - 1].SetText(invEntry.invEntry.itemDefinition.exhibitName);
             inventoryDisplaySlots[slotCounter].sprite = invEntry.invEntry.itemDefinition.exhibitIcon;
@@ -175,6 +123,17 @@ public class MuseumInventory : MonoBehaviour {
             Debug.Log("[MuseumInventory] Listeners Removed");
             inventoryDisplaySlots[slotCounter].GetComponent<Button>().onClick.AddListener(() => PlaceExhibit(invEntry.invEntry.itemDefinition.exhibitObject, exhibitSlot.slotInRange.transform));
             Debug.Log("[FillInventoryDisplay] Listeners added, Inventory display filled, slotCounter = " + slotCounter + ", invEntry " + invEntry.invEntry.itemDefinition.exhibitName);
+        }
+    }
+    // Clear the inventory display and onClick events
+    public void ClearInventoryDisplay() {
+        int slotCounter = 1;
+        foreach(InventoryEntry ie in exhibitsInInventory) {
+            slotCounter++;
+            inventoryNameSlots[slotCounter - 1].SetText("");
+            inventoryDisplaySlots[slotCounter].sprite = null;
+            inventoryDisplaySlots[slotCounter].GetComponent<Button>().onClick.RemoveAllListeners();
+            Debug.Log("[ClearInventoryDisplay] InventoryDisplay cleared.");
         }
     }
     public void PlaceExhibit(GameObject exhibitObject, Transform slotToHold) {
@@ -215,20 +174,16 @@ public class MuseumInventory : MonoBehaviour {
         
     }
 
-    // Remove the item from your inventory when sold - currently not attached to any buttons
+    // Remove the item from your inventory when sold - buggy
     public void RemoveItemFromInv(Exhibit exhibitToRemove) {
-        int listNum = exhibitToRemove.itemDefinition.exhibitPosKey;
-        Debug.Log("[MuseumInventory] RemoveItemFromInv - listNum to remove = " + listNum);
-        exhibitsInInventory.RemoveAt(listNum);
-        inventoryDisplaySlots[listNum + 2].GetComponent<Button>().onClick.RemoveAllListeners();
-        inventoryDisplaySlots[listNum + 2].sprite = null;
-        Debug.Log("[MuseumInventory] Current Wealth: " + museStats.GetWealth());
+        // LAST METHOD!
     }
+
+    // Fill a list with all the exhibit slots in a scene so any items which were placed when saved will be re-placed
     public void FillExhibitSlotList() {
         if(GameObject.FindGameObjectsWithTag("slot") != null) {
              foreach(GameObject transformObject in GameObject.FindGameObjectsWithTag("slot")) {
                 slotsInRoom.Add(transformObject.GetComponent<Transform>());
-                Debug.Log("[MuseumInventory] slotsInRoom: " + transformObject.name);
             }
         }                   
     }
@@ -262,7 +217,6 @@ public class MuseumInventory : MonoBehaviour {
             if (ie.invEntry.itemDefinition.exhibitSlot != "" && ie.invEntry.itemDefinition.isDisplayed) {
                 exhibitSaveData.transformNameData = ie.invEntry.itemDefinition.exhibitSlot;                
             }
-            Debug.Log("[MuseumInventory - SaveInventory()] exhibitSaveData - " + exhibitSaveData.posKeyData + " isDisplayed: " + exhibitSaveData.isDisplayedData);
             exhibitSaves.Add(exhibitSaveData);
         }
         SaveLoad.Save<List<ExhibitSaveData>>(exhibitSaves, "inventoryExhibitData");
