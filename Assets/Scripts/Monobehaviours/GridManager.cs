@@ -8,16 +8,18 @@ public class GridManager : MonoBehaviour {
     public GameObject[] artefactArray;
     public GameObject artefactPrefab;
     public Camera cam;
-    int randomBg;
+    int sceneIndex;
 
     void Start() {
-        randomBg = Random.Range(1, 4);
+        sceneIndex = GameManager.Instance.GetExcavationSceneIndex();
         GenerateBackground();
         GenerateGrid();
-        PlaceArtefact();
+        int randomNum = Random.Range(1, 20);
+        if(randomNum != 1) {
+            PlaceArtefact();
+        }        
     }
     /* TODO:
-     *      - Final background and associated tiles.
      *      - The other 16 artefacts.
      *      - Fix the background positioning - currently hardcoded. 
      *
@@ -26,15 +28,15 @@ public class GridManager : MonoBehaviour {
         GameObject referenceBgDesert = (GameObject)Instantiate(Resources.Load("DesertDigSite"));
         GameObject referenceBgPermafrost = (GameObject)Instantiate(Resources.Load("PermafrostDigSite"));
         GameObject referenceBgForest = (GameObject)Instantiate(Resources.Load("ForestDigSite"));
-        if (randomBg == 1) {
+        if (sceneIndex == 1) {
             GameObject background = (GameObject)Instantiate(referenceBgDesert, transform);
             background.transform.position = new Vector3(0, 3.4f, 0);
         }
-        else if (randomBg == 2) {
+        else if (sceneIndex == 2) {
             GameObject background = (GameObject)Instantiate(referenceBgPermafrost, transform);
             background.transform.position = new Vector3(0, 3.4f, 0);
         }
-        else if (randomBg == 3) {
+        else if (sceneIndex == 3) {
             GameObject background = (GameObject)Instantiate(referenceBgForest, transform);
             background.transform.position = new Vector3(0, 3.4f, 0);
         }
@@ -43,7 +45,7 @@ public class GridManager : MonoBehaviour {
         Destroy(referenceBgForest);
     }
     void GenerateGrid() {
-        if (randomBg == 1) {
+        if (sceneIndex == 1) {
             // Load the reference tiles for the dig spots
             GameObject referenceTileOneDirt = (GameObject)Instantiate(Resources.Load("DirtTileOne"));
             GameObject referenceTileTwoDirt = (GameObject)Instantiate(Resources.Load("DirtTileTwo"));
@@ -55,7 +57,7 @@ public class GridManager : MonoBehaviour {
             Destroy(referenceTileThreeDirt);
             Destroy(referenceTileRockSand);
         }
-        if (randomBg == 2) {
+        if (sceneIndex == 2) {
             // Load the reference tiles for the dig spots
             GameObject referenceTileOneFrost = (GameObject)Instantiate(Resources.Load("FrostTileOne"));
             GameObject referenceTileTwoFrost = (GameObject)Instantiate(Resources.Load("FrostTileTwo"));
@@ -67,7 +69,7 @@ public class GridManager : MonoBehaviour {
             Destroy(referenceTileThreeFrost);
             Destroy(referenceTileRockFrost);
         }
-        if (randomBg == 3) {
+        if (sceneIndex == 3) {
             // Load the reference tiles for the dig spots
             GameObject referenceTileOneSoil = (GameObject)Instantiate(Resources.Load("SoilTileOne"));
             GameObject referenceTileTwoSoil = (GameObject)Instantiate(Resources.Load("SoilTileTwo"));
@@ -83,13 +85,13 @@ public class GridManager : MonoBehaviour {
     // Place the artefact within the confines of the grid.
     void PlaceArtefact() {
         // Random numbers between the artefact array positions.
-        if (randomBg == 1) {
-            artefactPrefab = artefactArray[5];
+        if (sceneIndex == 1) {
+            artefactPrefab = artefactArray[Random.Range(5, 12)];
         }
-        else if (randomBg == 2) {
+        else if (sceneIndex == 2) {
             artefactPrefab = artefactArray[Random.Range(0, 5)];
         }
-        else if (randomBg == 3) {
+        else if (sceneIndex == 3) {
             artefactPrefab = artefactArray[5];
         }
         Vector3 artefactPos = new Vector3(Random.Range((float)(this.transform.position.x), (float)(this.transform.position.x + 4f)), Random.Range((float)(this.transform.position.y), (float)(this.transform.position.y - 4f)), 1.8f);

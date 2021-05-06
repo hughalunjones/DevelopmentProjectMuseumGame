@@ -7,8 +7,8 @@ public enum ExhibitSizeDefinitions { SMALL, MEDIUM, LARGE };
 public enum ExhibitQualityDefinitions { ABYSMAL, POOR, AVERAGE, GOOD, SUPERB};
 
 [CreateAssetMenu(fileName = "NewExhibit", menuName = "Exhibit Object", order = 1)]
-public class Exhibit_SO : ScriptableObject
-{
+public class Exhibit_SO : ScriptableObject {
+    public int exhibitKeyID;
     public int exhibitPosKey = 0;
     public string exhibitName = "New Exhibit";
     public string exhibitDescription = "New Description";
@@ -19,7 +19,6 @@ public class Exhibit_SO : ScriptableObject
     [Range(0, 1000000)] public int exhibitValueAmount = 0;
     public Sprite exhibitIcon = null;
     public GameObject exhibitObject = null;
-    public bool isDisplayed = false;
-    public bool isInteractable = false;
-    public bool isStorable = false;
+    public string exhibitSlot = null;
+    public bool isDisplayed;
 }

@@ -5,57 +5,46 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-[System.Serializable]
+[Serializable]
 public class Exhibit : MonoBehaviour {
 
     public Exhibit_SO itemDefinition;
-    public ExhibitSlot exhibitSlot;
     public MuseumStats musStats;
     public MuseumInventory musInventory;
     public bool inRangeOfExhibit;
     public int ID { get; set; }
     Transform ExhibitInfoPanel;
 
-    public Exhibit(int id, Exhibit_SO exhibitData){
+    public Exhibit(Exhibit_SO exhibitData){
         musInventory = MuseumInventory.instance;
-        ID = id;
+        ID = exhibitData.exhibitKeyID;
         itemDefinition = exhibitData;
     }
 
     void Start(){       
         musStats = MuseumStats.instance;
         musInventory = MuseumInventory.instance;
-        itemDefinition.isDisplayed = true;
     }
     void Update() {
-        if (itemDefinition.isDisplayed) {
-            exhibitSlot = gameObject.transform.parent.GetComponent<ExhibitSlot>();
-        }
-        if (!itemDefinition.isDisplayed && inRangeOfExhibit && Input.GetKeyDown(KeyCode.E)) {
-            Debug.Log("[Exhibit] StoreItem() called from Exhibit.cs");
-            StoreItem();
-        }
-        else if (itemDefinition.isDisplayed && inRangeOfExhibit && Input.GetKeyDown(KeyCode.E)) {
+        if (itemDefinition.isDisplayed && inRangeOfExhibit && Input.GetKeyDown(KeyCode.E)) {
             ExhibitInfoPanel = musInventory.ExhibitInformationPanel.transform.Find("Panel");         
             ExhibitInfoPanel.transform.Find("imgExhibitImage").GetComponent<Image>().sprite = this.GetComponent<SpriteRenderer>().sprite;
             ExhibitInfoPanel.transform.Find("imgExhibitImage").GetComponent<Image>().preserveAspect = true;
-            ExhibitInfoPanel.transform.Find("txtExhibitName").GetComponent<TextMeshProUGUI>().SetText(this.itemDefinition.exhibitName);
-            ExhibitInfoPanel.transform.Find("txtExhibitDescription").GetComponent<TextMeshProUGUI>().SetText(this.itemDefinition.exhibitDescription);
+            ExhibitInfoPanel.transform.Find("txtExhibitName").GetComponent<TextMeshProUGUI>().SetText(itemDefinition.exhibitName);
+            ExhibitInfoPanel.transform.Find("txtExhibitDescription").GetComponent<TextMeshProUGUI>().SetText(itemDefinition.exhibitDescription);
             ExhibitInfoPanel.transform.Find("btnStore").GetComponent<Button>().onClick.AddListener(() => ReturnItemToInv());
-            ExhibitInfoPanel.transform.Find("btnSell").GetComponent<Button>().onClick.AddListener(() => SellItem(itemDefinition.exhibitPosKey));
+            //ExhibitInfoPanel.transform.Find("btnSell").GetComponent<Button>().onClick.AddListener(() => SellItem(this));
             musInventory.DisplayExhibitInfoPanel();
         }            
     }
     void OnTriggerEnter2D(Collider2D triggerCollider) {
         if (triggerCollider.tag == "Player") {
-            inRangeOfExhibit = true;
-            Debug.Log("[Exhibit] Player Detected " + inRangeOfExhibit);            
+            inRangeOfExhibit = true;        
         }
     }
     void OnTriggerExit2D(Collider2D triggerCollider) {
         if (triggerCollider.tag == "Player") {            
             inRangeOfExhibit = false;
-            Debug.Log("[Exhibit] Player Left " + inRangeOfExhibit);
         }
         if(musInventory.ExhibitInformationPanel.activeSelf == true) {
             musInventory.DisplayExhibitInfoPanel();
@@ -63,10 +52,10 @@ public class Exhibit : MonoBehaviour {
     }
     public void ReturnItemToInv() {
         itemDefinition.isDisplayed = false;
-        exhibitSlot.containsExhibit = false;
-        exhibitSlot = null;
+        GameObject.Find(itemDefinition.exhibitSlot).GetComponent<ExhibitSlot>().containsExhibit = false;
+        itemDefinition.exhibitSlot = "";
         Destroy(gameObject);
-        musStats.RemoveRating(this.itemDefinition.exhibitRatingAmount);
+        musStats.RemoveRating(itemDefinition.exhibitRatingAmount);
         Debug.Log("[Exhibit] Item returned to inventory");
     }
     public void StoreItem() {
@@ -76,11 +65,12 @@ public class Exhibit : MonoBehaviour {
         // Add item to empty object on screen.
         musStats.ApplyRating(itemDefinition.exhibitRatingAmount);
     }
-    public void SellItem(int invNum) {
+    public void SellItem(Exhibit exhibitToSell) {
+        Debug.Log("[Exhibit] SellItem - exhibitToSell posKey = " + itemDefinition.exhibitPosKey);
         musStats.ApplyWealth(itemDefinition.exhibitValueAmount);
-        musInventory.RemoveItemFromInv(invNum);
-        exhibitSlot.containsExhibit = false;
+        GameObject.Find(itemDefinition.exhibitSlot).GetComponent<ExhibitSlot>().containsExhibit = false;
         itemDefinition.isDisplayed = false;
+        musInventory.RemoveItemFromInv(exhibitToSell);
         Destroy(gameObject);
     }
 }

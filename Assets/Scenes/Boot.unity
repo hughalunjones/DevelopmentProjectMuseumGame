@@ -188,16 +188,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5115314721243356803, guid: c207144c6aef3de449c9809dd1cbe2de,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8801005696891473926, guid: c207144c6aef3de449c9809dd1cbe2de,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c207144c6aef3de449c9809dd1cbe2de, type: 3}
 --- !u!1 &1085414745
@@ -339,6 +329,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: MuseumStats
+      objectReference: {fileID: 0}
+    - target: {fileID: 7779771071527218975, guid: ec77d9ceed9843f4c8b1119f7ca0b6e8,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ec77d9ceed9843f4c8b1119f7ca0b6e8, type: 3}

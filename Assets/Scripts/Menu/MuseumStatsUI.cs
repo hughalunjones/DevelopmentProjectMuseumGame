@@ -8,15 +8,14 @@ public class MuseumStatsUI : MonoBehaviour
 {
     public MuseumStats museStats;
     public MuseumStatsUI museStatsUI;
-    public GameObject ratingText, wealthText;
-    int wealthValue;
-    float ratingValue, roundedRating;
+    public GameObject ratingText, wealthText, dayText;
     void Start() {
         museStats = MuseumStats.instance;
         museStatsUI = this;
     }
     void Update() {
         wealthText.GetComponent<TextMeshProUGUI>().SetText("Currency: " + museStats.GetWealth());
-        ratingText.GetComponent<TextMeshProUGUI>().SetText("Rating: " + museStats.GetRating());
+        ratingText.GetComponent<TextMeshProUGUI>().SetText("Rating: " + museStats.GetRoundedRating());
+        dayText.GetComponent<TextMeshProUGUI>().SetText("Day: " + museStats.GetDay());
     }
 }

@@ -8,7 +8,6 @@ public class ClickManager : MonoBehaviour
 {
     GameObject digSpot;
     Exhibit artefact;
-    MuseumInventory museumInventory;
     RaycastHit2D hit;
     int toolStrength = 3;
     int digStamina = 100;
@@ -26,11 +25,8 @@ public class ClickManager : MonoBehaviour
         private set { currentTool = value; }
     }
     public void ReturnToMuseum() {
-        GameManager.Instance.LoadLevel("MainHall");
+        GameManager.Instance.LoadLevel("Office");
         GameManager.Instance.UnloadLevel("DigSite");
-    }
-    void Start() {
-        museumInventory = MuseumInventory.instance;
     }
     void Update() {
         if (Input.GetMouseButtonDown(0)) {
@@ -39,7 +35,6 @@ public class ClickManager : MonoBehaviour
             Debug.Log("[ClickManager] Mouse Clicked at: " + mousePos3D);
             hit = Physics2D.Raycast(mousePos3D, Vector3.zero);
             if (hit.collider != null) {
-                Debug.Log("[ClickManager] Object clicked: " + hit.collider);
                 string tileTag = hit.collider.tag;
                 if(tileTag == "soil" || tileTag == "rock" || tileTag == "hardsoil") {
                     if(currentTool == SelectedTool.HAMMER && (tileTag == "soil" || tileTag == "hardsoil")) {
@@ -70,8 +65,6 @@ public class ClickManager : MonoBehaviour
                     artefact = hit.collider.gameObject.GetComponent<Exhibit>();
                     // Show pick up screen, fade bg and scale artefact up.
                     ShowArtefact(artefact);
-                    // Store the artefact in the inventory.
-                    Debug.Log("[ClickManager] Artefact Stored.");
                 }                
             }
         }

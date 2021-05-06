@@ -11,6 +11,8 @@ public class MuseumStats : MonoBehaviour
     public MuseumStats_SO museumDefinition;
     public MuseumInventory museumInv;
     float roundedRating;
+    int numOfDisplayedExhibits, playerStamina;
+    MuseumStatsSaveData data = new MuseumStatsSaveData();
 
     private void Awake() {
         if (instance == null) {
@@ -23,12 +25,18 @@ public class MuseumStats : MonoBehaviour
     void Start(){
         DontDestroyOnLoad(this);
         museumInv = MuseumInventory.instance;
+        // subscribe this class to saving and loading events.
+        Events.SaveInitiated += SaveMuseumStats;
+        Events.LoadInitiated += LoadMuseumStats;
         if (!museumDefinition.setManually){
             museumDefinition.maxWealth = 10000000;
             museumDefinition.currentWealth = 1000;
 
-            museumDefinition.maxRating = 5.0f;
+            museumDefinition.maxRating = 5.0f * museumInv.inventoryItemCap;
             museumDefinition.currentRating = 0.0f;
+
+            museumDefinition.playerStamina = 3;
+            museumDefinition.currentDay = 1;
         }
     }
     private void Update(){
@@ -42,8 +50,6 @@ public class MuseumStats : MonoBehaviour
         }else if(museumDefinition.currentWealth >= museumDefinition.maxWealth) {
             museumDefinition.currentWealth = museumDefinition.maxWealth;
         }
-        // This should be triggered by the game manager during a save point
-        // museumDefinition.saveMuseumData();
     }
     // Stat Changers
     public void ApplyWealth(int wealthAmount){
@@ -58,15 +64,30 @@ public class MuseumStats : MonoBehaviour
     public void RemoveRating(float ratingAmount) {
         museumDefinition.RemoveRating(ratingAmount);
     }
+    public void ApplyStamina(int staminaAmount) {
+        museumDefinition.ApplyStamina(staminaAmount);
+    }
+    public void IncrementDay() {
+        museumDefinition.IncrementDay();
+    }
 
     // Return Stat Values
     public int GetWealth(){
         return museumDefinition.currentWealth;
     }
-    public float GetRating(){
+    public float GetRoundedRating(){
         float averageRating = museumDefinition.currentRating / museumInv.inventoryItemCap;
         roundedRating = (float)Math.Round(averageRating * 2, MidpointRounding.AwayFromZero) / 2;
         return roundedRating;
+    }
+    public float GetRatingRaw() {
+        return museumDefinition.currentRating;
+    }
+    public int GetStamina() {
+        return museumDefinition.playerStamina;
+    }
+    public int GetDay() {
+        return museumDefinition.currentDay;
     }
     public void SetWealth(int newWealth) {
         museumDefinition.currentWealth = newWealth; 
@@ -74,12 +95,35 @@ public class MuseumStats : MonoBehaviour
     public void SetRating(float newRating) {
         museumDefinition.currentRating = newRating;
     }
-    public void SaveMuseumStats() {        
-        MuseumData data = new MuseumData();
-        data.currency = instance.GetWealth();
-        data.rating = instance.GetRating();
-        GameManager.Save(data, "stats");
-        Debug.Log("[MuseumStats] Saved Rating: " + data.rating + " | Saved Currency: " + data.currency);
+    public void SetStamina(int newStamina) {
+        museumDefinition.playerStamina = newStamina;
+    }
+    public void SetDay(int newDay) {
+        museumDefinition.currentDay = newDay;
+    }
+    public void SaveMuseumStats() {
+        data.currencyData = instance.GetWealth();
+        data.ratingData = instance.GetRatingRaw();
+        data.staminaData = instance.GetStamina();
+        data.dayData = instance.GetDay();
+        SaveLoad.Save(data, "museumStats");
+    }
+    public void LoadMuseumStats() {
+        if (SaveLoad.SaveExists("museumStats")) {;
+            MuseumStatsSaveData loadData = SaveLoad.Load<MuseumStatsSaveData>("museumStats");
+            SetWealth(loadData.currencyData);
+            SetRating(loadData.ratingData);
+            SetStamina(loadData.staminaData);
+            SetDay(loadData.dayData);
+        }
+    }
+    public void UpdateNumOfDisplayedExhibits() {
+        numOfDisplayedExhibits = 0;
+        foreach(InventoryEntry exhibit in museumInv.exhibitsInInventory) {
+            if(exhibit.invEntry.itemDefinition.isDisplayed == true) {
+                numOfDisplayedExhibits += 1;
+            }
+        }
     }
 }
 

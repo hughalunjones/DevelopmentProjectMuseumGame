@@ -20,9 +20,10 @@ public class PauseMenu : MonoBehaviour
         Events.OnSaveInitiated();
     }
     void HandleLoadClicked() {
-        //GameManager.Instance.LoadGame();
+        Events.OnLoadInitiated();
     }
     void HandleQuitClicked() {
+        Events.OnSaveInitiated();
         GameManager.Instance.QuitGame();
     }
 }
