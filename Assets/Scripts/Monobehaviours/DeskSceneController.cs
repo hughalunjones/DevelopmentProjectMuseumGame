@@ -21,62 +21,28 @@ public class DeskSceneController : MonoBehaviour {
         ratingText.GetComponent<TextMeshProUGUI>().SetText(museStats.GetRoundedRating().ToString());
         exhibitsOnDisplayText.GetComponent<TextMeshProUGUI>().SetText(GetExhibitsOnDisplay().ToString());
         if (inRange && Input.GetKeyDown(KeyCode.F)) {
-            DisplayOfficeUI();
+            DisplayOfficeUI(officeUI);
         }
     }
-    #region UI Display Methods
-    public void DisplayOfficeUI() {
-        if(officeUI.activeSelf == true) {
-            officeUI.SetActive(false);
+    public void DisplayOfficeUI(GameObject uiToDisplay) {
+        if(uiToDisplay.activeSelf == true) {
+            uiToDisplay.SetActive(false);
         }
         else {
-            officeUI.SetActive(true);
+            uiToDisplay.SetActive(true);
         }
     }
-    public void DisplayConfirmation() {
-        if (confirmationUI.activeSelf == true) {
-            confirmationUI.SetActive(false);
-        }
-        else {
-            confirmationUI.SetActive(true);
-        }
-    }
-    public void DisplayOOSUI() {
-        if (oosUI.activeSelf == true) {
-            oosUI.SetActive(false);
-        }
-        else {
-            oosUI.SetActive(true);
-        }
-    }
-    public void DisplayOOCUI() {
-        if (oocUI.activeSelf == true) {
-            oocUI.SetActive(false);
-        }
-        else {
-            oocUI.SetActive(true);
-        }
-    }
-    public void DisplayNewDayUI() {
-        if (newDayUI.activeSelf == true) {
-            newDayUI.SetActive(false);
-        }
-        else {
-            newDayUI.SetActive(true);
-        }
-    }
-    #endregion
     public void ChooseDesert() {
         GameManager.Instance.SetExcavationIndex(1);
-        DisplayConfirmation();
+        DisplayOfficeUI(confirmationUI);
     }
     public void ChooseMountains() {
         GameManager.Instance.SetExcavationIndex(2);
-        DisplayConfirmation();
+        DisplayOfficeUI(confirmationUI);
     }
     public void ChooseForest() {
         GameManager.Instance.SetExcavationIndex(3);
-        DisplayConfirmation();
+        DisplayOfficeUI(confirmationUI);
     }
     public void ConfirmLoad() {      
         if(stamina != 0 && museStats.GetWealth() >= 250) {
@@ -84,14 +50,15 @@ public class DeskSceneController : MonoBehaviour {
             GameManager.Instance.UnloadLevel("Office");
             UpdateStats();
         }else if(stamina == 0){
-            DisplayOOSUI();
-        }else if(museStats.GetWealth() < 250) {
-            DisplayOOCUI();
+            DisplayOfficeUI(oosUI);
+        }
+        else if(museStats.GetWealth() < 250) {
+            DisplayOfficeUI(oocUI);
         }
         
     }
     public void StartNewDay() {
-        DisplayNewDayUI();
+        DisplayOfficeUI(newDayUI);
         MuseumStats.instance.SetStamina(MuseumStats.instance.museumDefinition.playerMaxStamina);
         MuseumStats.instance.IncrementDay();
         museStats.ApplyWealth(GetDonations());

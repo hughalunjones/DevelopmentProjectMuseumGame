@@ -14,10 +14,12 @@ public class GridManager : MonoBehaviour {
         sceneIndex = GameManager.Instance.GetExcavationSceneIndex();
         GenerateBackground();
         GenerateGrid();
-        PlaceArtefact();
+        int randomNum = Random.Range(1, 20);
+        if(randomNum != 1) {
+            PlaceArtefact();
+        }        
     }
     /* TODO:
-     *      - Final background and associated tiles.
      *      - The other 16 artefacts.
      *      - Fix the background positioning - currently hardcoded. 
      *

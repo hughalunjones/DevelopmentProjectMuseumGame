@@ -14,8 +14,14 @@ public class UIManager : Singleton<UIManager>
     public Events.EventFadeComplete OnMainMenuFadeComplete;
 
     public void Start() {
+        Button continueButton = GameObject.FindGameObjectWithTag("start").GetComponent<Button>();
+        Button newButton = GameObject.FindGameObjectWithTag("new").GetComponent<Button>();
         if (!SaveLoad.SaveExists("inventoryExhibitData")) {
             GameObject.FindGameObjectWithTag("start").GetComponent<Button>().interactable = false;
+        }else {
+            Vector3 tempPos = continueButton.transform.position;
+            continueButton.transform.position = newButton.transform.position;
+            newButton.transform.position = tempPos;
         }
         mainMenu.OnMainMenuFadeComplete.AddListener(HandleOnMainMenuFadeComplete);
         GameManager.Instance.OnGameStateChanged.AddListener(HandleGameStateChanged);

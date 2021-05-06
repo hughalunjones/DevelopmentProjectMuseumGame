@@ -8,7 +8,6 @@ public class ClickManager : MonoBehaviour
 {
     GameObject digSpot;
     Exhibit artefact;
-    MuseumInventory museumInventory;
     RaycastHit2D hit;
     int toolStrength = 3;
     int digStamina = 100;
@@ -28,9 +27,6 @@ public class ClickManager : MonoBehaviour
     public void ReturnToMuseum() {
         GameManager.Instance.LoadLevel("Office");
         GameManager.Instance.UnloadLevel("DigSite");
-    }
-    void Start() {
-        museumInventory = MuseumInventory.instance;
     }
     void Update() {
         if (Input.GetMouseButtonDown(0)) {
