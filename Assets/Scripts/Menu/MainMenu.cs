@@ -2,12 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MainMenu : MonoBehaviour
-{
-    // Track Animations component
-    // Track AnimationClips - fade in/out
-    // Function that can recieve animation events
-    // Functions to play animations
+public class MainMenu : MonoBehaviour {
 
     [SerializeField] private Animation mainMenuAnimator;
     [SerializeField] private AnimationClip fadeIn, fadeOut;
@@ -41,5 +36,4 @@ public class MainMenu : MonoBehaviour
         mainMenuAnimator.clip = fadeIn;
         mainMenuAnimator.Play();
     }
-
 }

@@ -7,6 +7,9 @@ using UnityEngine;
 public class MuseumStats_SO : ScriptableObject
 {
     public bool setManually = false;
+    public int currentDay = 0;
+    public int playerMaxStamina = 3;
+    public int playerStamina = 0;
     public int maxWealth = 0;
     public int currentWealth = 0;
     public float maxRating = 0f;
@@ -29,6 +32,17 @@ public class MuseumStats_SO : ScriptableObject
             currentRating += ratingAmount;
         }
     }
+    public void ApplyStamina(int staminaAmount) {
+        if ((playerStamina + staminaAmount) > playerMaxStamina) {
+            playerStamina = playerMaxStamina;
+        }
+        else {
+            playerStamina += staminaAmount;
+        }
+    }
+    public void IncrementDay() {
+        currentDay += 1;
+    }
     public void RemoveRating(float ratingAmount) {
         if ((currentRating - ratingAmount) <= 0) {
             currentRating = 0;
@@ -45,9 +59,4 @@ public class MuseumStats_SO : ScriptableObject
             currentWealth -= wealthAmount;
         }
     }
-}
-[System.Serializable]
-class MuseumData {
-    public float rating;
-    public int currency;
 }
