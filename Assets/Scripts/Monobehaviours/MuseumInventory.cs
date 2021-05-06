@@ -123,9 +123,7 @@ public class MuseumInventory : MonoBehaviour {
             inventoryNameSlots[slotCounter - 1].SetText(invEntry.invEntry.itemDefinition.exhibitName);
             inventoryDisplaySlots[slotCounter].sprite = invEntry.invEntry.itemDefinition.exhibitIcon;
             inventoryDisplaySlots[slotCounter].GetComponent<Button>().onClick.RemoveAllListeners();
-            Debug.Log("[MuseumInventory] Listeners Removed");
             inventoryDisplaySlots[slotCounter].GetComponent<Button>().onClick.AddListener(() => PlaceExhibit(invEntry.invEntry.itemDefinition.exhibitObject, exhibitSlot.slotInRange.transform));
-            Debug.Log("[FillInventoryDisplay] Listeners added, Inventory display filled, slotCounter = " + slotCounter + ", invEntry " + invEntry.invEntry.itemDefinition.exhibitName);
         }
     }
     // Clear the inventory display and onClick events
@@ -136,7 +134,6 @@ public class MuseumInventory : MonoBehaviour {
             inventoryNameSlots[slotCounter - 1].SetText("");
             inventoryDisplaySlots[slotCounter].sprite = null;
             inventoryDisplaySlots[slotCounter].GetComponent<Button>().onClick.RemoveAllListeners();
-            Debug.Log("[ClearInventoryDisplay] InventoryDisplay cleared.");
         }
     }
 
@@ -179,11 +176,6 @@ public class MuseumInventory : MonoBehaviour {
         
     }
 
-    // Remove the item from your inventory when sold - buggy
-    public void RemoveItemFromInv(Exhibit exhibitToRemove) {
-        // LAST METHOD!
-    }
-
     // Fill a list with all the exhibit slots in a scene so any items which were placed when saved will be re-placed
     public void FillExhibitSlotList() {
         if(GameObject.FindGameObjectsWithTag("slot") != null) {
@@ -194,7 +186,6 @@ public class MuseumInventory : MonoBehaviour {
     }
     public void ClearExhibitSlotList() {
         slotsInRoom.Clear();
-        Debug.Log("[MuseumInventory] Slot list cleared");
     }
 
     // If an item was placed when the player last saved and quit or unloaded the scene, re-place them.
@@ -229,7 +220,6 @@ public class MuseumInventory : MonoBehaviour {
     void LoadInventory() {
         // Clear the inventory to stop duplication of the inventory
         exhibitsInInventory.Clear();
-        Debug.Log("[MuseumInventory] Inventory Cleared");
         if (SaveLoad.SaveExists("inventoryExhibitData")) {
            StoreItemsFromLoad(SaveLoad.Load<List<ExhibitSaveData>>("inventoryExhibitData"));
             if(slotsInRoom != null) {

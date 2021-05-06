@@ -94,7 +94,6 @@ public class GridManager : MonoBehaviour {
         // Random rotation
         GameObject artefact = (GameObject)Instantiate(artefactPrefab, transform.position, Quaternion.Euler(0, 0, Random.Range(0, 360)));        
         artefact.transform.position = artefactPos;
-        Debug.Log("[GridManager] Artefact placed in grid");
         artefact.transform.SetParent(transform);
     }
     // Random grid generation extracted as its own method due to multiple usage.

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: RustedSword
   m_EditorClassIdentifier: 
   exhibitKeyID: 101011
-  exhibitPosKey: 0
+  exhibitPosKey: 5
   exhibitName: Rusted Viking Sword
   exhibitDescription: The Viking Age sword or Carolingian sword is the type of sword
     prevalent in Western and Northern Europe during the Early Middle Ages. The sword
@@ -21,12 +21,12 @@ MonoBehaviour:
     "Viking sword", this type of sword was produced in the Frankish Empire during
     the Carolingian era.
   exhibitType: 3
-  exhibitSize: 0
+  exhibitSize: 1
   exhibitQuality: 2
   exhibitRatingAmount: 1.26
   exhibitValueAmount: 1500
   exhibitIcon: {fileID: 21300000, guid: 912358fa2eecb944084ad320714270ee, type: 3}
   exhibitObject: {fileID: 2711867071571468973, guid: 9f6b80c16bdb66a4b85c38a8e56cab18,
     type: 3}
-  exhibitSlot: 
-  isDisplayed: 0
+  exhibitSlot: slotSmallArtefactFour
+  isDisplayed: 1
