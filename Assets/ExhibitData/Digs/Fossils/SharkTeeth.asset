@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ff583f062ffbf244985485bd800c07b, type: 3}
+  m_Name: SharkTeeth
+  m_EditorClassIdentifier: 
+  exhibitKeyID: 103006
+  exhibitPosKey: 0
+  exhibitName: Fossilised Shark Teeth
+  exhibitDescription: In some formations, shark's teeth are a common fossil. These
+    fossils can be analyzed for information on shark evolution and biology; they
+    are often the only part of the shark to be fossilized.
+  exhibitType: 1
+  exhibitSize: 0
+  exhibitQuality: 3
+  exhibitRatingAmount: 1
+  exhibitValueAmount: 100
+  exhibitIcon: {fileID: 21300000, guid: 59ea4bfae6eb0774ab63fbacb59c9af4, type: 3}
+  exhibitObject: {fileID: 4185203008272284311, guid: acf43b7067b222e4f88e65eb41ba92e1,
+    type: 3}
+  exhibitSlot: 
+  isDisplayed: 0

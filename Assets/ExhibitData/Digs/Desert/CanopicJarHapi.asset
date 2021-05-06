@@ -15,7 +15,11 @@ MonoBehaviour:
   exhibitKeyID: 101005
   exhibitPosKey: 0
   exhibitName: Hapi Canopic Jar
-  exhibitDescription: New Description
+  exhibitDescription: During the process of mummification the four organs of the
+    liver, lungs, stomach and intestines were placed in special containers called
+    canopic jars. The canopic jars were identified and protected by four different
+    gods who were the sons of Horus.Hapi was depicted as a mummified man with the
+    head of a baboon and protected the lungs that were contained in a Canopic jar.
   exhibitType: 3
   exhibitSize: 1
   exhibitQuality: 3
@@ -26,5 +30,3 @@ MonoBehaviour:
     type: 3}
   exhibitSlot: slotSmallArtefactTwo
   isDisplayed: 0
-  isInteractable: 0
-  isStorable: 0

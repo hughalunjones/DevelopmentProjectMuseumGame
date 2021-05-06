@@ -71,7 +71,7 @@ public class MuseumStats : MonoBehaviour
         museumDefinition.IncrementDay();
     }
 
-    // Return Stat Values
+    // Getter methods
     public int GetWealth(){
         return museumDefinition.currentWealth;
     }
@@ -89,6 +89,8 @@ public class MuseumStats : MonoBehaviour
     public int GetDay() {
         return museumDefinition.currentDay;
     }
+
+    // Setter methods
     public void SetWealth(int newWealth) {
         museumDefinition.currentWealth = newWealth; 
     }
@@ -101,6 +103,8 @@ public class MuseumStats : MonoBehaviour
     public void SetDay(int newDay) {
         museumDefinition.currentDay = newDay;
     }
+
+    // Save and Load the Stats
     public void SaveMuseumStats() {
         data.currencyData = instance.GetWealth();
         data.ratingData = instance.GetRatingRaw();
@@ -115,14 +119,6 @@ public class MuseumStats : MonoBehaviour
             SetRating(loadData.ratingData);
             SetStamina(loadData.staminaData);
             SetDay(loadData.dayData);
-        }
-    }
-    public void UpdateNumOfDisplayedExhibits() {
-        numOfDisplayedExhibits = 0;
-        foreach(InventoryEntry exhibit in museumInv.exhibitsInInventory) {
-            if(exhibit.invEntry.itemDefinition.isDisplayed == true) {
-                numOfDisplayedExhibits += 1;
-            }
         }
     }
 }

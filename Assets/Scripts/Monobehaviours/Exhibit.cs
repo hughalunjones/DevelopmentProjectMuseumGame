@@ -33,7 +33,6 @@ public class Exhibit : MonoBehaviour {
             ExhibitInfoPanel.transform.Find("txtExhibitName").GetComponent<TextMeshProUGUI>().SetText(itemDefinition.exhibitName);
             ExhibitInfoPanel.transform.Find("txtExhibitDescription").GetComponent<TextMeshProUGUI>().SetText(itemDefinition.exhibitDescription);
             ExhibitInfoPanel.transform.Find("btnStore").GetComponent<Button>().onClick.AddListener(() => ReturnItemToInv());
-            //ExhibitInfoPanel.transform.Find("btnSell").GetComponent<Button>().onClick.AddListener(() => SellItem(this));
             musInventory.DisplayExhibitInfoPanel();
         }            
     }
@@ -56,21 +55,8 @@ public class Exhibit : MonoBehaviour {
         itemDefinition.exhibitSlot = "";
         Destroy(gameObject);
         musStats.RemoveRating(itemDefinition.exhibitRatingAmount);
-        Debug.Log("[Exhibit] Item returned to inventory");
     }
     public void StoreItem() {
         musInventory.StoreItem(this);
-    }
-    public void DisplayItem(){
-        // Add item to empty object on screen.
-        musStats.ApplyRating(itemDefinition.exhibitRatingAmount);
-    }
-    public void SellItem(Exhibit exhibitToSell) {
-        Debug.Log("[Exhibit] SellItem - exhibitToSell posKey = " + itemDefinition.exhibitPosKey);
-        musStats.ApplyWealth(itemDefinition.exhibitValueAmount);
-        GameObject.Find(itemDefinition.exhibitSlot).GetComponent<ExhibitSlot>().containsExhibit = false;
-        itemDefinition.isDisplayed = false;
-        musInventory.RemoveItemFromInv(exhibitToSell);
-        Destroy(gameObject);
     }
 }

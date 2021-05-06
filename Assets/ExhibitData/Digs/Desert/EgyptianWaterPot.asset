@@ -13,9 +13,14 @@ MonoBehaviour:
   m_Name: EgyptianWaterPot
   m_EditorClassIdentifier: 
   exhibitKeyID: 101009
-  exhibitPosKey: 0
+  exhibitPosKey: 1
   exhibitName: Egyptian Water Pot
-  exhibitDescription: New Description
+  exhibitDescription: Ancient Egyptian pottery served as household wares for the
+    storage, preparation, transport, and consumption of food, drink, and raw materials.
+    Such items include beer and wine mugs and water jugs, but also bread molds, fire
+    pits, lamps, and stands for holding round vessels, which were all commonly used
+    in the Egyptian household. Other types of pottery served ritual purposes. Ceramics
+    are often found as grave goods.
   exhibitType: 3
   exhibitSize: 1
   exhibitQuality: 2
@@ -25,4 +30,4 @@ MonoBehaviour:
   exhibitObject: {fileID: 6399002543511430289, guid: c8a2d9f505e34c24fb7cd77d974106f1,
     type: 3}
   exhibitSlot: slotSmallArtefactOne
-  isDisplayed: 0
+  isDisplayed: 1

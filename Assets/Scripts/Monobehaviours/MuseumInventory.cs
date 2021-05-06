@@ -18,6 +18,8 @@ public class MuseumInventory : MonoBehaviour {
     public List<Transform> slotsInRoom = new List<Transform>();
     public List<InventoryEntry> exhibitsInInventory { get; set; } = new List<InventoryEntry>();
     public bool inventoryDisplayIsActive = false;
+
+    // Inventory enforced singleton pattern
     private void Awake() {
         if (instance == null) {
             instance = this;
@@ -45,8 +47,9 @@ public class MuseumInventory : MonoBehaviour {
             exhibitsInInventory.Clear();
             Debug.Log("ClearInventoryDisplay() called");
         }
-    }
-    // TODO: Complete functions    
+    }  
+
+    // Stores an item in the inventory
     public void StoreItem(Exhibit exhibitToStore) {
         if (exhibitsInInventory.Count != inventoryItemCap) {
             InventoryEntry exhibitEntry = new InventoryEntry(exhibitToStore, slotNum);
@@ -60,11 +63,11 @@ public class MuseumInventory : MonoBehaviour {
             Destroy(exhibitEntry.invEntry.gameObject);
             FillInventoryDisplay();
         } else if (exhibitsInInventory.Count == inventoryItemCap) {
-            // TODO: Show prompt/UI in game to show inventory is full.
             Debug.Log("[MuseumInventory - PickUp] Inventory is full");
         }
-        // PickUp();
     }
+
+    // The method used to store items from a save file, each item must pass through StoreItem() to ensure the UI is correctly set
     public void StoreItemsFromLoad(List<ExhibitSaveData> exhibitSaves) {
         List<Exhibit> exhibitsToLoad = new List<Exhibit>();
         foreach(ExhibitSaveData eSD in exhibitSaves) {
@@ -136,6 +139,8 @@ public class MuseumInventory : MonoBehaviour {
             Debug.Log("[ClearInventoryDisplay] InventoryDisplay cleared.");
         }
     }
+
+    // Places an item in the museum, if the player is at an empty slot which meets the correct criteria for placement
     public void PlaceExhibit(GameObject exhibitObject, Transform slotToHold) {
         try {
             Exhibit exhibitToPlace = exhibitObject.GetComponent<Exhibit>();

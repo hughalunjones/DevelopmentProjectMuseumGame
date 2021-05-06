@@ -15,7 +15,11 @@ MonoBehaviour:
   exhibitKeyID: 101012
   exhibitPosKey: 0
   exhibitName: Thor's Hammer Amulet
-  exhibitDescription: New Description
+  exhibitDescription: "Mj\xF6lnir  is the hammer of the god Thor in Norse mythology,
+    used both as a devastating weapon and as a divine instrument to provide blessings. 
+    The hammer was commonly worn as a pendant during the Viking Age in the Scandinavian
+    cultural sphere, and Thor and his hammer occur depicted on a variety of objects
+    from the archaeological record."
   exhibitType: 3
   exhibitSize: 0
   exhibitQuality: 2
@@ -24,7 +28,5 @@ MonoBehaviour:
   exhibitIcon: {fileID: 21300000, guid: 912358fa2eecb944084ad320714270ee, type: 3}
   exhibitObject: {fileID: 4314584009866653408, guid: 1241ada97e1b497499f8772540d6ab70,
     type: 3}
-  exhibitSlot: {fileID: 0}
+  exhibitSlot: 
   isDisplayed: 0
-  isInteractable: 0
-  isStorable: 0

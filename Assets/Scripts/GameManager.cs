@@ -85,8 +85,6 @@ public class GameManager : Singleton<GameManager>
         string currentLevel = SceneManager.GetActiveScene().name;
         return currentLevel;
     }
-
-    // TODO: SET LOADED SCENE AS ACTIVE
     public void LoadLevel(string levelName) {        
         AsyncOperation ao = SceneManager.LoadSceneAsync(levelName, LoadSceneMode.Additive);
         if (ao == null) {
@@ -121,6 +119,8 @@ public class GameManager : Singleton<GameManager>
         SaveLoad.FullSaveReset();
         LoadLevel("MainHall");
     }
+    
+    // Toggle pause menu and stops game time
     public void TogglePause() {
         UpdateGameState(currentGameState == GameState.RUNNING ? GameState.PAUSED : GameState.RUNNING);
     }   
@@ -136,6 +136,8 @@ public class GameManager : Singleton<GameManager>
         UnityEditor.EditorApplication.isPlaying = false;
         Debug.Log("Game Quit");
     }
+
+    // Utilised to chose which excavation scene is loaded.
     public void SetExcavationIndex(int index) {
         excavationSceneIndex = index;
     }

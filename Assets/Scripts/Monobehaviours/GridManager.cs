@@ -19,11 +19,7 @@ public class GridManager : MonoBehaviour {
             PlaceArtefact();
         }        
     }
-    /* TODO:
-     *      - The other 16 artefacts.
-     *      - Fix the background positioning - currently hardcoded. 
-     *
-     */
+
     void GenerateBackground() {
         GameObject referenceBgDesert = (GameObject)Instantiate(Resources.Load("DesertDigSite"));
         GameObject referenceBgPermafrost = (GameObject)Instantiate(Resources.Load("PermafrostDigSite"));
@@ -92,7 +88,7 @@ public class GridManager : MonoBehaviour {
             artefactPrefab = artefactArray[Random.Range(0, 5)];
         }
         else if (sceneIndex == 3) {
-            artefactPrefab = artefactArray[5];
+            artefactPrefab = artefactArray[Random.Range(12, 14)];
         }
         Vector3 artefactPos = new Vector3(Random.Range((float)(this.transform.position.x), (float)(this.transform.position.x + 4f)), Random.Range((float)(this.transform.position.y), (float)(this.transform.position.y - 4f)), 1.8f);
         // Random rotation

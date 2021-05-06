@@ -151,14 +151,21 @@ MonoBehaviour:
   allExhibits:
   - {fileID: 8553500537473445863, guid: 2e00e2efb5a0f03409380ed8bf9fe7af, type: 3}
   - {fileID: 8546975359780328993, guid: f92b8892efb0e08459267668e3b9974c, type: 3}
-  - {fileID: 7092729465469800368, guid: 1d42a793215bc704292ee2086ad85fde, type: 3}
-  - {fileID: 8504409796500948659, guid: 9f6b80c16bdb66a4b85c38a8e56cab18, type: 3}
   - {fileID: 3482518263349977333, guid: b0078204b532e9248a2875fe17897a8e, type: 3}
   - {fileID: 343577356553883672, guid: d8502ee55b275a74e8105a21b8a409f0, type: 3}
   - {fileID: 4990283323499186155, guid: 423367642bf18f245aa0239bfa72e411, type: 3}
   - {fileID: 390044242365707424, guid: 02071b9b0615eb648a87245d4249a0cb, type: 3}
-  - {fileID: 4207070892891237127, guid: 073f9360fd041fb4cbad091bd195fff2, type: 3}
   - {fileID: 277684170, guid: c8a2d9f505e34c24fb7cd77d974106f1, type: 3}
+  - {fileID: 7257144001963784194, guid: 75606974e563b2e4eaa6a4038c3a9baa, type: 3}
+  - {fileID: 643519964940849084, guid: 6e4010fb0826ae3479962f7bf04cb43d, type: 3}
+  - {fileID: 5720271941672177354, guid: a3a99ca78d51bd14a94a1b7c5b2c7fca, type: 3}
+  - {fileID: 440274697614621503, guid: ac356e7699f2420468c4e494e275ce82, type: 3}
+  - {fileID: 7563311023921432124, guid: 8f7c32b3f4b02d746aa5f577a7887506, type: 3}
+  - {fileID: 3462272364020270464, guid: acf43b7067b222e4f88e65eb41ba92e1, type: 3}
+  - {fileID: 4901410791655806239, guid: 2fd1ff39d5868464eac17b74d91810f5, type: 3}
+  - {fileID: 7092729465469800368, guid: 1d42a793215bc704292ee2086ad85fde, type: 3}
+  - {fileID: 8504409796500948659, guid: 9f6b80c16bdb66a4b85c38a8e56cab18, type: 3}
+  - {fileID: 4207070892891237127, guid: 073f9360fd041fb4cbad091bd195fff2, type: 3}
   - {fileID: 8013429636331898878, guid: 8cd40aa9041e1514d8574c7bddcb56e4, type: 3}
   - {fileID: 4569086476866561781, guid: 1241ada97e1b497499f8772540d6ab70, type: 3}
   slotsInRoom: []
@@ -190,7 +197,7 @@ RectTransform:
   m_GameObject: {fileID: 1350598373620799228}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1.3, z: 1}
+  m_LocalScale: {x: 1, y: 1.45, z: 1}
   m_Children: []
   m_Father: {fileID: 5987648222167173933}
   m_RootOrder: 1
@@ -255,8 +262,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 3.25
-  m_fontSizeBase: 3.25
+  m_fontSize: 3
+  m_fontSizeBase: 3
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18

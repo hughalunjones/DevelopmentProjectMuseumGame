@@ -15,7 +15,11 @@ MonoBehaviour:
   exhibitKeyID: 101002
   exhibitPosKey: 0
   exhibitName: Ankh Amulet
-  exhibitDescription: New Description
+  exhibitDescription: 'The ankh or key of life is an ancient Egyptian hieroglyphic
+    symbol that was most commonly used in writing and in Egyptian art to represent
+    the word for "life". The ankh was one of the most common decorative motifs in
+    ancient Egypt and was also used decoratively by neighbouring cultures. The origins
+    of the symbol are unknown. '
   exhibitType: 3
   exhibitSize: 0
   exhibitQuality: 2
@@ -26,5 +30,3 @@ MonoBehaviour:
     type: 3}
   exhibitSlot: slotSmallArtefactOne
   isDisplayed: 0
-  isInteractable: 0
-  isStorable: 0

@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ff583f062ffbf244985485bd800c07b, type: 3}
+  m_Name: Coral
+  m_EditorClassIdentifier: 
+  exhibitKeyID: 103004
+  exhibitPosKey: 0
+  exhibitName: Fossilised Coral
+  exhibitDescription: 'The oldest known corals lived during the Cambrian, more than
+    500 million years ago, and are still found living today. Some, like octocorals,
+    are soft bodied and rarely preserved as fossils, but others secrete a hard calcarous
+    skeleton and are thus important rock-forming organisms. '
+  exhibitType: 1
+  exhibitSize: 1
+  exhibitQuality: 2
+  exhibitRatingAmount: 1.5
+  exhibitValueAmount: 250
+  exhibitIcon: {fileID: 21300000, guid: 59ea4bfae6eb0774ab63fbacb59c9af4, type: 3}
+  exhibitObject: {fileID: 2132070975208267563, guid: ac356e7699f2420468c4e494e275ce82,
+    type: 3}
+  exhibitSlot: 
+  isDisplayed: 0

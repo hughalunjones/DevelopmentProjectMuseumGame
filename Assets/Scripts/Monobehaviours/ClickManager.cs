@@ -24,15 +24,18 @@ public class ClickManager : MonoBehaviour
         get { return currentTool; }
         private set { currentTool = value; }
     }
+
+    // Returns the player to the office scene
     public void ReturnToMuseum() {
         GameManager.Instance.LoadLevel("Office");
         GameManager.Instance.UnloadLevel("DigSite");
     }
+
+    // In this update method there is a constant check for what the mouse is clicking on, is it a tile or an artefact
     void Update() {
         if (Input.GetMouseButtonDown(0)) {
             Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             Vector2 mousePos3D = new Vector3(mousePos.x, mousePos.y, mousePos.z);
-            Debug.Log("[ClickManager] Mouse Clicked at: " + mousePos3D);
             hit = Physics2D.Raycast(mousePos3D, Vector3.zero);
             if (hit.collider != null) {
                 string tileTag = hit.collider.tag;
@@ -63,24 +66,24 @@ public class ClickManager : MonoBehaviour
                 }
                 if(hit.collider.tag == "artefact") {
                     artefact = hit.collider.gameObject.GetComponent<Exhibit>();
-                    // Show pick up screen, fade bg and scale artefact up.
                     ShowArtefact(artefact);
                 }                
             }
         }
     }
+
+    // The three methods below are assigned to the buttons in the UI
     public void SelectHammer() {
         UpdateToolSelection(currentTool = SelectedTool.HAMMER);
-        Debug.Log("[ClickManager] Current tool:" + currentTool + " - " + toolStrength);
     }
     public void SelectPickAxe() {
         UpdateToolSelection(currentTool = SelectedTool.PICKAXE);
-        Debug.Log("[ClickManager] Current tool:" + currentTool + " - " + toolStrength);
     }
     public void SelectTrowel() {
         UpdateToolSelection(currentTool = SelectedTool.TROWEL);
-        Debug.Log("[ClickManager] Current tool:" + currentTool + " - " + toolStrength);
     }
+
+    // Selects the ammount of damage a click does to a tile
     void UpdateToolSelection(SelectedTool tool) {
         currentTool = tool;
         switch (currentTool) {
@@ -100,6 +103,8 @@ public class ClickManager : MonoBehaviour
             break;
         }
     }
+
+    // This method displays the "dug up" artefact to the player on the UI overlay
     void ShowArtefact(Exhibit artefact) {
         if(artefact.GetComponent<SpriteRenderer>() != null) {
             canvas.gameObject.SetActive(true);
@@ -107,14 +112,14 @@ public class ClickManager : MonoBehaviour
             artefactDisplay.GetComponent<Image>().preserveAspect = true;
             artefactDisplay.GetComponent<Image>().sprite = artefact.GetComponent<SpriteRenderer>().sprite;
             artefactName.GetComponent<TextMeshProUGUI>().text = artefact.itemDefinition.exhibitName;
-            artefactDescription.GetComponent<TextMeshProUGUI>().text = artefact.itemDefinition.exhibitDescription;
             UpdateToolSelection(currentTool = SelectedTool.NONE);
-            // Destroy(artefact);
         }
         else {
             Debug.LogError("[ClickManager] SpriteRenderer is null");
         }
     }
+
+    // Store the exhibit in the inventory
     void StoreArtefact(Exhibit artefact) {
         artefact.StoreItem();
         canvas.gameObject.SetActive(false);

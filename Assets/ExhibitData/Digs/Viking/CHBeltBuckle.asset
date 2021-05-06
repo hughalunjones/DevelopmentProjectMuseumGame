@@ -15,7 +15,10 @@ MonoBehaviour:
   exhibitKeyID: 101008
   exhibitPosKey: 4
   exhibitName: Cuerdale Hoard Belt Buckle
-  exhibitDescription: New Description
+  exhibitDescription: The Cuerdale Hoard is a hoard of more than 8,600 items, including
+    silver coins, English and Carolingian jewellery, hacksilver and ingots. It was
+    discovered on 15 May 1840 on the southern bank of a bend of the River Ribble,
+    in an area called Cuerdale near Preston, Lancashire, England.
   exhibitType: 3
   exhibitSize: 0
   exhibitQuality: 2
@@ -24,7 +27,5 @@ MonoBehaviour:
   exhibitIcon: {fileID: 21300000, guid: 912358fa2eecb944084ad320714270ee, type: 3}
   exhibitObject: {fileID: 7465303317724481761, guid: 073f9360fd041fb4cbad091bd195fff2,
     type: 3}
-  exhibitSlot: {fileID: 0}
+  exhibitSlot: 
   isDisplayed: 0
-  isInteractable: 0
-  isStorable: 0

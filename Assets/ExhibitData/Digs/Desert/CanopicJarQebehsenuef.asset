@@ -15,7 +15,12 @@ MonoBehaviour:
   exhibitKeyID: 101007
   exhibitPosKey: 2
   exhibitName: Qebehsenuef Canopic Jar
-  exhibitDescription: New Description
+  exhibitDescription: During the process of mummification the four organs of the
+    liver, lungs, stomach and intestines were placed in special containers called
+    canopic jars. The canopic jars were identified and protected by four different
+    gods who were the sons of Horus.Qebehsenuef was depicted as a mummified man with
+    the head of a hawk who protected the intestines that were contained in a Canopic
+    jar.
   exhibitType: 3
   exhibitSize: 1
   exhibitQuality: 3
@@ -26,5 +31,3 @@ MonoBehaviour:
     type: 3}
   exhibitSlot: slotSmallArtefactOne
   isDisplayed: 0
-  isInteractable: 0
-  isStorable: 0

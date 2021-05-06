@@ -15,7 +15,14 @@ MonoBehaviour:
   exhibitKeyID: 101010
   exhibitPosKey: 0
   exhibitName: Norwegian Ornate Hilt
-  exhibitDescription: New Description
+  exhibitDescription: "Mystical signs inlaid with gold bedeck the magnificent hilt
+    of the Langeid sword \u2013 a Viking weapon infused with Christian symbolism
+    and laid in a pre-Christian grave while the new faith was conquering the last
+    regions of Norway. It is still a mystery as to exactly what the symbols on the
+    sword\u2019s hilt tell us. Many of them clearly bear a Christian message with
+    different variants of the cross. The Latin letters are among the most complex
+    to interpret, but one may suspect that they are meaningful abbreviations with
+    a Christian message."
   exhibitType: 3
   exhibitSize: 0
   exhibitQuality: 3
@@ -24,7 +31,5 @@ MonoBehaviour:
   exhibitIcon: {fileID: 21300000, guid: 912358fa2eecb944084ad320714270ee, type: 3}
   exhibitObject: {fileID: 7901543436658654022, guid: 8cd40aa9041e1514d8574c7bddcb56e4,
     type: 3}
-  exhibitSlot: {fileID: 0}
+  exhibitSlot: 
   isDisplayed: 0
-  isInteractable: 0
-  isStorable: 0

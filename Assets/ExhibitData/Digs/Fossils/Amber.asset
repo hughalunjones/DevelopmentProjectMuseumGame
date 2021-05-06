@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ff583f062ffbf244985485bd800c07b, type: 3}
+  m_Name: Amber
+  m_EditorClassIdentifier: 
+  exhibitKeyID: 103001
+  exhibitPosKey: 0
+  exhibitName: Insect in Amber
+  exhibitDescription: Amber is fossilized tree resin that has been appreciated for
+    its color and natural beauty since Neolithic times.  Because it originates as
+    a soft, sticky tree resin, amber sometimes contains animal and plant material.
+    Much valued from antiquity to the present as a gemstone, amber is made into a
+    variety of decorative objects.
+  exhibitType: 1
+  exhibitSize: 0
+  exhibitQuality: 3
+  exhibitRatingAmount: 2.5
+  exhibitValueAmount: 400
+  exhibitIcon: {fileID: 21300000, guid: 59ea4bfae6eb0774ab63fbacb59c9af4, type: 3}
+  exhibitObject: {fileID: 3986279697228462816, guid: 75606974e563b2e4eaa6a4038c3a9baa,
+    type: 3}
+  exhibitSlot: 
+  isDisplayed: 0

@@ -15,7 +15,11 @@ MonoBehaviour:
   exhibitKeyID: 101011
   exhibitPosKey: 0
   exhibitName: Rusted Viking Sword
-  exhibitDescription: New Description
+  exhibitDescription: The Viking Age sword or Carolingian sword is the type of sword
+    prevalent in Western and Northern Europe during the Early Middle Ages. The sword
+    developed in the 8th century from the Merovingian sword. Although popularly called
+    "Viking sword", this type of sword was produced in the Frankish Empire during
+    the Carolingian era.
   exhibitType: 3
   exhibitSize: 0
   exhibitQuality: 2
@@ -24,7 +28,5 @@ MonoBehaviour:
   exhibitIcon: {fileID: 21300000, guid: 912358fa2eecb944084ad320714270ee, type: 3}
   exhibitObject: {fileID: 2711867071571468973, guid: 9f6b80c16bdb66a4b85c38a8e56cab18,
     type: 3}
-  exhibitSlot: {fileID: 0}
+  exhibitSlot: 
   isDisplayed: 0
-  isInteractable: 0
-  isStorable: 0

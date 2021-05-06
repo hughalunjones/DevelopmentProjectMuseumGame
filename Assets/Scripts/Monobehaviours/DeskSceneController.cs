@@ -24,6 +24,8 @@ public class DeskSceneController : MonoBehaviour {
             DisplayOfficeUI(officeUI);
         }
     }
+
+    // Displays a UI panel dependant on what is passed to it. Useful for the office as there are many different UI objects.
     public void DisplayOfficeUI(GameObject uiToDisplay) {
         if(uiToDisplay.activeSelf == true) {
             uiToDisplay.SetActive(false);
@@ -32,6 +34,8 @@ public class DeskSceneController : MonoBehaviour {
             uiToDisplay.SetActive(true);
         }
     }
+
+    // Assigned to the buttons in the OfficeUI so the player may select which excavation site they wish to visit
     public void ChooseDesert() {
         GameManager.Instance.SetExcavationIndex(1);
         DisplayOfficeUI(confirmationUI);
@@ -44,6 +48,8 @@ public class DeskSceneController : MonoBehaviour {
         GameManager.Instance.SetExcavationIndex(3);
         DisplayOfficeUI(confirmationUI);
     }
+
+    // For the confirmationUI. Ensures the player did not make a mistake with their choice of excavation site.
     public void ConfirmLoad() {      
         if(stamina != 0 && museStats.GetWealth() >= 250) {
             GameManager.Instance.LoadLevel("DigSite");
@@ -57,6 +63,8 @@ public class DeskSceneController : MonoBehaviour {
         }
         
     }
+
+    // Begins a new in-game "day". Calculates visitor numbers, admission fees and any donations. Also gives the player their stamina back
     public void StartNewDay() {
         DisplayOfficeUI(newDayUI);
         MuseumStats.instance.SetStamina(MuseumStats.instance.museumDefinition.playerMaxStamina);
@@ -66,10 +74,14 @@ public class DeskSceneController : MonoBehaviour {
         newDayText.GetComponent<TextMeshProUGUI>().SetText("There were a total of " + visitorTotal + " visitors earning you £" + admissionTotal + " in admissions. £" + donationTotal + " was left in donations");
         GameManager.Instance.Save();
     }
+
+    // Assigned to the "Done" button in the newDayUI. Returns the player to the MainHall scene.
     public void LoadNewDay() {
         GameManager.Instance.UnloadLevel("Office");
         GameManager.Instance.StartGame();
     }
+
+    // Calculates admissions and donations. Donations vary on number of displayed exhibits and their value and rating.
     private int GetAdmissions() {
         admissionTotal = 0;
         admissionTotal = visitorTotal * admissionFee;
@@ -86,10 +98,14 @@ public class DeskSceneController : MonoBehaviour {
         }
         return donationTotal;
     }
+
+    // Updats the players stats when travelling to an excavation site
     private void UpdateStats() {
         MuseumStats.instance.ApplyWealth(-250);
         MuseumStats.instance.ApplyStamina(-1);
     }
+
+    // Returns the number of currently displayed exhibits
     private int GetExhibitsOnDisplay() {
         exhibitsOnDisplay = 0;
         exhibitsOnDisplayList.Clear();
@@ -101,6 +117,8 @@ public class DeskSceneController : MonoBehaviour {
         }
         return exhibitsOnDisplay;
     }
+
+    // The calculation for determining how many visitors come to the museum.
     private int CalculateVisitorRatingRatio(float exhibitRating) {
         int randomNum = Random.Range(1, 20);
         int numOfVisitors = 0;
